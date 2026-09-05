@@ -316,6 +316,30 @@ radial-gradient(circle at 50% 20%,#f22e211c,transparent 35%),linear-gradient(155
   height:auto;
   margin:0;
   border-radius:0;
+} /* HLF ersetzt den alten Hero-Bereich */
+.hero > .heroGrid{
+  display:none !important;
+}
+
+.hero{
+  overflow:hidden;
+}
+
+.hlfScene{
+  display:block;
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  object-position:58% 58%;
+  margin:0;
+  border-radius:0;
+}
+
+@media(max-width:600px){
+  .hlfScene{
+    height:390px;
+    object-position:60% 58%;
+  }
 }
 </style>
 </head>
