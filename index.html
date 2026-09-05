@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101816">
+<title>B1 Feuerwehr NRW – LernApp</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#0b1210;
+  color:#fff;
+}
+header{
+  position:sticky;
+  top:0;
+  background:#101816;
+  border-bottom:1px solid #263a34;
+  padding:15px;
+  z-index:10;
+}
+header b{font-size:19px}
+main{max-width:900px;margin:auto;padding:16px}
+.hero,.panel,.card{
+  background:#14201c;
+  border:1px solid #2b4039;
+  border-radius:18px;
+}
+.hero{padding:22px;margin-bottom:15px}
+.hero h1{margin:0 0 8px;font-size:35px}
+.hero p{color:#b7c5c0}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+.stat{
+  background:#1d2c27;
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+}
+.stat strong{display:block;font-size:22px}
+nav{
+  display:flex;
+  gap:7px;
+  overflow:auto;
+  margin:15px 0;
+}
+button{
+  border:0;
+  background:#253b33;
+  color:#fff;
+  padding:11px 14px;
+  border-radius:11px;
+  font-weight:700;
+}
+button.active{background:#e94f2d}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+}
+.card{padding:16px}
+.card h3{margin:5px 0}
+.card p{color:#aebeb8;font-size:14px}
+.progress{
+  height:8px;
+  background:#263832;
+  border-radius:8px;
+  overflow:hidden;
+}
+.progress span{
+  display:block;
+  height:100%;
+  background:#42cc84;
+}
+.panel{padding:18px}
+.hidden{display:none}
+.topic{
+  display:flex;
+  gap:10px;
+  border-bottom:1px solid #294039;
+  padding:12px 0;
+}
+.topic input{width:20px;height:20px}
+.answer{
+  width:100%;
+  text-align:left;
+  margin:5px 0;
+}
+.correct{background:#177345!important}
+.wrong{background:#a2382c!important}
+.small{font-size:13px;color:#aebeb8}
+.warning{
+  border-left:4px solid #e94f2d;
+  background:#291b17;
+  padding:12px;
+  margin:12px 0;
+  border-radius:8px;
+}
+a{color:#74d5a7}
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <b>🚒 B1 Feuerwehr NRW</b>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Bereit für B1.</h1>
+  <p>
+    Lern-App für die feuerwehrtechnische Grundausbildung in NRW.
+    Mit FwDV, Atemschutz, ABC, TH, Funk, BHKG und DGUV.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="fortschritt">0%</strong>
+      Fortschritt
+    </div>
+    <div class="stat">
+      <strong>14</strong>
+      Module
+    </div>
+    <div class="stat">
+      <strong>20</strong>
+      Testfragen
+    </div>
+  </div>
+</section>
+
+<nav>
+  <button class="active" onclick="zeige('lernen',this)">📚 Lernen</button>
+  <button onclick="zeige('quiz',this)">📝 Prüfung</button>
+  <button onclick="zeige('recht',this)">⚖️ Vorschriften</button>
+  <button onclick="zeige('plan',this)">📅 Lernplan</button>
+</nav>
+
+<section id="lernen">
+  <div class="grid" id="module"></div>
+</section>
+
+<section id="detail" class="panel hidden"></section>
+
+<section id="quiz" class="panel hidden">
+  <h2>Prüfungstrainer</h2>
+  <div id="frage"></div>
+</section>
+
+<section id="recht" class="panel hidden">
+  <h2>Recht & Vorschriften</h2>
+
+  <div class="warning">
+    Diese App ist eine Lernhilfe. Maßgeblich sind immer die aktuellen
+    amtlichen Vorschriften sowie örtliche Dienst- und Ausbildungsanweisungen.
+  </div>
+
+  <h3>BHKG NRW</h3>
+  <p>
+    Gesetz über den Brandschutz, die Hilfeleistung und den
+    Katastrophenschutz in Nordrhein-Westfalen.
+  </p>
+
+  <h3>Wichtige Feuerwehr-Dienstvorschriften</h3>
+  <p>
+    FwDV 1 – Grundtätigkeiten<br>
+    FwDV 3 – Einheiten im Lösch- und Hilfeleistungseinsatz<br>
+    FwDV 7 – Atemschutz<br>
+    FwDV 10 – Tragbare Leitern<br>
+    FwDV 100 – Führung und Leitung im Einsatz<br>
+    FwDV 500 – Einheiten im ABC-Einsatz<br>
+    FwDV 810 – Sprech- und Datenfunkverkehr
+  </p>
+
+  <h3>DGUV</h3>
+  <p>
+    DGUV Vorschrift 49 „Feuerwehren“<br>
+    DGUV Regel 105-049 „Feuerwehren“<br>
+    DGUV Regel 112-190 „Benutzung von Atemschutzgeräten“
+  </p>
+</section>
+
+<section id="plan" class="panel hidden">
+  <h2>8-Wochen-Lernplan</h2>
+  <p>Woche 1: Grundlagen, Löschlehre, FwDV 3</p>
+  <p>Woche 2: Atemschutz und FwDV 7</p>
+  <p>Woche 3: Technische Hilfeleistung</p>
+  <p>Woche 4: ABC / FwDV 500</p>
+  <p>Woche 5: Maschinist und Wasserförderung</p>
+  <p>Woche 6: Funk, Führung und BHKG</p>
+  <p>Woche 7: DGUV, Rettungsdienst und Hygiene</p>
+  <p>Woche 8: Wiederholung und Prüfungstraining</p>
+</section>
+
+</main>
+
+<script>
+
+const moduleDaten = [
+["🔥","B1 Grundlagen",[
+"Aufgaben im Trupp",
+"Gefahren der Einsatzstelle",
+"Grundtätigkeiten",
+"Knoten und Stiche",
+"Gerätekunde"
+]],
+
+["🚒","FwDV 3",[
+"Gliederung der Gruppe",
+"Aufgaben der Trupps",
+"Löschangriff",
+"Hilfeleistungseinsatz",
+"Befehlsgebung"
+]],
+
+["🫁","Atemschutz / FwDV 7",[
+"Voraussetzungen Atemschutzgeräteträger",
+"Einsatzkurzprüfung",
+"Atemschutzüberwachung",
+"Sicherheitstrupp",
+"Atemschutznotfall"
+]],
+
+["☣️","ABC / FwDV 500",[
+"GAMS-Regel",
+"Gefahrstoffkennzeichnung",
+"Gefahrenbereich",
+"Dekontamination",
+"CSA-Grundlagen"
+]],
+
+["📻","Sprechfunk",[
+"Digitalfunk BOS",
+"Funkrufnamen",
+"Sprechfunkdisziplin",
+"Statusmeldungen",
+"Notruf"
+]],
+
+["🚒","Maschinist",[
+"Feuerlöschkreiselpumpe",
+"Wasserentnahme",
+"Entlüftung",
+"Wasserförderung",
+"Stromerzeuger"
+]],
+
+["🛠️","Technische Hilfe",[
+"Absicherung",
+"Unterbauen",
+"Hydraulisches Rettungsgerät",
+"Glasmanagement",
+"Patientengerechte Rettung"
+]],
+
+["🪜","Leitern / FwDV 10",[
+"Steckleiter",
+"Schiebleiter",
+"Aufstellen",
+"Sichern",
+"Rettung über Leitern"
+]],
+
+["💧","Löschlehre",[
+"Verbrennungsdreieck",
+"Brandklassen",
+"Wasser",
+"Schaum",
+"Pulver und CO₂"
+]],
+
+["⚖️","BHKG NRW",[
+"Aufgaben Gemeinden",
+"Aufgaben Kreise",
+"Aufgaben Land NRW",
+"Einsatzleitung",
+"Katastrophenschutz"
+]],
+
+["🦺","DGUV",[
+"DGUV Vorschrift 49",
+"DGUV Regel 105-049",
+"PSA",
+"Unfallverhütung",
+"Einsatzstellenhygiene"
+]],
+
+["🩺","Rettungsdienst",[
+"ABCDE-Schema",
+"Reanimation",
+"Trauma",
+"Verbrennungen",
+"Zusammenarbeit mit Rettungsdienst"
+]],
+
+["🎖️","FwDV 100",[
+"Führungsvorgang",
+"Lagefeststellung",
+"Beurteilung",
+"Entschluss",
+"Befehlsgebung"
+]],
+
+["🎓","Prüfung",[
+"Theorie",
+"Praktische Prüfung",
+"Wachpraktikum",
+"Wiederholung",
+"Prüfungsvorbereitung"
+]]
+];
+
+const fragen = [
+{
+q:"Welche FwDV behandelt den Atemschutz?",
+a:["FwDV 3","FwDV 7","FwDV 10","FwDV 500"],
+c:1
+},
+{
+q:"Wofür steht das G in der GAMS-Regel?",
+a:["Gerät prüfen","Gefahr erkennen","Gruppe bilden","Gebäude räumen"],
+c:1
+},
+{
+q:"Welche FwDV behandelt tragbare Leitern?",
+a:["FwDV 7","FwDV 10","FwDV 100","FwDV 500"],
+c:1
+},
+{
+q:"Welche FwDV behandelt Einheiten im ABC-Einsatz?",
+a:["FwDV 3","FwDV 7","FwDV 500","FwDV 810"],
+c:2
+},
+{
+q:"Welche Vorschrift trägt den Titel 'Feuerwehren'?",
+a:["DGUV Vorschrift 49","StVO","FwDV 100","BGB"],
+c:0
+},
+{
+q:"Wozu dient ein Sicherheitstrupp?",
+a:[
+"Pumpe bedienen",
+"Atemschutzgeräteträger retten",
+"Verkehr regeln",
+"Funkstelle besetzen"
+],
+c:1
+},
+{
+q:"Was ist Grundlage jeder Einsatzentscheidung?",
+a:[
+"Lagefeststellung",
+"Materialausgabe",
+"Presseinformation",
+"Fahrzeugreinigung"
+],
+c:0
+},
+{
+q:"Welche Aufgabe gehört typischerweise zum Maschinisten?",
+a:[
+"Feuerlöschkreiselpumpe bedienen",
+"Nur Innenangriff",
+"Nur Patientenversorgung",
+"Einsatzleitung übernehmen"
+],
+c:0
+},
+{
+q:"Was gehört zur GAMS-Regel?",
+a:[
+"Menschenrettung durchführen",
+"Absperren",
+"Maschine einschalten",
+"Strahlrohr tauschen"
+],
+c:1
+},
+{
+q:"Welche FwDV behandelt Führung und Leitung im Einsatz?",
+a:["FwDV 3","FwDV 7","FwDV 100","FwDV 810"],
+c:2
+},
+{
+q:"Was ist bei kontaminierter Einsatzkleidung wichtig?",
+a:[
+"Kontamination verschleppen",
+"Getrennt und kontrolliert ablegen",
+"Im Mannschaftsraum lagern",
+"Zu Hause reinigen"
+],
+c:1
+},
+{
+q:"Wozu dient die Atemschutzüberwachung?",
+a:[
+"Eingesetzte Atemschutztrupps überwachen",
+"Fahrzeuge tanken",
+"Pumpendruck messen",
+"Funkgeräte laden"
+],
+c:0
+},
+{
+q:"Welche Rechtsgrundlage ist für Brandschutz in NRW besonders wichtig?",
+a:[
+"BHKG NRW",
+"Handelsgesetzbuch",
+"Grundbuchordnung",
+"Straßenverkehrsordnung"
+],
+c:0
+},
+{
+q:"Was beschreibt patientengerechte Rettung?",
+a:[
+"Technische Rettung am Zustand des Patienten ausrichten",
+"Immer schnellstmöglich schneiden",
+"Nur der Rettungsdienst arbeitet",
+"Immer Fahrzeugdach entfernen"
+],
+c:0
+},
+{
+q:"Welche Maßnahme gehört zur Einsatzstellenhygiene?",
+a:[
+"Kontaminierte PSA sauber trennen",
+"Ruß mit bloßen Händen entfernen",
+"Im Mannschaftsraum essen",
+"Kontaminierte Kleidung privat waschen"
+],
+c:0
+},
+{
+q:"Was muss vor dem Atemschutzeinsatz unter anderem geprüft werden?",
+a:[
+"Einsatzbereitschaft des Gerätes",
+"Fahrzeugradio",
+"Handyempfang",
+"Kennzeichen des Fahrzeugs"
+],
+c:0
+},
+{
+q:"Welche Löschwirkung besitzt Wasser hauptsächlich?",
+a:[
+"Kühlen",
+"Elektrisieren",
+"Beschleunigen",
+"Erwärmen"
+],
+c:0
+},
+{
+q:"Was ist beim Digitalfunk wichtig?",
+a:[
+"Kurze und eindeutige Kommunikation",
+"Alle sprechen gleichzeitig",
+"Keine Funkrufnamen verwenden",
+"Notrufe ignorieren"
+],
+c:0
+},
+{
+q:"Warum wird eine Saugleitung möglichst luftdicht aufgebaut?",
+a:[
+"Damit Wasser angesaugt werden kann",
+"Damit Funk funktioniert",
+"Zur Beleuchtung",
+"Zum Laden der Batterie"
+],
+c:0
+},
+{
+q:"Was ist das Ziel einer Gefährdungsbeurteilung?",
+a:[
+"Gefahren erkennen und Schutzmaßnahmen festlegen",
+"PSA abschaffen",
+"Nur Kosten erfassen",
+"Übungen vermeiden"
+],
+c:0
+}
+];
+
+let erledigt = JSON.parse(localStorage.getItem("b1_erledigt") || "{}");
+let aktuelleFrage = 0;
+let punkte = 0;
+let reihenfolge = [];
+
+function moduleRendern(){
+  let html="";
+
+  moduleDaten.forEach((m,i)=>{
+    let fertig=0;
+
+    m[2].forEach((x,j)=>{
+      if(erledigt[i+"-"+j]) fertig++;
+    });
+
+    let prozent=Math.round(fertig/m[2].length*100);
+
+    html+=`
+    <div class="card" onclick="modulOeffnen(${i})">
+      <div style="font-size:30px">${m[0]}</div>
+      <h3>${m[1]}</h3>
+      <p>${fertig} von ${m[2].length} Lernzielen erledigt</p>
+      <div class="progress">
+        <span style="width:${prozent}%"></span>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById("module").innerHTML=html;
+  fortschritt();
+}
+
+function modulOeffnen(i){
+  const m=moduleDaten[i];
+
+  let html=`
+  <button onclick="zurueck()">← Zurück</button>
+  <h2>${m[0]} ${m[1]}</h2>
+  <p class="small">
+  Markiere ein Thema, wenn du es sicher erklären und praktisch anwenden kannst.
+  </p>`;
+
+  m[2].forEach((t,j)=>{
+    const key=i+"-"+j;
+
+    html+=`
+    <label class="topic">
+      <input
+        type="checkbox"
+        ${erledigt[key] ? "checked":""}
+        onchange="markieren('${key}',this.checked)">
+      <span>${t}</span>
+    </label>`;
+  });
+
+  document.getElementById("lernen").classList.add("hidden");
+  document.getElementById("detail").classList.remove("hidden");
+  document.getElementById("detail").innerHTML=html;
+}
+
+function markieren(key,value){
+  erledigt[key]=value;
+  localStorage.setItem("b1_erledigt",JSON.stringify(erledigt));
+  fortschritt();
+}
+
+function fortschritt(){
+  let gesamt=0;
+  let fertig=0;
+
+  moduleDaten.forEach((m,i)=>{
+    m[2].forEach((x,j)=>{
+      gesamt++;
+      if(erledigt[i+"-"+j]) fertig++;
+    });
+  });
+
+  document.getElementById("fortschritt").innerText=
+    Math.round(fertig/gesamt*100)+"%";
+}
+
+function zurueck(){
+  document.getElementById("detail").classList.add("hidden");
+  document.getElementById("lernen").classList.remove("hidden");
+  moduleRendern();
+}
+
+function zeige(id,button){
+  ["lernen","detail","quiz","recht","plan"].forEach(x=>{
+    document.getElementById(x).classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  document.querySelectorAll("nav button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  if(id==="quiz"){
+    quizStart();
+  }
+}
+
+function quizStart(){
+  aktuelleFrage=0;
+  punkte=0;
+
+  reihenfolge=[...Array(fragen.length).keys()]
+    .sort(()=>Math.random()-0.5);
+
+  frageZeigen();
+}
+
+function frageZeigen(){
+
+  if(aktuelleFrage>=fragen.length){
+
+    let prozent=Math.round(punkte/fragen.length*100);
+
+    document.getElementById("frage").innerHTML=`
+      <h2>Ergebnis</h2>
+      <h1>${punkte} / ${fragen.length}</h1>
+      <p>${prozent}% richtig</p>
+      <button onclick="quizStart()">Neue Prüfung starten</button>
+    `;
+
+    return;
+  }
+
+  const f=fragen[reihenfolge[aktuelleFrage]];
+
+  let html=`
+  <div class="small">
+  Frage ${aktuelleFrage+1} von ${fragen.length}
+  · Punkte ${punkte}
+  </div>
+
+  <h2>${f.q}</h2>`;
+
+  f.a.forEach((antwort,i)=>{
+    html+=`
+    <button
+      class="answer"
+      onclick="antwort(${i},this)">
+      ${antwort}
+    </button>`;
+  });
+
+  html+=`<div id="feedback"></div>`;
+
+  document.getElementById("frage").innerHTML=html;
+}
+
+function antwort(i,button){
+
+  const f=fragen[reihenfolge[aktuelleFrage]];
+  const buttons=document.querySelectorAll(".answer");
+
+  buttons.forEach(b=>b.disabled=true);
+
+  buttons[f.c].classList.add("correct");
+
+  if(i===f.c){
+    punkte++;
+    document.getElementById("feedback").innerHTML=
+      "<p>✅ Richtig!</p>";
+  }else{
+    button.classList.add("wrong");
+    document.getElementById("feedback").innerHTML=
+      "<p>❌ Falsch. Die grüne Antwort ist richtig.</p>";
+  }
+
+  document.getElementById("feedback").innerHTML+=`
+    <button onclick="aktuelleFrage++;frageZeigen()">
+    Weiter →
+    </button>`;
+}
+
+moduleRendern();
+
+</script>
+
+</body>
+</html>
