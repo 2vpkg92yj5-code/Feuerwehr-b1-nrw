@@ -400,6 +400,131 @@ object-position:center;
     letter-spacing:.9px;
   }
 }
+  /* ===== HUD IM HLF-BALKEN ===== */
+.quick{
+  position:relative;
+  z-index:20;
+  margin-top:-82px;
+  padding:10px 14px 12px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  background:transparent;
+}
+
+.quick .metric{
+  position:relative;
+  min-width:0;
+  height:82px;
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  cursor:pointer;
+
+  background:linear-gradient(
+    145deg,
+    rgba(13,22,30,.94),
+    rgba(4,8,12,.88)
+  );
+
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 8px 24px rgba(0,0,0,.45);
+
+  transition:.2s ease;
+}
+
+.quick .metric::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255,255,255,.18) 45%,
+    transparent 65%
+  );
+  transform:translateX(-120%);
+  animation:hudShimmer 3.2s infinite;
+  pointer-events:none;
+}
+
+.quick .metric:active{
+  transform:scale(.96);
+}
+
+.quick .metric b{
+  position:relative;
+  z-index:2;
+  font-size:27px;
+  line-height:1;
+  font-weight:900;
+  color:#fff;
+}
+
+.quick .metric span{
+  position:relative;
+  z-index:2;
+  margin-top:9px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  color:#aeb8c2;
+}
+
+.quick .metric:nth-child(1){
+  border-color:rgba(0,140,255,.45);
+  box-shadow:0 0 22px rgba(0,120,255,.18);
+}
+
+.quick .metric:nth-child(2){
+  border-color:rgba(255,45,75,.45);
+  box-shadow:0 0 22px rgba(255,20,60,.16);
+}
+
+.quick .metric:nth-child(3){
+  border-color:rgba(30,255,125,.38);
+  box-shadow:0 0 22px rgba(20,255,120,.14);
+}
+
+.quick .metric:nth-child(4){
+  border-color:rgba(255,70,45,.42);
+  box-shadow:0 0 22px rgba(255,50,20,.16);
+}
+
+@keyframes hudShimmer{
+  0%,55%{transform:translateX(-120%)}
+  85%,100%{transform:translateX(120%)}
+}
+
+@media(max-width:600px){
+  .quick{
+    margin-top:-76px;
+    gap:7px;
+    padding:8px 8px 10px;
+  }
+
+  .quick .metric{
+    height:72px;
+    border-radius:15px;
+  }
+
+  .quick .metric b{
+    font-size:23px;
+  }
+
+  .quick .metric span{
+    font-size:7px;
+    letter-spacing:1px;
+  }
+}
 </style>
 </head>
 <body>
