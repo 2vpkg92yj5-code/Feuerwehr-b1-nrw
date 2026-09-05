@@ -342,6 +342,64 @@ object-fit:contain;
 object-position:center;
   }
 }
+  /* STATUSLEISTE DIREKT UNTER DEM HLF */
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  padding:12px 16px;
+  margin:0;
+  background:#070a0c;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.quick .metric{
+  min-width:0;
+  padding:14px 5px 12px;
+  text-align:center;
+  background:linear-gradient(145deg,#101719,#0a0e10);
+  border:1px solid #293438;
+  border-radius:16px;
+}
+
+.quick .metric b{
+  display:block;
+  margin-bottom:7px;
+  font-size:22px;
+  font-weight:900;
+  color:#fff;
+}
+
+.quick .metric span{
+  display:block;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:#8d989e;
+}
+
+@media(max-width:600px){
+  .quick{
+    gap:7px;
+    padding:10px 8px;
+  }
+
+  .quick .metric{
+    padding:12px 3px 10px;
+    border-radius:14px;
+  }
+
+  .quick .metric b{
+    font-size:19px;
+  }
+
+  .quick .metric span{
+    font-size:7px;
+    letter-spacing:.9px;
+  }
+}
 </style>
 </head>
 <body>
