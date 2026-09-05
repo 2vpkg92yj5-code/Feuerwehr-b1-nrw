@@ -3,698 +3,588 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#9d0b05">
+<meta name="theme-color" content="#8f0e08">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>B1 Lerntrainer NRW</title>
+<title>B1 Feuerwehr NRW – Lerntrainer</title>
 
 <style>
 :root{
   --bg:#050606;
-  --card:#111313;
-  --card2:#181a1a;
-  --line:#353838;
-  --red:#e1261c;
-  --red2:#980d08;
-  --gold:#efb82e;
-  --green:#2bd476;
-  --blue:#319cff;
+  --card:#111414;
+  --card2:#191d1d;
+  --line:#343a3a;
+  --red:#e12a1f;
+  --red2:#8e0e08;
+  --gold:#efb92e;
+  --green:#2ed67b;
+  --blue:#369ef5;
   --text:#fff;
-  --muted:#aaa;
+  --muted:#aeb4b4;
 }
 
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent
+  -webkit-tap-highlight-color:transparent;
 }
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   background:
-    radial-gradient(circle at 5% 10%,rgba(0,108,255,.12),transparent 23%),
-    radial-gradient(circle at 95% 12%,rgba(255,45,20,.18),transparent 28%),
-    #050606;
-  min-height:100vh;
+    radial-gradient(circle at 8% 5%,#06182a 0,transparent 28%),
+    radial-gradient(circle at 92% 8%,#2b0705 0,transparent 31%),
+    var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
-/* HEADER */
-
-header{
+.top{
   position:sticky;
   top:0;
-  z-index:100;
-  background:linear-gradient(90deg,#740603,#c51810,#740603);
-  border-bottom:3px solid var(--gold);
-  box-shadow:0 5px 25px rgba(0,0,0,.55);
+  z-index:50;
+  padding:calc(9px + env(safe-area-inset-top)) 14px 10px;
+  background:linear-gradient(90deg,#6c0704,#c51b12,#6c0704);
+  border-bottom:2px solid var(--gold);
+  box-shadow:0 5px 24px #0008;
 }
 
-.topbar{
+.topin{
   max-width:1100px;
   margin:auto;
-  padding:
-    calc(10px + env(safe-area-inset-top))
-    16px 10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.topIcon{
-  width:42px;
-  height:42px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:25px;
 }
 
-.titleWrap{
+.brand{
   text-align:center;
-  line-height:1;
 }
 
-.titleWrap strong{
+.brand b{
+  font-size:17px;
+}
+
+.brand small{
   display:block;
-  font-size:21px;
-  letter-spacing:.5px;
+  font-size:7px;
+  letter-spacing:2.5px;
+  margin-top:4px;
+  color:#f6d5d2;
 }
-
-.titleWrap small{
-  display:block;
-  margin-top:6px;
-  font-size:9px;
-  letter-spacing:4px;
-  color:#f3d5d1;
-}
-
-/* CONTENT */
 
 main{
   max-width:1100px;
   margin:auto;
-  padding-bottom:110px;
+  padding-bottom:calc(84px + env(safe-area-inset-bottom));
 }
 
-/* HERO */
+.page{
+  display:none;
+  padding:14px;
+}
+
+.page.active{
+  display:block;
+}
+
+#homePage{
+  padding:0;
+}
 
 .hero{
-  position:relative;
-  overflow:hidden;
-  min-height:620px;
-  padding:30px 18px 22px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  background:
-    radial-gradient(circle at 50% 35%,rgba(255,65,24,.25),transparent 35%),
-    radial-gradient(circle at 15% 65%,rgba(0,119,255,.25),transparent 28%),
-    radial-gradient(circle at 85% 65%,rgba(255,25,5,.25),transparent 30%),
-    linear-gradient(180deg,#07101a,#140604 68%,#050606);
-  border-bottom:1px solid #292929;
-}
-
-.hero::before{
-  content:"🚒";
-  position:absolute;
-  left:-30px;
-  bottom:75px;
-  font-size:180px;
-  opacity:.13;
-  filter:blur(1px);
-}
-
-.hero::after{
-  content:"🔥";
-  position:absolute;
-  right:-10px;
-  bottom:100px;
-  font-size:180px;
-  opacity:.15;
-}
-
-.slogan{
-  position:absolute;
-  top:75px;
-  width:170px;
-  color:#dadada;
-  font-family:Georgia,serif;
-  font-style:italic;
-  font-size:27px;
-  line-height:1.25;
-  opacity:.83;
-  z-index:2;
-}
-
-.slogan.left{
-  left:38px;
-  transform:rotate(-4deg)
-}
-
-.slogan.right{
-  right:38px;
-  transform:rotate(4deg)
-}
-
-.badgeWrap{
-  position:relative;
-  z-index:3;
-  width:min(470px,82vw);
-  margin-top:5px;
-}
-
-.badgeWrap img{
-  display:block;
-  width:100%;
-  border-radius:18px;
-  filter:
-    drop-shadow(0 18px 28px rgba(0,0,0,.75))
-    drop-shadow(0 0 25px rgba(255,70,25,.16));
-}
-
-.heroTitle{
-  position:relative;
-  z-index:4;
-  margin-top:10px;
   text-align:center;
+  padding:14px 12px 12px;
+  background:
+    radial-gradient(circle,#48100b44,transparent 48%),
+    linear-gradient(#07101a,#160706 72%,#050606);
 }
 
-.heroTitle h1{
-  margin:0;
-  font-size:40px;
-  line-height:1;
-  letter-spacing:-1px;
+.crest{
+  width:min(285px,76vw);
+  border-radius:20px;
+  display:block;
+  margin:auto;
+  filter:drop-shadow(0 15px 24px #000a);
 }
 
-.heroTitle h1 span{
-  color:#ff2519
+.fallback{
+  font-size:100px;
+  padding:30px;
 }
 
-.heroTitle p{
-  margin:10px 0 0;
-  letter-spacing:7px;
-  font-size:12px;
+.hero h1{
+  margin:8px 0 2px;
+  font-size:28px;
+}
+
+.hero h1 span{
+  color:#ff3428;
+}
+
+.hero p{
+  margin:7px 0;
+  font-size:8px;
+  letter-spacing:4px;
   color:#ccc;
-}
-
-/* STATS */
-
-.dashboard{
-  position:relative;
-  z-index:5;
-  margin:-3px 16px 0;
 }
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  gap:6px;
+  padding:10px 10px 0;
 }
 
 .stat{
-  min-height:125px;
-  padding:16px 8px;
-  background:linear-gradient(145deg,#1c1e1e,#0e1010);
-  border:1px solid rgba(231,38,27,.75);
-  border-radius:19px;
+  background:linear-gradient(145deg,#1c2020,#0d0f0f);
+  border:1px solid #9e211a;
+  border-radius:15px;
+  padding:9px 3px;
   text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  min-height:83px;
 }
 
-.statIcon{
-  font-size:29px;
+.stat i{
+  font-style:normal;
+  font-size:19px;
 }
 
-.stat strong{
+.stat b{
   display:block;
-  margin-top:7px;
-  font-size:28px;
+  font-size:16px;
+  margin-top:4px;
 }
 
-.stat span{
-  display:block;
-  margin-top:5px;
-  color:#ccc;
-  font-size:13px;
+.stat small{
+  font-size:8px;
+  color:#c4c8c8;
 }
 
-.mainProgress{
-  margin:14px 0 8px;
-}
-
-.progressBar{
-  height:16px;
-  border:1px solid #737777;
-  background:#111515;
-  padding:2px;
-  border-radius:999px;
+.bar{
+  height:12px;
+  background:#161919;
+  border:1px solid #565b5b;
+  border-radius:20px;
+  margin:10px 12px;
   overflow:hidden;
+  padding:2px;
 }
 
-.progressBar span{
+.bar span{
   display:block;
-  min-width:4px;
   height:100%;
-  border-radius:999px;
-  background:linear-gradient(90deg,#f21611,#ff8d21);
-  transition:.35s;
+  border-radius:20px;
+  background:linear-gradient(90deg,#ec251a,#ff922c);
 }
-
-.quote{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin:20px 0;
-  color:#bcbcbc;
-  font-family:Georgia,serif;
-  font-style:italic;
-  letter-spacing:2px;
-  justify-content:center;
-}
-
-.quote::before,
-.quote::after{
-  content:"";
-  height:1px;
-  flex:1;
-  max-width:220px;
-  background:#b11610;
-}
-
-/* SECTIONS */
 
 .content{
-  padding:0 16px 30px;
+  padding:0 10px 20px;
 }
 
-.sectionHead{
+.head{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin:20px 0 13px;
+  justify-content:space-between;
+  gap:8px;
+  margin:15px 0 10px;
 }
 
-.sectionHead h2{
+.head h2{
   margin:0;
-  font-size:23px;
+  font-size:19px;
 }
 
-.sectionHead small{
-  color:#aaa
+.head small{
+  color:var(--muted);
+  font-size:10px;
 }
-
-/* TOPICS */
 
 .topicGrid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
 }
 
-.topicCard{
-  min-height:170px;
-  padding:15px 10px;
-  border-radius:18px;
-  background:linear-gradient(145deg,#181a1a,#0c0e0e);
-  border:1px solid rgba(227,37,27,.7);
+.topic{
+  background:linear-gradient(145deg,#191c1c,#0c0e0e);
+  border:1px solid #8d211b;
+  border-radius:16px;
+  min-height:132px;
+  padding:11px 7px;
   text-align:center;
-  box-shadow:0 9px 25px rgba(0,0,0,.28);
-  cursor:pointer;
 }
 
-.topicIcon{
-  font-size:36px;
-  margin-bottom:7px
+.topic .ico{
+  font-size:29px;
 }
 
-.topicCard h3{
-  margin:4px 0;
-  font-size:15px
+.topic h3{
+  font-size:13px;
+  margin:5px 0;
 }
 
-.topicCard p{
+.topic p{
+  font-size:9px;
+  color:#b7baba;
   margin:0;
-  color:#bbb;
-  font-size:11px;
-  min-height:28px
 }
 
-.miniProgress{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  margin-top:14px;
-}
-
-.miniProgress div{
-  flex:1;
-  height:9px;
-  border-radius:99px;
-  background:#202525;
+.mini{
+  height:8px;
+  background:#202424;
+  border-radius:20px;
   overflow:hidden;
-  border:1px solid #454a49;
+  margin-top:10px;
 }
 
-.miniProgress span{
+.mini span{
   display:block;
   height:100%;
-  background:linear-gradient(90deg,#e71912,#ff8b22)
-}
-
-/* PAGES */
-
-.page{
-  display:none;
-  padding:20px 16px 30px;
-}
-
-.page.active{
-  display:block
+  background:linear-gradient(90deg,#e5241a,#ff992c);
 }
 
 .panel{
-  max-width:820px;
+  max-width:900px;
   margin:auto;
-  padding:20px;
-  border-radius:22px;
-  background:linear-gradient(145deg,#181a1a,#0d0f0f);
-  border:1px solid #333;
-  box-shadow:0 12px 35px rgba(0,0,0,.3);
+  background:linear-gradient(145deg,#181b1b,#0c0e0e);
+  border:1px solid #343838;
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 12px 28px #0005;
 }
 
 .panel h2{
-  margin-top:0
+  margin-top:0;
 }
 
-select{
+.panel p{
+  line-height:1.5;
+}
+
+select,
+input[type="search"]{
   width:100%;
-  padding:14px;
-  border-radius:13px;
-  border:1px solid #444;
-  background:#171a1a;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid #454b4b;
+  background:#151919;
   color:white;
-  font-size:16px;
+  font-size:15px;
 }
 
-button{
-  border:1px solid #414141;
-  background:#202323;
-  color:white;
-  border-radius:13px;
-  padding:12px 15px;
-  font-size:14px;
+button,
+.btn{
+  border:1px solid #424848;
+  background:#202525;
+  color:#fff;
+  border-radius:12px;
+  padding:12px 14px;
   font-weight:800;
+  font-size:14px;
+  text-decoration:none;
+  display:inline-block;
 }
 
-button.primary{
-  border-color:#ef4a38;
-  background:linear-gradient(135deg,#ef3827,#9b120c)
+button.primary,
+.btn.primary{
+  background:linear-gradient(135deg,#ed3828,#92110b);
+  border-color:#ef4b3d;
 }
 
-.buttonRow{
+.row{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-top:13px
+  margin-top:12px;
 }
-
-/* QUESTIONS */
 
 .question{
-  margin-top:20px
+  margin-top:18px;
 }
 
-.questionMeta{
-  color:#aaa;
-  font-size:12px
-}
-
-.question h2{
-  line-height:1.3
+.qmeta{
+  font-size:11px;
+  color:#aeb3b3;
 }
 
 .answer{
   display:block;
   width:100%;
+  margin:8px 0;
   text-align:left;
-  margin:9px 0;
-  padding:15px;
-  border-radius:14px;
-  background:#202424;
-  border:1px solid #3c4040;
-  font-weight:650;
+  line-height:1.4;
 }
 
 .answer.correct{
-  background:#116436;
-  border-color:#37dc82
+  background:#12643a;
+  border-color:#38dc83;
 }
 
 .answer.wrong{
-  background:#7d211a;
-  border-color:#ff6153
+  background:#7a201a;
+  border-color:#ff675a;
 }
 
 .feedback{
-  padding:14px;
-  margin:14px 0;
-  border-radius:13px;
-  border-left:5px solid var(--red);
-  background:#271311;
+  margin:12px 0;
+  padding:13px;
+  border-left:4px solid var(--red);
+  border-radius:10px;
+  background:#281210;
+  line-height:1.45;
 }
 
 .feedback.good{
+  background:#10281b;
   border-left-color:var(--green);
-  background:#11291c
+}
+
+/* LERNBLÄTTER */
+
+.sheetGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:13px;
+}
+
+.sheet{
+  overflow:hidden;
+  border:1px solid #383d3d;
+  border-radius:20px;
+  background:#101313;
+}
+
+.sheet.learned{
+  border-color:#2dcb76;
+}
+
+.sheetTop{
+  min-height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:
+    radial-gradient(circle,#8d1a1044,transparent 45%),
+    linear-gradient(145deg,#24100e,#080a0a);
+}
+
+.sheetIcon{
+  font-size:68px;
+}
+
+.sheetTag{
+  position:absolute;
+  left:11px;
+  bottom:10px;
+  font-size:10px;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.sheetNo{
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size:9px;
+  background:#0008;
+  border:1px solid #ffffff22;
+  padding:5px 7px;
+  border-radius:99px;
+}
+
+.sheetBody{
+  padding:14px;
+}
+
+.sheetBody h3{
+  margin:0 0 9px;
+}
+
+.core{
+  background:#26100e;
+  border-left:4px solid var(--red);
+  border-radius:9px;
+  padding:11px;
+  line-height:1.45;
+}
+
+.learnbox{
+  margin-top:9px;
+  padding:10px;
+  border:1px solid #2c3131;
+  border-radius:11px;
+  background:#181c1c;
+}
+
+.learnbox b{
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.8px;
+  margin-bottom:4px;
+}
+
+.learnbox p{
+  margin:0;
+  font-size:13px;
+  line-height:1.45;
+  color:#d4d7d7;
+}
+
+/* VORSCHRIFTEN */
+
+.ruleFilters{
+  display:flex;
+  gap:6px;
+  overflow:auto;
+  padding-bottom:8px;
+}
+
+.chip{
+  white-space:nowrap;
+  padding:9px 11px;
+  border-radius:99px;
+}
+
+.chip.active{
+  background:#a81912;
+  border-color:#e64d41;
+}
+
+.rules{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-top:10px;
+}
+
+.rule{
+  background:linear-gradient(145deg,#171b1b,#0d1010);
+  border:1px solid #373c3c;
+  border-radius:16px;
+  padding:14px;
+}
+
+.rule.fwdv{
+  border-left:4px solid #e33126;
+}
+
+.rule.gesetz{
+  border-left:4px solid #e6b326;
+}
+
+.rule.dguv{
+  border-left:4px solid #2d9ceb;
+}
+
+.rule h3{
+  margin:0 0 5px;
+  font-size:17px;
+}
+
+.rule .edition{
+  font-size:10px;
+  color:#aeb3b3;
+}
+
+.rule p{
+  font-size:13px;
+  line-height:1.5;
+  color:#d3d6d6;
+}
+
+.notice{
+  margin:12px 0;
+  padding:12px;
+  border-radius:12px;
+  background:#10202c;
+  border:1px solid #2b5878;
+  font-size:12px;
+  line-height:1.45;
 }
 
 .score{
   text-align:center;
-  font-size:60px;
+  font-size:55px;
   font-weight:1000;
-  color:#fff;
 }
 
-/* FLIPCHARTS */
-
-.flipControls{
-  max-width:820px;
-  margin:0 auto 15px;
-}
-
-.flipGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-}
-
-.flip{
-  height:230px;
-  perspective:1000px;
-  cursor:pointer;
-}
-
-.flipInner{
+.statsTable{
   width:100%;
-  height:100%;
-  position:relative;
-  transition:transform .55s;
-  transform-style:preserve-3d;
+  border-collapse:collapse;
 }
 
-.flip.open .flipInner{
-  transform:rotateY(180deg)
+.statsTable th,
+.statsTable td{
+  font-size:11px;
+  padding:8px 4px;
+  border-bottom:1px solid #2b2f2f;
+  text-align:left;
 }
 
-.flipFace{
-  position:absolute;
-  inset:0;
-  backface-visibility:hidden;
-  border-radius:20px;
-  padding:18px;
-  border:1px solid rgba(229,39,27,.75);
-  background:
-    radial-gradient(circle at 80% 10%,rgba(230,40,25,.14),transparent 30%),
-    linear-gradient(145deg,#1a1c1c,#0c0e0e);
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.flipBack{
-  transform:rotateY(180deg);
-  border-color:#d6a62a;
-}
-
-.flipEmoji{
-  font-size:34px
-}
-
-.flipFace h3{
-  margin:8px 0;
-  font-size:18px
-}
-
-.flipFace p{
-  color:#d2d2d2;
-  line-height:1.45;
-  font-size:14px
-}
-
-.flipHint{
-  color:#888;
-  font-size:11px
-}
-
-.learnBtn{
-  margin-top:10px;
-  width:100%
-}
-
-.learned{
-  border-color:#2bcf75!important;
-  box-shadow:0 0 0 1px rgba(43,207,117,.3)
-}
-
-/* STATS TABLE */
-
-table{
-  width:100%;
-  border-collapse:collapse
-}
-
-th,td{
-  padding:10px 5px;
-  border-bottom:1px solid #292c2c;
-  font-size:13px;
-  text-align:left
-}
-
-th{
-  color:#fff
-}
-
-td{
-  color:#ccc
-}
-
-/* BOTTOM NAV */
-
-.bottomNav{
+.bottom{
   position:fixed;
   left:0;
   right:0;
   bottom:0;
-  z-index:150;
-  height:82px;
+  z-index:60;
+  background:#080909f2;
+  border-top:1px solid #444;
+  backdrop-filter:blur(14px);
   padding-bottom:env(safe-area-inset-bottom);
-  display:flex;
-  justify-content:center;
-  background:rgba(7,8,8,.96);
-  backdrop-filter:blur(15px);
-  border-top:1px solid #4b4b4b;
 }
 
-.bottomInner{
-  width:100%;
+.bottomin{
   max-width:1100px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(6,1fr)
+  grid-template-columns:repeat(6,1fr);
+  height:68px;
 }
 
-.navItem{
+.nav{
   border:0;
   border-radius:0;
   background:transparent;
-  padding:8px 2px;
+  padding:6px 1px;
+  font-size:8px;
   color:#bbb;
-  font-size:10px;
 }
 
-.navItem b{
+.nav b{
   display:block;
-  font-size:25px;
-  margin-bottom:4px
+  font-size:19px;
+  margin-bottom:2px;
 }
 
-.navItem.active{
-  color:white;
-  background:linear-gradient(135deg,#a00c07,#3b0503)
+.nav.active{
+  background:linear-gradient(135deg,#99110b,#350504);
+  color:#fff;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:850px){
-  .topicGrid{grid-template-columns:repeat(3,1fr)}
-  .flipGrid{grid-template-columns:repeat(2,1fr)}
-  .slogan{display:none}
+.muted{
+  color:#aaa;
+  font-size:11px;
 }
 
-@media(max-width:600px){
-
-  .titleWrap strong{font-size:17px}
-  .titleWrap small{font-size:7px;letter-spacing:2px}
-
-  .hero{
-    min-height:500px;
-    padding-top:18px
-  }
-
-  .badgeWrap{
-    width:min(360px,87vw)
-  }
-
-  .heroTitle h1{
-    font-size:29px
-  }
-
-  .heroTitle p{
-    letter-spacing:5px;
-    font-size:9px
-  }
-
-  .stats{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .stat{
-    min-height:105px
-  }
-
-  .stat strong{
-    font-size:24px
-  }
-
+@media(min-width:720px){
   .topicGrid{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(4,1fr);
   }
 
-  .topicCard{
-    min-height:155px
+  .sheetGrid{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .flipGrid{
-    grid-template-columns:1fr
-  }
-
-  .flip{
-    height:220px
-  }
-
-  .navItem{
-    font-size:9px
-  }
-
-  .navItem b{
-    font-size:22px
+  .rules{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
@@ -702,95 +592,80 @@ td{
 
 <body>
 
-<header>
-  <div class="topbar">
-    <div class="topIcon">☰</div>
-
-    <div class="titleWrap">
-      <strong>🔥 B1 LERNTRAINER NRW</strong>
+<header class="top">
+  <div class="topin">
+    <div class="brand">
+      <b>🔥 B1 LERNTRAINER NRW</b>
       <small>WISSEN · KÖNNEN · SICHER · HELFEN</small>
     </div>
-
-    <div class="topIcon">⚙️</div>
   </div>
 </header>
 
 <main>
 
-<section id="homePage" class="page active" style="padding:0">
+<section id="homePage" class="page active">
 
-  <section class="hero">
+  <div class="hero">
 
-    <div class="slogan left">
-      Einer für alle.<br>
-      Alle für einen!
+    <img
+      class="crest"
+      src="1aefb3cb-0481-4b89-9488-a447710609fa.jpeg"
+      alt="B1 Feuerwehr Wappen"
+      onerror="
+        this.style.display='none';
+        document.getElementById('fb').style.display='block'
+      "
+    >
+
+    <div id="fb" class="fallback" style="display:none">
+      🧑‍🚒
     </div>
 
-    <div class="slogan right">
-      Retten<br>
-      Löschen<br>
-      Bergen<br>
-      Schützen
+    <h1>
+      <span>B1</span> FEUERWEHR NRW
+    </h1>
+
+    <p>
+      LERNEN · ÜBEN · BESTEHEN
+    </p>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <i>📖</i>
+      <b id="sProg">0%</b>
+      <small>Fortschritt</small>
     </div>
 
-    <div class="badgeWrap">
-      <img
-        src="1aefb3cb-0481-4b89-9488-a447710609fa.jpeg"
-        alt="B1 Feuerwehr Wappen">
+    <div class="stat">
+      <i>📋</i>
+      <b id="sAns">0 / 672</b>
+      <small>Fragen</small>
     </div>
 
-    <div class="heroTitle">
-      <h1><span>B1</span> FEUERWEHR NRW</h1>
-      <p>LERNEN · ÜBEN · BESTEHEN</p>
+    <div class="stat">
+      <i>✅</i>
+      <b id="sHit">–</b>
+      <small>richtig</small>
     </div>
 
-  </section>
-
-  <div class="dashboard">
-
-    <div class="stats">
-
-      <div class="stat">
-        <div class="statIcon">📖</div>
-        <strong id="statProgress">0%</strong>
-        <span>Fortschritt</span>
-      </div>
-
-      <div class="stat">
-        <div class="statIcon">📋</div>
-        <strong id="statAnswered">0 / 672</strong>
-        <span>Fragen beantwortet</span>
-      </div>
-
-      <div class="stat">
-        <div class="statIcon">✅</div>
-        <strong id="statCorrect">–</strong>
-        <span>Richtige Antworten</span>
-      </div>
-
-      <div class="stat">
-        <div class="statIcon">❌</div>
-        <strong id="statWrong">0</strong>
-        <span>Fehlerfragen</span>
-      </div>
-
-    </div>
-
-    <div class="mainProgress">
-      <div class="progressBar">
-        <span id="mainProgressBar" style="width:0%"></span>
-      </div>
-    </div>
-
-    <div class="quote">
-      „Gutes Wissen ist der beste Schutz.“
+    <div class="stat">
+      <i>❌</i>
+      <b id="sWrong">0</b>
+      <small>Fehler</small>
     </div>
 
   </div>
 
+  <div class="bar">
+    <span id="mainBar" style="width:0%"></span>
+  </div>
+
   <div class="content">
 
-    <div class="sectionHead">
+    <div class="head">
       <h2>🔥 THEMENBEREICHE</h2>
       <small>14 Bereiche · 672 Fragen</small>
     </div>
@@ -806,17 +681,24 @@ td{
 
   <div class="panel">
 
-    <h2>📖 Lernen</h2>
-
-    <p>
-      Wähle einen Themenbereich und trainiere alle dazugehörigen Fragen.
-    </p>
+    <h2>📖 Fragen lernen</h2>
 
     <select id="topicSelect"></select>
 
-    <div class="buttonRow">
-      <button class="primary" onclick="startTopic()">Thema starten</button>
-      <button onclick="startAll()">Alle Themen mischen</button>
+    <div class="row">
+
+      <button class="primary" onclick="startTopic()">
+        Thema starten
+      </button>
+
+      <button onclick="startAll()">
+        Alle Themen mischen
+      </button>
+
+      <button onclick="startWrong()">
+        Fehlertraining
+      </button>
+
     </div>
 
     <div id="learnArea"></div>
@@ -828,18 +710,33 @@ td{
 
 <section id="flipPage" class="page">
 
-  <div class="sectionHead">
-    <h2>🗂️ Lern-Flipcharts</h2>
-    <small id="flipProgressText">0 / 168 gelernt</small>
+  <div class="panel">
+
+    <div class="head">
+
+      <h2>📚 Lernblätter</h2>
+
+      <small id="sheetCount">
+        0 / 168 gelernt
+      </small>
+
+    </div>
+
+    <select
+      id="sheetSelect"
+      onchange="renderSheets()">
+    </select>
+
+    <div class="notice">
+      Die Lernblätter sind fachliche Lernzusammenfassungen.
+      Maßgeblich sind immer die aktuell eingeführte Vorschrift,
+      örtliche Dienstanweisungen und der Unterricht deiner
+      Ausbildungsstelle.
+    </div>
+
+    <div id="sheetGrid" class="sheetGrid"></div>
+
   </div>
-
-  <div class="flipControls">
-
-    <select id="flipTopicSelect" onchange="renderFlipcharts()"></select>
-
-  </div>
-
-  <div id="flipGrid" class="flipGrid"></div>
 
 </section>
 
@@ -848,15 +745,18 @@ td{
 
   <div class="panel">
 
-    <h2>📝 Prüfung</h2>
+    <h2>📝 Prüfungssimulation</h2>
 
     <p>
-      40 zufällige Fragen aus allen Themenbereichen.
-      Innerhalb einer Prüfung gibt es keine doppelte Frage.
+      40 zufällig gemischte Fragen aus allen Themenbereichen.
     </p>
 
-    <button class="primary" onclick="startExam()">
+    <button
+      class="primary"
+      onclick="startExam()">
+
       40-Fragen-Prüfung starten
+
     </button>
 
     <div id="examArea"></div>
@@ -866,21 +766,78 @@ td{
 </section>
 
 
-<section id="wrongPage" class="page">
+<section id="rulesPage" class="page">
 
   <div class="panel">
 
-    <h2>🔁 Fehlertraining</h2>
+    <h2>
+      📚 Vorschriften & Nachschlagen
+    </h2>
 
-    <p id="wrongText">
-      Noch keine Fehlerfragen gespeichert.
+    <p>
+      Feuerwehr-Dienstvorschriften sowie BHKG NRW
+      und wichtige DGUV-Grundlagen.
     </p>
 
-    <button class="primary" onclick="startWrong()">
-      Fehlerfragen trainieren
-    </button>
+    <div class="notice">
 
-    <div id="wrongArea"></div>
+      <b>Bibliothek:</b><br><br>
+
+      🚒 FwDV 1<br>
+      🚒 FwDV 2<br>
+      🚒 FwDV 3<br>
+      🚒 FwDV 7<br>
+      🚒 FwDV 8<br>
+      🚒 FwDV 10<br>
+      🚒 FwDV 100<br>
+      🚒 FwDV 500<br>
+      🚒 FwDV 800<br>
+      🚒 FwDV 810<br><br>
+
+      ⚖️ BHKG NRW<br><br>
+
+      🦺 DGUV Vorschrift 49<br>
+      🦺 DGUV Regel 105-049<br>
+      🦺 weitere Feuerwehr-DGUV-Unterlagen
+
+    </div>
+
+    <input
+      id="ruleSearch"
+      type="search"
+      placeholder="🔎 z. B. Atemschutz, FwDV 3, Leitern …"
+      oninput="renderRules()"
+    >
+
+    <div class="ruleFilters">
+
+      <button
+        class="chip active"
+        onclick="setRuleFilter('Alle',this)">
+        Alle
+      </button>
+
+      <button
+        class="chip"
+        onclick="setRuleFilter('FwDV',this)">
+        FwDV
+      </button>
+
+      <button
+        class="chip"
+        onclick="setRuleFilter('Gesetz',this)">
+        BHKG
+      </button>
+
+      <button
+        class="chip"
+        onclick="setRuleFilter('DGUV',this)">
+        DGUV
+      </button>
+
+    </div>
+
+    <div id="rules" class="rules"></div>
 
   </div>
 
@@ -891,12 +848,18 @@ td{
 
   <div class="panel">
 
-    <h2>📊 Lernfortschritt</h2>
+    <h2>
+      📊 Fortschritt
+    </h2>
 
     <div id="statsArea"></div>
 
-    <div class="buttonRow">
-      <button onclick="resetAll()">Lernfortschritt löschen</button>
+    <div class="row">
+
+      <button onclick="resetAll()">
+        Fortschritt löschen
+      </button>
+
     </div>
 
   </div>
@@ -906,965 +869,2662 @@ td{
 </main>
 
 
-<nav class="bottomNav">
+<nav class="bottom">
 
-  <div class="bottomInner">
+<div class="bottomin">
 
-    <button class="navItem active" onclick="showPage('home',this)">
-      <b>🏠</b>
-      Übersicht
-    </button>
+<button
+  class="nav active"
+  onclick="showPage('home',this)">
+  <b>🏠</b>
+  Übersicht
+</button>
 
-    <button class="navItem" onclick="showPage('learn',this)">
-      <b>📖</b>
-      Lernen
-    </button>
+<button
+  class="nav"
+  onclick="showPage('learn',this)">
+  <b>📖</b>
+  Lernen
+</button>
 
-    <button class="navItem" onclick="showPage('flip',this)">
-      <b>🗂️</b>
-      Flipcharts
-    </button>
+<button
+  class="nav"
+  onclick="showPage('flip',this)">
+  <b>📚</b>
+  Lernblätter
+</button>
 
-    <button class="navItem" onclick="showPage('exam',this)">
-      <b>📝</b>
-      Prüfung
-    </button>
+<button
+  class="nav"
+  onclick="showPage('exam',this)">
+  <b>📝</b>
+  Prüfung
+</button>
 
-    <button class="navItem" onclick="showPage('wrong',this)">
-      <b>🔁</b>
-      Fehler
-    </button>
+<button
+  class="nav"
+  onclick="showPage('rules',this)">
+  <b>📜</b>
+  Vorschriften
+</button>
 
-    <button class="navItem" onclick="showPage('stats',this)">
-      <b>📊</b>
-      Fortschritt
-    </button>
+<button
+  class="nav"
+  onclick="showPage('stats',this)">
+  <b>📊</b>
+  Fortschritt
+</button>
 
-  </div>
+</div>
 
 </nav>
 
+
 <script>
 
-/* =========================================================
+/* =====================================================
    THEMEN
-   ========================================================= */
+   ===================================================== */
 
 const topics=[
-{id:"grund",icon:"🔥",name:"Grundlagen",sub:"FwDV 1"},
-{id:"fwdv3",icon:"🚒",name:"FwDV 3",sub:"Lösch- & Hilfeleistung"},
-{id:"atem",icon:"🫁",name:"Atemschutz",sub:"FwDV 7"},
-{id:"abc",icon:"☣️",name:"ABC",sub:"FwDV 500"},
-{id:"funk",icon:"📻",name:"Sprechfunk",sub:"FwDV 810"},
-{id:"masch",icon:"⚙️",name:"Maschinist",sub:"Pumpen & Aggregate"},
-{id:"th",icon:"🛠️",name:"Technische Hilfe",sub:"TH"},
-{id:"leiter",icon:"🪜",name:"Leitern",sub:"FwDV 10"},
-{id:"loesch",icon:"💧",name:"Löschlehre",sub:"Brand & Löschmittel"},
-{id:"bhkg",icon:"⚖️",name:"BHKG NRW",sub:"Rechtsgrundlagen"},
-{id:"dguv",icon:"🦺",name:"DGUV",sub:"Arbeitsschutz"},
-{id:"rd",icon:"🩺",name:"Rettungsdienst",sub:"Erste Hilfe"},
-{id:"fuehrung",icon:"🎖️",name:"Führung",sub:"FwDV 100"},
-{id:"praxis",icon:"🎓",name:"B1 Prüfung",sub:"Praxis & Lernen"}
+
+{
+ id:"grund",
+ icon:"🔥",
+ name:"Grundlagen",
+ sub:"FwDV 1"
+},
+
+{
+ id:"fwdv3",
+ icon:"🚒",
+ name:"FwDV 3",
+ sub:"Einheiten im Lösch- & Hilfeleistungseinsatz"
+},
+
+{
+ id:"atem",
+ icon:"🫁",
+ name:"Atemschutz",
+ sub:"FwDV 7"
+},
+
+{
+ id:"abc",
+ icon:"☣️",
+ name:"ABC",
+ sub:"FwDV 500"
+},
+
+{
+ id:"funk",
+ icon:"📻",
+ name:"Sprechfunk",
+ sub:"FwDV 810"
+},
+
+{
+ id:"masch",
+ icon:"⚙️",
+ name:"Maschinist",
+ sub:"Pumpen & Aggregate"
+},
+
+{
+ id:"th",
+ icon:"🛠️",
+ name:"Technische Hilfe",
+ sub:"TH"
+},
+
+{
+ id:"leiter",
+ icon:"🪜",
+ name:"Leitern",
+ sub:"FwDV 10"
+},
+
+{
+ id:"loesch",
+ icon:"💧",
+ name:"Löschlehre",
+ sub:"Brand & Löschmittel"
+},
+
+{
+ id:"bhkg",
+ icon:"⚖️",
+ name:"BHKG NRW",
+ sub:"Rechtsgrundlagen"
+},
+
+{
+ id:"dguv",
+ icon:"🦺",
+ name:"DGUV",
+ sub:"Sicherheit & Gesundheit"
+},
+
+{
+ id:"rd",
+ icon:"🩺",
+ name:"Rettungsdienst",
+ sub:"Erste Hilfe"
+},
+
+{
+ id:"fuehrung",
+ icon:"🎖️",
+ name:"Führung",
+ sub:"FwDV 100"
+},
+
+{
+ id:"praxis",
+ icon:"🎓",
+ name:"B1 Prüfung",
+ sub:"Praxis & Lernen"
+}
+
 ];
 
 
-/* =========================================================
+/* =====================================================
    168 LERNINHALTE
-   12 JE THEMENBEREICH
-   ========================================================= */
+   ===================================================== */
 
 const facts=[
 
-["grund","Feuerwehrleine","Die Feuerwehrleine dient unter anderem zum Sichern, Retten und Hochziehen geeigneter Geräte."],
-["grund","Persönliche Schutzausrüstung","Die erforderliche persönliche Schutzausrüstung richtet sich nach Tätigkeit und Gefährdung."],
-["grund","Gefahrenbeurteilung","Gefahren an der Einsatzstelle müssen fortlaufend erkannt und beurteilt werden."],
-["grund","Knoten","Knoten und Stiche müssen ihrem vorgesehenen Verwendungszweck entsprechend eingesetzt werden."],
-["grund","Geräteablage","Geräte sollen übersichtlich und sicher bereitgestellt werden."],
-["grund","Einsatzbefehl","Ein Einsatzauftrag soll klar, kurz und verständlich sein."],
-["grund","Trupparbeit","Ein Trupp arbeitet grundsätzlich gemeinsam und achtet auf gegenseitige Sicherheit."],
-["grund","Absperrung","Gefahrenbereiche müssen angemessen abgesperrt oder gesichert werden."],
-["grund","Beleuchtung","Einsatzstellenbeleuchtung soll Gefahrenstellen und Arbeitsbereiche ausreichend ausleuchten."],
-["grund","Schläuche","Schläuche sollen so verlegt werden, dass unnötige Stolper- und Verkehrsgefahren vermieden werden."],
-["grund","Einsatzhygiene","Kontaminierte Einsatzkleidung soll sauber von unbelasteten Bereichen getrennt werden."],
-["grund","Geräteprüfung","Feuerwehrgeräte müssen einsatzbereit und entsprechend den Vorgaben geprüft sein."],
+/* FwDV 1 */
 
-["fwdv3","Gruppe","Die Gruppe ist eine taktische Einheit mit Gruppenführer, Maschinist, Melder sowie drei Trupps."],
-["fwdv3","Staffel","Die Staffel ist kleiner als die Gruppe und besteht aus Staffelführer, Maschinist sowie zwei Trupps."],
-["fwdv3","Angriffstrupp","Der Angriffstrupp übernimmt in der Regel zuerst die Menschenrettung beziehungsweise den ersten Angriff."],
-["fwdv3","Wassertrupp","Der Wassertrupp stellt typischerweise die Wasserversorgung zwischen Löschfahrzeug und Wasserentnahmestelle her."],
-["fwdv3","Schlauchtrupp","Der Schlauchtrupp unterstützt unter anderem beim Verlegen von Schlauchleitungen und bei weiteren Aufgaben."],
-["fwdv3","Maschinist","Der Maschinist fährt das Fahrzeug und bedient unter anderem fest eingebaute Aggregate und Pumpen."],
-["fwdv3","Melder","Der Melder unterstützt insbesondere den Einheitsführer und kann Nachrichten übermitteln."],
-["fwdv3","Menschenrettung","Menschenrettung hat bei akuter Lebensgefahr grundsätzlich hohe Priorität."],
-["fwdv3","Bereitstellung","Bei einem Einsatz mit Bereitstellung werden bestimmte Maßnahmen vorbereitet, bis weitere Befehle folgen."],
-["fwdv3","Wasserentnahmestelle","Die Wahl der Wasserentnahmestelle richtet sich nach Einsatzlage und verfügbarer Löschwasserversorgung."],
-["fwdv3","Verteiler","Der Verteiler dient zur Aufteilung einer Schlauchleitung auf mehrere Abgänge."],
-["fwdv3","Rückmeldung","Wesentliche Lageänderungen und erledigte Aufträge sollen dem Einheitsführer zurückgemeldet werden."],
+["grund","Persönliche Schutzausrüstung",
+"Die erforderliche persönliche Schutzausrüstung richtet sich nach Tätigkeit und Gefährdung."],
 
-["atem","Atemschutzüberwachung","Die Atemschutzüberwachung erfasst und überwacht eingesetzte Atemschutztrupps."],
-["atem","Sicherheitstrupp","Für Atemschutzeinsätze ist entsprechend den Vorgaben ein Sicherheitstrupp bereitzustellen."],
-["atem","Einsatzkurzprüfung","Vor dem Atemschutzeinsatz wird die Einsatzbereitschaft des Atemschutzgerätes überprüft."],
-["atem","Truppweise Vorgehen","Unter Atemschutz gehen Einsatzkräfte grundsätzlich truppweise vor."],
-["atem","Rückwegsicherung","Der Atemschutztrupp muss seinen Rückweg und den Luftvorrat berücksichtigen."],
-["atem","Notfallmeldung","Ein Atemschutznotfall muss unverzüglich eindeutig gemeldet werden."],
-["atem","Atemanschluss","Der Atemanschluss muss dicht sitzen und für den Geräteträger geeignet sein."],
-["atem","Voraussetzungen","Atemschutzgeräteträger müssen die geforderten gesundheitlichen und fachlichen Voraussetzungen erfüllen."],
-["atem","Brandrauch","Brandrauch kann hochgiftig sein und erfordert geeigneten Atemschutz."],
-["atem","Kommunikation","Atemschutztrupps müssen eine geeignete Kommunikation sicherstellen."],
-["atem","Wärmebelastung","Atemschutz und Schutzkleidung können zu hoher körperlicher Wärmebelastung führen."],
-["atem","Dekontamination","Nach Kontamination sind Atemschutzgeräte und Ausrüstung entsprechend den Vorgaben aufzubereiten."],
+["grund","Feuerwehrleine",
+"Feuerwehrleinen werden entsprechend ihrer vorgesehenen Funktion eingesetzt; sie ersetzen keinen zugelassenen Absturzschutz."],
 
-["abc","GAMS Gefahr erkennen","Der erste Schritt der GAMS-Regel lautet Gefahr erkennen."],
-["abc","GAMS Absperren","Das A der GAMS-Regel steht für Absperren."],
-["abc","GAMS Menschenrettung","Das M der GAMS-Regel steht für Menschenrettung durchführen."],
-["abc","GAMS Spezialkräfte","Das S der GAMS-Regel steht für Spezialkräfte anfordern."],
-["abc","Gefahrstoffkennzeichnung","Kennzeichnungen und Warntafeln können wichtige Hinweise auf Gefahrstoffe liefern."],
-["abc","Abstand","Bei unbekannten Gefahrstoffen ist zunächst ein angemessener Sicherheitsabstand einzuhalten."],
-["abc","Windrichtung","Bei Gefahrstofffreisetzungen ist die Windrichtung bei der Einsatzplanung zu berücksichtigen."],
-["abc","Dekontamination","Dekontamination soll eine Verschleppung gefährlicher Stoffe verhindern oder vermindern."],
-["abc","Kontaminationsverschleppung","Kontaminierte und saubere Bereiche sollen konsequent getrennt werden."],
-["abc","CSA","Chemikalienschutzanzüge dienen dem Schutz vor bestimmten gefährlichen Stoffen und Kontamination."],
-["abc","Stoffidentifikation","Unbekannte Stoffe sollen nicht unnötig berührt, gerochen oder probiert werden."],
-["abc","ABC-Einsatz","Bei ABC-Lagen sind Gefahr, Kontamination und geeignete Schutzmaßnahmen besonders zu berücksichtigen."],
+["grund","Knoten und Stiche",
+"Knoten und Stiche müssen zum vorgesehenen Verwendungszweck passen und sicher beherrscht werden."],
 
-["funk","Sprechdisziplin","Funkmeldungen sollen kurz, eindeutig und verständlich sein."],
-["funk","Funkrufname","Funkrufnamen dienen der eindeutigen Zuordnung von Teilnehmern oder Einsatzmitteln."],
-["funk","Notruf Funk","Eine dringende Notfallmeldung muss eindeutig als solche erkennbar sein."],
-["funk","Digitalfunk BOS","Der Digitalfunk BOS dient der Kommunikation von Behörden und Organisationen mit Sicherheitsaufgaben."],
-["funk","Gruppenkommunikation","Eine Sprechgruppe ermöglicht Kommunikation innerhalb einer zugeordneten Teilnehmergruppe."],
-["funk","Funkgerät Bedienung","Vor dem Einsatz sollte das Funkgerät funktionsbereit und richtig eingestellt sein."],
-["funk","Standortmeldung","Standort- und Lagemeldungen sollen möglichst eindeutig sein."],
-["funk","Verständigung","Nicht verstandene Funkmeldungen sollten nachgefragt beziehungsweise wiederholt werden."],
-["funk","Funkverkehr","Der Funkverkehr ist auf das einsatznotwendige Maß zu beschränken."],
-["funk","Geräteverlust","Der Verlust eines BOS-Funkgerätes ist nach den geltenden Vorgaben zu melden."],
-["funk","Sprechwunsch","Vor dem Sprechen ist darauf zu achten, laufenden Funkverkehr nicht unnötig zu unterbrechen."],
-["funk","Datenschutz","Über Funk sollen nur die für den Einsatz erforderlichen Informationen übertragen werden."],
+["grund","Schläuche",
+"Schlauchleitungen werden möglichst sicher, übersichtlich und ohne vermeidbare Stolperstellen verlegt."],
 
-["masch","Feuerlöschkreiselpumpe","Der Maschinist überwacht beim Pumpenbetrieb unter anderem Förderstrom und Pumpendruck."],
-["masch","Hydrant","Bei der Wasserentnahme aus Hydranten ist auf eine sichere und geeignete Wasserversorgung zu achten."],
-["masch","Offenes Gewässer","Bei Wasserentnahme aus offenem Gewässer kann eine Saugleitung erforderlich sein."],
-["masch","Entlüftung","Beim Saugbetrieb muss die Saugleitung ausreichend luftdicht sein."],
-["masch","Kavitation","Ungeeignete Betriebsbedingungen können Kavitation und Schäden an Pumpen begünstigen."],
-["masch","Stromerzeuger","Stromerzeuger müssen sicher aufgestellt und entsprechend den Vorgaben betrieben werden."],
-["masch","Abgase","Verbrennungsmotoren erzeugen gefährliche Abgase und benötigen ausreichende Belüftung."],
-["masch","Fahrzeugaufstellung","Das Feuerwehrfahrzeug ist möglichst so aufzustellen, dass Einsatz und Sicherheit unterstützt werden."],
-["masch","Pumpendruck","Der erforderliche Ausgangsdruck richtet sich unter anderem nach Leitung, Höhenunterschied und Strahlrohr."],
-["masch","Lange Wegstrecke","Bei längeren Förderstrecken müssen Druckverluste und gegebenenfalls Verstärkerpumpen berücksichtigt werden."],
-["masch","Maschinistenaufgaben","Der Maschinist sorgt im Rahmen seines Auftrags auch für die Betriebsbereitschaft des Fahrzeugs und der Aggregate."],
-["masch","Ansaugvorgang","Beim Ansaugen aus offenem Gewässer muss die Pumpe beziehungsweise Saugleitung entlüftet werden können."],
+["grund","Armaturen",
+"Wasserführende Armaturen werden bestimmungsgemäß gekuppelt, bedient und gegen unbeabsichtigte Bewegung gesichert."],
 
-["th","Unfallstelle absichern","Vor technischen Rettungsarbeiten ist die Einsatzstelle gegen weitere Gefahren abzusichern."],
-["th","Fahrzeug stabilisieren","Ein verunfalltes Fahrzeug soll vor Rettungsarbeiten gegen unkontrollierte Bewegung gesichert werden."],
-["th","Patientenschutz","Bei technischen Rettungsmaßnahmen ist der Patient vor Werkzeugen, Splittern und weiteren Gefahren zu schützen."],
-["th","Glasmanagement","Glas soll kontrolliert und mit geeigneten Schutzmaßnahmen bearbeitet werden."],
-["th","Hydraulischer Spreizer","Ein hydraulischer Spreizer kann unter anderem zum Spreizen, Drücken und je nach Gerät zum Ziehen eingesetzt werden."],
-["th","Hydraulische Schere","Eine hydraulische Schere dient zum Trennen geeigneter Fahrzeug- beziehungsweise Konstruktionsteile."],
-["th","Rettungszylinder","Rettungszylinder können kontrolliert zum Drücken und Schaffen von Rettungsraum eingesetzt werden."],
-["th","Airbag-Gefahr","Nicht ausgelöste Airbags und pyrotechnische Rückhaltesysteme müssen bei Rettungsarbeiten berücksichtigt werden."],
-["th","Alternative Antriebe","Bei Elektro- und Hybridfahrzeugen sind fahrzeugspezifische Gefahren und Rettungsinformationen zu beachten."],
-["th","Patientengerechte Rettung","Die technische Rettung wird möglichst am medizinischen Zustand und der Lage des Patienten ausgerichtet."],
-["th","Zusammenarbeit Rettungsdienst","Feuerwehr und Rettungsdienst stimmen technische und medizinische Maßnahmen miteinander ab."],
-["th","Unterbauen","Unterbaumaterial soll standsicher und lastgerecht eingesetzt werden."],
+["grund","Gerätebereitstellung",
+"Geräte werden übersichtlich, sicher und für den Trupp erreichbar bereitgestellt."],
 
-["leiter","Steckleiter","Die Steckleiter ist eine tragbare Feuerwehrleiter aus mehreren Leiterteilen."],
-["leiter","Schiebleiter","Die Schiebleiter ist eine tragbare Leiter mit gegeneinander verschiebbaren Leiterteilen."],
-["leiter","Aufstellwinkel","Eine Leiter muss mit einem geeigneten und sicheren Aufstellwinkel aufgestellt werden."],
-["leiter","Leiterfuß","Der Leiterfuß muss möglichst standsicher auf tragfähigem Untergrund stehen."],
-["leiter","Sicherung","Eine Leiter muss entsprechend Lage und Vorschrift gegen Wegrutschen beziehungsweise Umstürzen gesichert werden."],
-["leiter","Besteigen","Beim Besteigen einer Leiter ist auf sicheren Halt und geeignete Arbeitsweise zu achten."],
-["leiter","Anleiterbereitschaft","Leitern können zur Sicherung eines Rückzugs- beziehungsweise Rettungsweges bereitgestellt werden."],
-["leiter","Elektrische Gefahren","Bei Leitern sind ausreichende Abstände zu elektrischen Anlagen zu beachten."],
-["leiter","Personenrettung","Bei der Rettung über Leitern müssen Person, Leiter und Einsatzkräfte sicher geführt werden."],
-["leiter","Leiterprüfung","Beschädigte Leitern dürfen nicht ohne entsprechende Beurteilung beziehungsweise Prüfung weiterverwendet werden."],
-["leiter","Aufstiegshilfe","Tragbare Leitern können als Angriffs- und Rettungsweg eingesetzt werden, sofern dies sicher möglich ist."],
-["leiter","Leitertransport","Beim Transport tragbarer Leitern ist auf Hindernisse und andere Personen zu achten."],
+["grund","Beleuchtung",
+"Arbeits- und Gefahrenbereiche werden so ausgeleuchtet, dass Blendung und zusätzliche Gefahren vermieden werden."],
 
-["loesch","Verbrennung","Für eine Verbrennung sind unter anderem brennbarer Stoff, Sauerstoff und geeignete Bedingungen erforderlich."],
-["loesch","Löschwirkung Wasser","Die wichtigste Löschwirkung von Wasser ist die Kühlung."],
-["loesch","Brandklasse A","Brandklasse A umfasst Brände fester Stoffe, hauptsächlich organischer Natur, die normalerweise unter Glutbildung verbrennen."],
-["loesch","Brandklasse B","Brandklasse B umfasst Brände flüssiger oder flüssig werdender Stoffe."],
-["loesch","Brandklasse C","Brandklasse C umfasst Brände von Gasen."],
-["loesch","Brandklasse D","Brandklasse D umfasst Brände von Metallen."],
-["loesch","Brandklasse F","Brandklasse F umfasst Brände von Speiseölen und Speisefetten in Frittier- und Fettbackgeräten."],
-["loesch","Fettbrand","Bei brennendem Speiseöl kann Wasser zu einer gefährlichen schlagartigen Brandausbreitung führen."],
-["loesch","Schaum","Löschschaum kann unter anderem eine trennende beziehungsweise erstickende Wirkung entfalten."],
-["loesch","Pulver","Löschpulver kann eine schnelle Löschwirkung besitzen, verursacht jedoch erhebliche Verschmutzung."],
-["loesch","CO₂","Kohlendioxid löscht insbesondere durch Verringerung des Sauerstoffanteils im unmittelbaren Brandbereich."],
-["loesch","Wasserdampf","Verdampfendes Wasser nimmt viel Wärme auf und vergrößert sein Volumen stark."],
+["grund","Sichern und Absperren",
+"Gefahrenbereiche sind der Lage angemessen abzusperren oder anderweitig zu sichern."],
 
-["bhkg","Zweck des BHKG","Das BHKG NRW regelt insbesondere Brandschutz, Hilfeleistung und Katastrophenschutz in Nordrhein-Westfalen."],
-["bhkg","Gemeinden","Gemeinden haben im Brandschutz und in der Hilfeleistung gesetzlich bestimmte Aufgaben."],
-["bhkg","Kreise","Auch Kreise haben nach dem BHKG eigene Aufgaben im Brand- und Katastrophenschutz."],
-["bhkg","Land NRW","Das Land Nordrhein-Westfalen nimmt ebenfalls Aufgaben nach dem BHKG wahr."],
-["bhkg","Öffentliche Feuerwehr","Die öffentliche Feuerwehr erfüllt die ihr gesetzlich übertragenen Aufgaben der Gefahrenabwehr."],
-["bhkg","Hilfeleistung","Hilfeleistung umfasst unter anderem Gefahrenlagen, bei denen Menschen, Tiere, Sachwerte oder Umwelt geschützt werden müssen."],
-["bhkg","Katastrophenschutz","Katastrophenschutz dient der Abwehr beziehungsweise Bewältigung außergewöhnlicher Schadenslagen."],
-["bhkg","Einsatzleitung","Eine geordnete Einsatzleitung koordiniert Maßnahmen und eingesetzte Kräfte."],
-["bhkg","Überörtliche Hilfe","Bei Bedarf können Kräfte im Rahmen überörtlicher Hilfe zusammenwirken."],
-["bhkg","Vorbeugender Brandschutz","Vorbeugender Brandschutz soll dazu beitragen, Brandentstehung und Brandfolgen zu vermeiden beziehungsweise zu begrenzen."],
-["bhkg","Warnung Bevölkerung","Bei Gefahrenlagen kann die Warnung und Information der Bevölkerung eine wichtige Maßnahme sein."],
-["bhkg","Eigenverantwortung","Gefahrenabwehr durch Feuerwehr und Behörden entbindet Personen nicht automatisch von jeder eigenen Vorsorge und Mitwirkung."],
+["grund","Tragen von Geräten",
+"Beim gemeinsamen Tragen schwerer oder sperriger Geräte werden Kommandos und sichere Griffpunkte abgestimmt."],
 
-["dguv","DGUV Vorschrift 49","Die DGUV Vorschrift 49 enthält Unfallverhütungsvorschriften für Feuerwehren."],
-["dguv","DGUV Regel 105-049","Die DGUV Regel 105-049 konkretisiert Anforderungen zum sicheren Feuerwehrdienst."],
-["dguv","Atemschutz","Für die Benutzung von Atemschutz sind geeignete Geräte, Unterweisung und erforderliche Voraussetzungen wichtig."],
-["dguv","Sicheres Arbeiten","Feuerwehrangehörige sollen Gefahren erkennen und geeignete Schutzmaßnahmen anwenden."],
-["dguv","PSA","Persönliche Schutzausrüstung muss für die jeweilige Gefährdung geeignet sein."],
-["dguv","Beschädigte PSA","Beschädigte beziehungsweise zweifelhafte PSA muss beurteilt und gegebenenfalls ausgesondert werden."],
-["dguv","Kontamination","Kontamination soll möglichst früh erkannt und eine Verschleppung verhindert werden."],
-["dguv","Unfallmeldung","Unfälle und relevante Beinaheereignisse sollen entsprechend den geltenden Verfahren gemeldet beziehungsweise ausgewertet werden."],
-["dguv","Unterweisung","Regelmäßige Unterweisung trägt dazu bei, sichere Arbeitsweisen zu vermitteln und zu erhalten."],
-["dguv","Belastung","Feuerwehrdienst kann erhebliche körperliche und psychische Belastungen verursachen."],
-["dguv","Hygiene","Nach belastenden Einsätzen gehören geeignete Hygiene- und Reinigungsmaßnahmen zum Gesundheitsschutz."],
-["dguv","Fahrzeugbewegung","Beim Bewegen von Feuerwehrfahrzeugen sind Personen im Gefahrenbereich besonders zu beachten."],
+["grund","Einsatzhygiene",
+"Kontaminierte Einsatzkleidung und Geräte werden von sauberen Bereichen getrennt; Hautkontakt und Verschleppung werden minimiert."],
 
-["rd","ABCDE","Das ABCDE-Schema unterstützt eine strukturierte Untersuchung und Priorisierung lebensbedrohlicher Probleme."],
-["rd","Atemweg","Ein bedrohter Atemweg hat bei der strukturierten Patientenbeurteilung hohe Priorität."],
-["rd","Atmung","Bei der Beurteilung der Atmung werden unter anderem Atemfrequenz, Atemarbeit und ausreichende Belüftung betrachtet."],
-["rd","Kreislauf","Starke Blutungen müssen möglichst früh erkannt und kontrolliert werden."],
-["rd","Bewusstsein","Der Bewusstseinszustand ist ein wichtiger Bestandteil der Patientenbeurteilung."],
-["rd","Wärmeerhalt","Der Wärmeerhalt ist insbesondere bei verletzten oder ausgekühlten Patienten wichtig."],
-["rd","Reanimation","Bei fehlenden Lebenszeichen beziehungsweise Kreislaufstillstand sind unverzüglich geeignete Reanimationsmaßnahmen einzuleiten."],
-["rd","AED","Ein AED kann bei geeigneten Herzrhythmen eine Defibrillation ermöglichen und gibt Anwenderhinweise."],
-["rd","Trauma","Bei Traumapatienten müssen Unfallmechanismus, Verletzungen und Lebensbedrohungen gemeinsam betrachtet werden."],
-["rd","Verbrennungen","Bei Verbrennungen sind unter anderem Ausdehnung, Tiefe, Lokalisation und mögliche Begleitverletzungen bedeutsam."],
-["rd","Patientenübergabe","Eine strukturierte Übergabe übermittelt wichtige Informationen an den weiterbehandelnden Rettungsdienst."],
-["rd","Eigenschutz","Eigenschutz und sichere Einsatzstelle haben auch bei medizinischen Notfällen hohe Bedeutung."],
+["grund","Geräteprüfung",
+"Ausrüstung darf nur in einsatzbereitem Zustand verwendet werden; erkennbare Schäden sind zu melden."],
 
-["fuehrung","Führungsvorgang","Der Führungsvorgang umfasst Lagefeststellung, Planung beziehungsweise Beurteilung und Befehlsgebung mit fortlaufender Kontrolle."],
-["fuehrung","Lagefeststellung","Die Lagefeststellung sammelt Informationen über Schadenlage und eigene Möglichkeiten."],
-["fuehrung","Beurteilung","Bei der Beurteilung werden Gefahren, Möglichkeiten und Prioritäten gegeneinander abgewogen."],
-["fuehrung","Entschluss","Der Entschluss legt fest, wie das Einsatzziel mit den verfügbaren Mitteln erreicht werden soll."],
-["fuehrung","Befehl","Ein Befehl soll verständlich sein und die wesentlichen Informationen für die Auftragserfüllung enthalten."],
-["fuehrung","Kontrolle","Die Wirkung angeordneter Maßnahmen muss kontrolliert und bei Bedarf angepasst werden."],
-["fuehrung","Einsatzabschnitt","Bei größeren Lagen können Einsatzabschnitte zur Gliederung und Führung gebildet werden."],
-["fuehrung","Führungsspanne","Eine angemessene Führungsspanne hilft, unterstellte Einheiten wirksam zu führen."],
-["fuehrung","Rückmeldung","Rückmeldungen liefern der Führung aktuelle Informationen über Lage und Auftragserfüllung."],
-["fuehrung","Prioritäten","Akute Gefahren für Menschenleben haben regelmäßig besondere Bedeutung bei der Prioritätensetzung."],
-["fuehrung","Führungsmittel","Führungsmittel wie Karten, Übersichten und Dokumentation können die Einsatzführung unterstützen."],
-["fuehrung","Lageänderung","Bei wesentlichen Lageänderungen muss die Planung überprüft und gegebenenfalls angepasst werden."],
+["grund","Trupparbeit",
+"Truppmitglieder arbeiten abgestimmt, halten Verbindung und achten gegenseitig auf Sicherheit."],
 
-["praxis","Antreten","Bei praktischen Übungen sind klare Aufgabenverteilung, Aufmerksamkeit und sicheres Antreten wichtig."],
-["praxis","Gerätekunde","In der Prüfung sollte nicht nur der Gerätename, sondern auch Zweck und sichere Anwendung erklärt werden können."],
-["praxis","Befehlswiederholung","Bei Unklarheiten sollte ein Auftrag nachgefragt beziehungsweise eindeutig geklärt werden."],
-["praxis","Eigensicherung","Auch unter Prüfungsdruck haben Eigenschutz und sichere Arbeitsweise Vorrang."],
-["praxis","Kommunikation","Klare Kommunikation mit Trupppartner und Führung unterstützt eine sichere praktische Prüfung."],
-["praxis","Fehler erkennen","Wird ein sicherheitsrelevanter Fehler erkannt, sollte er möglichst sofort korrigiert beziehungsweise gemeldet werden."],
-["praxis","Übungsdienst","Regelmäßiges praktisches Üben festigt Handgriffe, Abläufe und Zusammenarbeit."],
-["praxis","Zeitdruck","Unter Zeitdruck sollte strukturiert und sicher statt hektisch gearbeitet werden."],
-["praxis","Prüfungsfragen","Bei Multiple-Choice-Fragen sollte die Fragestellung genau gelesen werden, bevor eine Antwort gewählt wird."],
-["praxis","Lernstrategie","Regelmäßige kurze Wiederholungen und Fehlertraining verbessern den nachhaltigen Lernerfolg."],
-["praxis","Wachpraktikum","Ein Wachpraktikum dient dazu, Ausbildung in den praktischen Dienst und reale Abläufe zu übertragen."],
-["praxis","Teamarbeit","Feuerwehreinsätze erfordern abgestimmte Zusammenarbeit und gegenseitige Unterstützung."]
+
+/* FwDV 3 */
+
+["fwdv3","Taktische Einheit Gruppe",
+"Die Gruppe besteht aus Gruppenführer, Maschinist, Melder sowie Angriffstrupp, Wassertrupp und Schlauchtrupp."],
+
+["fwdv3","Taktische Einheit Staffel",
+"Die Staffel besteht aus Staffelführer, Maschinist sowie Angriffstrupp und Wassertrupp."],
+
+["fwdv3","Angriffstrupp",
+"Der Angriffstrupp übernimmt insbesondere Aufgaben der Menschenrettung und nimmt im Löschangriff in der Regel das erste Rohr vor."],
+
+["fwdv3","Wassertrupp",
+"Der Wassertrupp stellt in der Regel die Wasserversorgung zwischen Löschfahrzeug und Wasserentnahmestelle her und übernimmt danach weitere Aufgaben entsprechend der Lage."],
+
+["fwdv3","Schlauchtrupp",
+"Der Schlauchtrupp unterstützt unter anderem beim Verlegen von Schlauchleitungen und bringt weitere Geräte in Stellung."],
+
+["fwdv3","Maschinist",
+"Der Maschinist fährt das Fahrzeug, bedient Pumpe und fest eingebaute Aggregate und unterstützt die Geräteentnahme."],
+
+["fwdv3","Melder",
+"Der Melder unterstützt den Einheitsführer insbesondere bei Informationsübertragung und besonderen Aufgaben."],
+
+["fwdv3","Einsatz mit Bereitstellung",
+"Bei einem Einsatz mit Bereitstellung werden erste festgelegte Maßnahmen getroffen; weitere Tätigkeiten folgen nach ergänzendem Befehl."],
+
+["fwdv3","Einsatz ohne Bereitstellung",
+"Ist die Lage ausreichend bekannt, können Wasserentnahmestelle, Lage des Verteilers und Auftrag direkt befohlen werden."],
+
+["fwdv3","Menschenrettung",
+"Bei akuter Lebensgefahr hat die Menschenrettung hohe Priorität; Eigenschutz und sichere Durchführung bleiben zwingend."],
+
+["fwdv3","Rückmeldung",
+"Aufträge, Lageänderungen, Gefahren und besondere Feststellungen werden der Führung zeitnah zurückgemeldet."],
+
+["fwdv3","Einheitsführer",
+"Der Einheitsführer führt seine taktische Einheit, erkundet, beurteilt die Lage, erteilt Befehle und kontrolliert die Wirkung."],
+
+
+/* ATEMSCHUTZ */
+
+["atem","Voraussetzungen",
+"Atemschutzgeräteträger müssen die geforderten fachlichen, gesundheitlichen und ausbildungsbezogenen Voraussetzungen erfüllen."],
+
+["atem","Einsatzkurzprüfung",
+"Vor dem Einsatz wird die Einsatzbereitschaft des Atemschutzgeräts entsprechend den Vorgaben geprüft."],
+
+["atem","Truppweises Vorgehen",
+"Atemschutzgeräteträger gehen grundsätzlich truppweise vor und bleiben miteinander in Verbindung."],
+
+["atem","Atemschutzüberwachung",
+"Eingesetzte Atemschutztrupps werden registriert und ihr Einsatz wird überwacht."],
+
+["atem","Sicherheitstrupp",
+"Für Atemschutzeinsätze ist entsprechend den Vorgaben ein Sicherheitstrupp bereitzustellen."],
+
+["atem","Luftmanagement",
+"Der Luftvorrat muss für Auftrag und sicheren Rückweg ausreichen; der Rückweg ist frühzeitig einzuleiten."],
+
+["atem","Rückwegsicherung",
+"Der Atemschutztrupp stellt Orientierung und sicheren Rückweg mit geeigneten Mitteln und Maßnahmen sicher."],
+
+["atem","Notfallmeldung",
+"Ein Atemschutznotfall wird unverzüglich eindeutig gemeldet und löst Rettungsmaßnahmen aus."],
+
+["atem","Brandrauch",
+"Brandrauch kann akut toxisch sein; in gefährdeten Bereichen ist geeigneter Atemschutz erforderlich."],
+
+["atem","Kommunikation",
+"Der Atemschutztrupp hält die erforderliche Verbindung zur Führung beziehungsweise Atemschutzüberwachung."],
+
+["atem","Wärmebelastung",
+"Atemschutz, Schutzkleidung und Einsatzarbeit führen zu hoher körperlicher Belastung."],
+
+["atem","Kontamination",
+"Kontaminierte Geräte und Schutzkleidung werden nach dem Einsatz kontrolliert abgelegt, transportiert und aufbereitet."],
+
+
+/* ABC */
+
+["abc","GAMS – Gefahr erkennen",
+"Bei ABC-Lagen beginnt das Vorgehen mit dem Erkennen beziehungsweise Einschätzen der Gefahr."],
+
+["abc","GAMS – Absperren",
+"Der Gefahrenbereich wird frühzeitig abgesperrt; Abstand und Ausbreitungsrichtung werden berücksichtigt."],
+
+["abc","GAMS – Menschenrettung",
+"Menschenrettung wird unter Beachtung des Eigenschutzes durchgeführt."],
+
+["abc","GAMS – Spezialkräfte",
+"Spezialkräfte und besondere Fachberatung werden frühzeitig angefordert."],
+
+["abc","Kennzeichnung",
+"Gefahrzettel, Warntafeln, Stoffkennzeichnungen und Begleitinformationen können wichtige Hinweise liefern."],
+
+["abc","Windrichtung",
+"Bei freiwerdenden Stoffen werden Wind- und Ausbreitungsrichtung für Annäherung, Absperrung und Bereitstellung berücksichtigt."],
+
+["abc","Kontamination",
+"Kontaminierte und saubere Bereiche sind zu trennen, um Verschleppung zu vermeiden."],
+
+["abc","Dekontamination",
+"Dekontamination vermindert oder entfernt gefährliche Kontamination an Personen, Geräten und Schutzkleidung."],
+
+["abc","Stoffidentifikation",
+"Unbekannte Stoffe werden nicht durch Berühren, Riechen oder Probieren identifiziert."],
+
+["abc","Schutzkleidung",
+"Die Schutzkleidung richtet sich nach Stoff, Expositionsweg und Einsatzauftrag."],
+
+["abc","Messen und Nachweisen",
+"Mess- und Nachweisgeräte werden entsprechend Stoffeigenschaften und Gerätegrenzen eingesetzt."],
+
+["abc","Gefahrenbereich",
+"Zugang, Aufenthalt und Verlassen eines ABC-Gefahrenbereichs erfolgen kontrolliert und nach festgelegten Schutzmaßnahmen."],
+
+
+/* FUNK */
+
+["funk","Sprechdisziplin",
+"Funkmeldungen sollen kurz, eindeutig, verständlich und einsatzbezogen sein."],
+
+["funk","Funkrufname",
+"Funkrufnamen ermöglichen die eindeutige Zuordnung von Funkteilnehmern und Einsatzmitteln."],
+
+["funk","Sprechgruppe",
+"Die richtige Sprechgruppe wird entsprechend der Kommunikationsorganisation gewählt."],
+
+["funk","Notfallverkehr",
+"Dringende Notfallmeldungen müssen eindeutig erkannt und vorrangig behandelt werden."],
+
+["funk","Standortmeldung",
+"Standort- und Lagemeldungen enthalten klare, für den Empfänger verwertbare Angaben."],
+
+["funk","Rückfragen",
+"Nicht verstandene Meldungen werden nachgefragt; unsichere Inhalte werden nicht geraten."],
+
+["funk","Funkgerät",
+"Vor Einsatzbeginn werden Betriebsbereitschaft, Akku, Lautstärke und richtige Einstellung kontrolliert."],
+
+["funk","Sprechtaste",
+"Vor dem Sprechen wird der laufende Funkverkehr beachtet; die Sprechtaste wird bewusst bedient."],
+
+["funk","Datenschutz",
+"Über Funk werden nur einsatznotwendige personenbezogene oder sensible Informationen übertragen."],
+
+["funk","Geräteverlust",
+"Verlust oder unbefugter Zugriff auf BOS-Funkgeräte wird nach den örtlichen Vorgaben unverzüglich gemeldet."],
+
+["funk","Kommunikationsplan",
+"Bei größeren Lagen unterstützt eine strukturierte Kommunikationsorganisation die Führung."],
+
+["funk","Datenfunk",
+"Datenfunk ergänzt den Sprechfunk, ersetzt aber nicht jede sprachliche Rückmeldung."],
+
+
+/* MASCHINIST */
+
+["masch","Feuerlöschkreiselpumpe",
+"Der Maschinist überwacht beim Pumpenbetrieb Betriebszustand, Förderstrom und erforderlichen Ausgangsdruck."],
+
+["masch","Hydrantenbetrieb",
+"Bei Wasserentnahme aus Hydranten wird die verfügbare Wasserversorgung berücksichtigt und die Armatur sicher bedient."],
+
+["masch","Saugbetrieb",
+"Bei Wasserentnahme aus offenem Gewässer müssen Saugleitung und Kupplungen ausreichend dicht sein."],
+
+["masch","Entlüftung",
+"Beim Saugbetrieb müssen Pumpe und Saugleitung entlüftet werden können."],
+
+["masch","Kavitation",
+"Ungünstige Zulauf- und Druckverhältnisse können Kavitation begünstigen und die Pumpe schädigen."],
+
+["masch","Druckverluste",
+"Schlauchlänge, Förderstrom, Höhenunterschiede und Armaturen beeinflussen den erforderlichen Pumpenausgangsdruck."],
+
+["masch","Lange Wegstrecke",
+"Bei langen Förderstrecken werden Druckverluste und gegebenenfalls Verstärkerpumpen eingeplant."],
+
+["masch","Stromerzeuger",
+"Stromerzeuger werden standsicher, belüftet und nach Hersteller- sowie Feuerwehrvorgaben betrieben."],
+
+["masch","Abgase",
+"Verbrennungsmotoren erzeugen gefährliche Abgase; Abgasführung und Belüftung sind zu beachten."],
+
+["masch","Fahrzeugaufstellung",
+"Das Fahrzeug wird so aufgestellt, dass Einsatzablauf, Verkehrsraum, Rettungswege und Gefahren berücksichtigt werden."],
+
+["masch","Betriebsbereitschaft",
+"Der Maschinist unterstützt die Betriebsbereitschaft von Fahrzeug, Pumpe und fest eingebauten Aggregaten."],
+
+["masch","Wasserreserve",
+"Bei begrenzter Wasserversorgung werden Verbrauch und Reserve frühzeitig mit der Führung abgestimmt."],
+
+
+/* TECHNISCHE HILFE */
+
+["th","Einsatzstelle sichern",
+"Vor technischen Rettungsmaßnahmen wird die Einsatzstelle gegen Verkehr, Brand, Bewegung und weitere Gefahren gesichert."],
+
+["th","Fahrzeug stabilisieren",
+"Verunfallte Fahrzeuge werden vor Rettungsarbeiten gegen unbeabsichtigte Bewegung stabilisiert."],
+
+["th","Patientenschutz",
+"Patienten werden vor Werkzeugen, Splittern, Lärm, scharfen Kanten und weiteren Gefahren geschützt."],
+
+["th","Glasmanagement",
+"Fahrzeugglas wird geplant und kontrolliert unter Patientenschutz bearbeitet."],
+
+["th","Spreizer",
+"Hydraulische Spreizer werden zum Spreizen, Drücken und je nach Gerät auch zum Ziehen eingesetzt."],
+
+["th","Schere",
+"Hydraulische Schneidgeräte werden nur an geeigneten Bauteilen und unter Beachtung möglicher Rückhaltesysteme eingesetzt."],
+
+["th","Rettungszylinder",
+"Rettungszylinder schaffen kontrolliert Raum und müssen an belastbaren Punkten angesetzt und gesichert werden."],
+
+["th","Airbag und Gurtstraffer",
+"Nicht ausgelöste pyrotechnische Rückhaltesysteme werden in die Rettungsplanung einbezogen."],
+
+["th","Alternative Antriebe",
+"Bei Elektro-, Hybrid- und anderen alternativen Antrieben werden fahrzeugspezifische Rettungsinformationen und Gefahren beachtet."],
+
+["th","Patientengerechte Rettung",
+"Technische Maßnahmen werden mit dem medizinischen Zustand und Rettungsziel abgestimmt."],
+
+["th","Zusammenarbeit Rettungsdienst",
+"Feuerwehr und Rettungsdienst koordinieren technische und medizinische Maßnahmen fortlaufend."],
+
+["th","Unterbauen",
+"Unterbaumaterial wird standsicher, lastgerecht und so eingesetzt, dass Lasten nicht unkontrolliert verrutschen."],
+
+
+/* LEITERN */
+
+["leiter","Steckleiter",
+"Die Steckleiter besteht aus mehreren Leiterteilen und wird als tragbare Feuerwehrleiter bestimmungsgemäß eingesetzt."],
+
+["leiter","Schiebleiter",
+"Die Schiebleiter besitzt gegeneinander verschiebbare Leiterteile und ermöglicht größere Rettungs- und Arbeitshöhen."],
+
+["leiter","Aufstellwinkel",
+"Tragbare Leitern benötigen einen geeigneten Aufstellwinkel für sicheren Stand und Benutzung."],
+
+["leiter","Leiterfuß",
+"Der Leiterfuß steht auf ausreichend tragfähigem, möglichst ebenem Untergrund."],
+
+["leiter","Sicherung",
+"Leitern werden der Lage entsprechend gegen Wegrutschen, Abrutschen oder Umstürzen gesichert."],
+
+["leiter","Besteigen",
+"Beim Besteigen werden sichere Körperhaltung, Belastungsgrenzen und geeignete Sicherungsmaßnahmen beachtet."],
+
+["leiter","Anleiterbereitschaft",
+"Eine Leiter kann als vorbereiteter Angriffs- oder Rückzugsweg in Stellung gebracht werden."],
+
+["leiter","Elektrische Gefahr",
+"Zu elektrischen Anlagen und Leitungen sind erforderliche Sicherheitsabstände einzuhalten."],
+
+["leiter","Personenrettung",
+"Bei der Rettung über Leitern werden Leiter, zu rettende Person und Einsatzkräfte kontrolliert gesichert und geführt."],
+
+["leiter","Leiterprüfung",
+"Beschädigte oder zweifelhafte Leitern werden geprüft beziehungsweise ausgesondert."],
+
+["leiter","Angriffsweg",
+"Tragbare Leitern können einen alternativen Angriffsweg ermöglichen, wenn Einsatzlage und Sicherheit dies zulassen."],
+
+["leiter","Leitertransport",
+"Beim Transport werden Hindernisse, Fahrzeugverkehr, Türen und andere Einsatzkräfte berücksichtigt."],
+
+
+/* LÖSCHLEHRE */
+
+["loesch","Verbrennung",
+"Eine Verbrennung benötigt einen brennbaren Stoff, ein Oxidationsmittel und geeignete Reaktionsbedingungen."],
+
+["loesch","Kühlwirkung",
+"Wasser wirkt beim Löschen vor allem durch Wärmeentzug und Kühlung."],
+
+["loesch","Brandklasse A",
+"Brandklasse A umfasst Brände fester Stoffe, hauptsächlich organischer Natur, die normalerweise unter Glutbildung verbrennen."],
+
+["loesch","Brandklasse B",
+"Brandklasse B umfasst Brände flüssiger oder flüssig werdender Stoffe."],
+
+["loesch","Brandklasse C",
+"Brandklasse C umfasst Brände von Gasen."],
+
+["loesch","Brandklasse D",
+"Brandklasse D umfasst Brände von Metallen."],
+
+["loesch","Brandklasse F",
+"Brandklasse F umfasst Brände von Speiseölen und Speisefetten in Frittier- und Fettbackgeräten."],
+
+["loesch","Fettbrand",
+"Wasser kann bei brennendem Speiseöl zu schlagartiger Brandausbreitung führen und ist dort als Löschmittel ungeeignet."],
+
+["loesch","Schaum",
+"Löschschaum kann eine Trennwirkung zwischen Brennstoff und Umgebung erzeugen und Rückzündung begrenzen."],
+
+["loesch","Pulver",
+"Löschpulver besitzt schnelle Löschwirkung, verursacht jedoch erhebliche Verschmutzung und Folgeschäden."],
+
+["loesch","Kohlendioxid",
+"Kohlendioxid wirkt insbesondere durch Verdrängung beziehungsweise Verdünnung von Sauerstoff im Brandbereich; Erstickungsgefahr ist zu beachten."],
+
+["loesch","Wasserdampf",
+"Verdampfendes Wasser nimmt viel Wärme auf und vergrößert sein Volumen deutlich."],
+
+
+/* BHKG */
+
+["bhkg","Ziel und Anwendungsbereich",
+"Das BHKG NRW regelt Brandschutz, Hilfeleistung und Katastrophenschutz in Nordrhein-Westfalen."],
+
+["bhkg","Aufgabenträger",
+"Gemeinden, Kreise und das Land nehmen nach dem BHKG jeweils festgelegte Aufgaben wahr."],
+
+["bhkg","Aufgaben der Gemeinden",
+"Gemeinden unterhalten den örtlichen Brandschutz und die Hilfeleistung entsprechend den gesetzlichen Anforderungen."],
+
+["bhkg","Aufgaben der Kreise",
+"Kreise übernehmen überörtliche und koordinierende Aufgaben nach Maßgabe des BHKG."],
+
+["bhkg","Aufgaben des Landes",
+"Das Land nimmt landesweite Aufgaben im Brandschutz, in der Hilfeleistung und im Katastrophenschutz wahr."],
+
+["bhkg","Arten der Feuerwehr",
+"Das BHKG enthält Regelungen zu öffentlichen Feuerwehren und betrieblichen Feuerwehren."],
+
+["bhkg","Aus- und Fortbildung",
+"Ausbildung, Fortbildung und Übungen dienen der Leistungsfähigkeit von Brandschutz, Hilfeleistung und Katastrophenschutz."],
+
+["bhkg","Einsatzleitung",
+"Die Einsatzleitung koordiniert die zur Gefahrenabwehr erforderlichen Maßnahmen und eingesetzten Kräfte."],
+
+["bhkg","Befugnisse",
+"Die Einsatzleitung besitzt im gesetzlichen Rahmen Befugnisse zur wirksamen Gefahrenabwehr."],
+
+["bhkg","Überörtliche Hilfe",
+"Feuerwehren und Aufgabenträger können bei Bedarf im Rahmen überörtlicher Hilfe zusammenwirken."],
+
+["bhkg","Pflichten der Bevölkerung",
+"Das BHKG enthält unter bestimmten Voraussetzungen Melde-, Hilfeleistungs- und Duldungspflichten."],
+
+["bhkg","Kosten",
+"Das BHKG enthält Regelungen zur Kostentragung und zum möglichen Kostenersatz."],
+
+
+/* DGUV */
+
+["dguv","DGUV Vorschrift 49",
+"Die DGUV Vorschrift 49 enthält Unfallverhütungsvorschriften für Feuerwehren."],
+
+["dguv","DGUV Regel 105-049",
+"Die DGUV Regel 105-049 konkretisiert Anforderungen für einen sicheren Feuerwehrdienst."],
+
+["dguv","Gefährdungsbeurteilung",
+"Gefährdungen im Feuerwehrdienst werden beurteilt und geeignete Schutzmaßnahmen festgelegt."],
+
+["dguv","PSA",
+"Persönliche Schutzausrüstung wird passend zur Gefährdung ausgewählt, benutzt, gepflegt und geprüft."],
+
+["dguv","Kontamination",
+"Kontamination soll möglichst vermieden und Verschleppung konsequent begrenzt werden."],
+
+["dguv","Unterweisung",
+"Feuerwehrangehörige werden zu Gefahren, Schutzmaßnahmen und sicherem Verhalten angemessen unterwiesen."],
+
+["dguv","Eignung",
+"Für Tätigkeiten mit besonderen Anforderungen muss die erforderliche Eignung sichergestellt sein."],
+
+["dguv","Prüfung von Ausrüstung",
+"Feuerwehrausrüstung wird nach den einschlägigen Prüfgrundsätzen und Herstellerangaben geprüft."],
+
+["dguv","Fahrzeugbewegungen",
+"Beim Bewegen von Feuerwehrfahrzeugen sind Sicht, Einweiserregelungen und Personen im Gefahrenbereich besonders zu beachten."],
+
+["dguv","Übungsdienst",
+"Auch Ausbildung, Übungen und Vorführungen müssen sicher geplant und durchgeführt werden."],
+
+["dguv","Hygiene",
+"Hygienemaßnahmen nach belastenden Einsätzen reduzieren Aufnahme und Verschleppung gesundheitsgefährdender Stoffe."],
+
+["dguv","Psychische Belastung",
+"Sicherheit und Gesundheitsschutz umfassen auch die Vor- und Nachbereitung psychisch belastender Einsätze."],
+
+
+/* RETTUNGSDIENST */
+
+["rd","ABCDE",
+"Das ABCDE-Schema unterstützt die strukturierte Erkennung und Priorisierung lebensbedrohlicher Probleme."],
+
+["rd","Atemweg",
+"Ein akut bedrohter Atemweg wird früh erkannt und entsprechend der Qualifikation gesichert."],
+
+["rd","Atmung",
+"Atemfrequenz, Atemarbeit, Thoraxbewegung und Zeichen unzureichender Oxygenierung werden beurteilt."],
+
+["rd","Kreislauf",
+"Starke Blutungen werden früh erkannt und kontrolliert; Zeichen eines Schocks werden beachtet."],
+
+["rd","Bewusstsein",
+"Bewusstseinslage und neurologische Auffälligkeiten gehören zur strukturierten Patientenbeurteilung."],
+
+["rd","Entkleiden und Umgebung",
+"Weitere Verletzungen werden gesucht; zugleich werden Wärmeerhalt und Intimsphäre beachtet."],
+
+["rd","Reanimation",
+"Bei Kreislaufstillstand werden unverzüglich Reanimationsmaßnahmen nach aktuellem Ausbildungsstand begonnen."],
+
+["rd","AED",
+"Ein AED analysiert den Herzrhythmus und kann bei schockbarem Rhythmus eine Defibrillation ermöglichen."],
+
+["rd","Trauma",
+"Unfallmechanismus, Verletzungsmuster und Vitalbedrohung werden gemeinsam betrachtet."],
+
+["rd","Verbrennung",
+"Ausdehnung, Tiefe, Lokalisation und Begleitverletzungen beeinflussen die Versorgung von Verbrennungen."],
+
+["rd","Übergabe",
+"Eine strukturierte Patientenübergabe vermittelt relevante Befunde, Maßnahmen und Veränderungen."],
+
+["rd","Eigenschutz",
+"Eigenschutz und sichere Einsatzstelle bleiben auch bei medizinischen Notfällen Voraussetzung für Hilfeleistung."],
+
+
+/* FÜHRUNG */
+
+["fuehrung","Führungssystem",
+"Das Führungssystem nach FwDV 100 umfasst Führungsorganisation, Führungsvorgang und Führungsmittel."],
+
+["fuehrung","Lagefeststellung",
+"Die Lagefeststellung erfasst Schadenlage, Gefahren, betroffene Personen sowie eigene Kräfte und Mittel."],
+
+["fuehrung","Beurteilung",
+"Bei der Beurteilung werden Gefahren, Möglichkeiten, Prioritäten und verfügbare Ressourcen gegeneinander abgewogen."],
+
+["fuehrung","Entschluss",
+"Der Entschluss legt die wesentlichen Maßnahmen zur Erreichung des Einsatzziels fest."],
+
+["fuehrung","Befehl",
+"Befehle werden klar, verständlich und auftragsbezogen gegeben."],
+
+["fuehrung","Kontrolle",
+"Die Wirkung angeordneter Maßnahmen wird kontrolliert und bei Lageänderung angepasst."],
+
+["fuehrung","Führungsorganisation",
+"Die Führungsorganisation richtet sich nach Art und Umfang der Lage und der Zahl eingesetzter Einheiten."],
+
+["fuehrung","Einsatzabschnitt",
+"Einsatzabschnitte gliedern größere Lagen räumlich oder sachlich und erleichtern die Führung."],
+
+["fuehrung","Führungsspanne",
+"Die Zahl unmittelbar unterstellter Einheiten muss so bemessen sein, dass wirksame Führung möglich bleibt."],
+
+["fuehrung","Rückmeldung",
+"Rückmeldungen aktualisieren das Lagebild und ermöglichen neue Beurteilungen."],
+
+["fuehrung","Führungsmittel",
+"Karten, Lageübersichten, Kommunikationsmittel und Dokumentation unterstützen die Einsatzführung."],
+
+["fuehrung","Dynamische Lage",
+"Neue Gefahren oder Lageänderungen führen zu erneuter Lagefeststellung und gegebenenfalls zu angepassten Maßnahmen."],
+
+
+/* PRAXIS */
+
+["praxis","Auftrag verstehen",
+"Ein Auftrag wird vollständig aufgenommen; Unklarheiten werden vor der Ausführung geklärt."],
+
+["praxis","PSA kontrollieren",
+"Vor praktischen Tätigkeiten wird die erforderliche PSA vollständig und korrekt getragen."],
+
+["praxis","Gerätekunde",
+"In der Prüfung sollte zu einem Gerät neben dem Namen auch Zweck, sichere Handhabung und Grenzen erklärt werden können."],
+
+["praxis","Truppkommunikation",
+"Klare Absprachen im Trupp verhindern Doppelarbeit und gefährliche Missverständnisse."],
+
+["praxis","Sicher arbeiten",
+"Sicheres, geordnetes Arbeiten hat Vorrang vor hektischer Geschwindigkeit."],
+
+["praxis","Fehler korrigieren",
+"Ein erkannter sicherheitsrelevanter Fehler wird sofort korrigiert oder gemeldet."],
+
+["praxis","Befehle wiederholen",
+"Wesentliche Aufträge können zur Verständnissicherung wiederholt oder bestätigt werden."],
+
+["praxis","Rückmeldung geben",
+"Erledigte Aufträge, Probleme und Lageänderungen werden knapp und klar zurückgemeldet."],
+
+["praxis","Prüfungsfragen lesen",
+"Bei schriftlichen Fragen werden Schlüsselwörter und Einschränkungen genau gelesen, bevor eine Antwort gewählt wird."],
+
+["praxis","Fehlertraining",
+"Falsch beantwortete Fragen werden gezielt wiederholt, bis der zugrunde liegende Inhalt verstanden ist."],
+
+["praxis","Wiederholung",
+"Kurze, regelmäßige Wiederholungen unterstützen langfristiges Behalten."],
+
+["praxis","Teamarbeit",
+"Feuerwehrdienst verlangt abgestimmtes Handeln, gegenseitige Unterstützung und verlässliche Kommunikation."]
 
 ];
 
 
-/* =========================================================
-   FRAGEN ERZEUGEN
-   168 INHALTE × 4 VARIANTEN = 672
-   ========================================================= */
+/* =====================================================
+   VORSCHRIFTEN
+   ===================================================== */
 
-function shuffle(arr){
-  return [...arr].sort(()=>Math.random()-.5)
+const rules=[
+
+{
+ group:"FwDV",
+ n:"1",
+ title:"Grundtätigkeiten – Lösch- und Hilfeleistungseinsatz",
+ edition:"Ausgabe September 2006",
+ core:"B1-Kernstoff: PSA, Geräte, Schläuche, Armaturen, Leinen und Knoten, tragbare Leitern sowie technische Grundtätigkeiten."
+},
+
+{
+ group:"FwDV",
+ n:"2",
+ title:"Ausbildung der Freiwilligen Feuerwehren",
+ edition:"Ausgabe Januar 2012",
+ core:"Rahmen und Systematik der Ausbildung der Freiwilligen Feuerwehren."
+},
+
+{
+ group:"FwDV",
+ n:"3",
+ title:"Einheiten im Lösch- und Hilfeleistungseinsatz",
+ edition:"Ausgabe Februar 2008",
+ core:"B1-Kernstoff: Gruppe und Staffel, Truppaufgaben, Einsatz mit und ohne Bereitstellung sowie Lösch- und Hilfeleistungseinsatz."
+},
+
+{
+ group:"FwDV",
+ n:"7",
+ title:"Atemschutz",
+ edition:"Ausgabe August 2004",
+ core:"Voraussetzungen, Einsatzgrundsätze, Atemschutzüberwachung, Sicherheitstrupp und Verhalten bei Atemschutznotfällen."
+},
+
+{
+ group:"FwDV",
+ n:"8",
+ title:"Tauchen",
+ edition:"Ausgabe März 2014",
+ core:"Organisation und Sicherheit beim Feuerwehrtauchen."
+},
+
+{
+ group:"FwDV",
+ n:"10",
+ title:"Die tragbaren Leitern",
+ edition:"Ausgabe November 2019",
+ core:"Leiterarten, Einsatzgrundsätze, Aufstellen, Sichern, Besteigen und Retten."
+},
+
+{
+ group:"FwDV",
+ n:"100",
+ title:"Führung und Leitung im Einsatz",
+ edition:"Führungssystem",
+ core:"Führungsorganisation, Führungsvorgang und Führungsmittel."
+},
+
+{
+ group:"FwDV",
+ n:"500",
+ title:"Einheiten im ABC-Einsatz",
+ edition:"Ausgabe Januar 2022",
+ core:"ABC-Gefahren, GAMS, Schutzmaßnahmen, Gefahrenbereiche, Dekontamination und taktisches Vorgehen."
+},
+
+{
+ group:"FwDV",
+ n:"800",
+ title:"Informations- und Kommunikationstechnik im Einsatz",
+ edition:"FwDV 800",
+ core:"Informations- und Kommunikationsorganisation bei Feuerwehreinsätzen."
+},
+
+{
+ group:"FwDV",
+ n:"810",
+ title:"Sprech- und Datenfunkverkehr",
+ edition:"FwDV 810",
+ core:"Grundlagen des Sprech- und Datenfunkverkehrs und der Kommunikationsorganisation."
+},
+
+{
+ group:"Gesetz",
+ n:"BHKG NRW",
+ title:"Brandschutz, Hilfeleistung und Katastrophenschutz",
+ edition:"Nordrhein-Westfalen",
+ core:"Aufgabenträger, Feuerwehrorganisation, Einsatzleitung, überörtliche Hilfe, Rechte und Pflichten sowie Kosten."
+},
+
+{
+ group:"DGUV",
+ n:"49",
+ title:"Feuerwehren",
+ edition:"DGUV Vorschrift",
+ core:"Zentrale Unfallverhütungsvorschrift für Feuerwehren."
+},
+
+{
+ group:"DGUV",
+ n:"105-049",
+ title:"Feuerwehren",
+ edition:"DGUV Regel",
+ core:"Konkretisierung der DGUV Vorschrift 49 mit praxisbezogenen Arbeitsschutzanforderungen."
+},
+
+{
+ group:"DGUV",
+ n:"112-190",
+ title:"Benutzung von Atemschutzgeräten",
+ edition:"DGUV Regel",
+ core:"Arbeitsschutzgrundlage zur Auswahl und Benutzung von Atemschutzgeräten."
+},
+
+{
+ group:"DGUV",
+ n:"205-010",
+ title:"Sicherheit im Feuerwehrdienst",
+ edition:"DGUV Information",
+ core:"Praxisorientierte Hinweise für sicheres Verhalten in Ausbildung, Übung und Einsatz."
+},
+
+{
+ group:"DGUV",
+ n:"205-014",
+ title:"Auswahl von persönlicher Schutzausrüstung für Einsätze bei der Feuerwehr",
+ edition:"DGUV Information",
+ core:"Hinweise zur Auswahl geeigneter Feuerwehr-PSA."
+},
+
+{
+ group:"DGUV",
+ n:"305-002",
+ title:"Prüfgrundsätze für Ausrüstung, Geräte und Fahrzeuge der Feuerwehr",
+ edition:"DGUV Grundsatz",
+ core:"Grundlagen für Prüfungen feuerwehrtechnischer Ausrüstung, Geräte und Fahrzeuge."
 }
+
+];
+
+
+/* =====================================================
+   OFFIZIELLE QUELLEN
+   ===================================================== */
+
+const official={
+
+ fwdv:
+ "https://recht.nrw.de/lrmb/verwaltungsvorschrift/11112020-feuerwehr-dienstvorschriften-fwdv-runderlass-des-ministeriums/",
+
+ idf:
+ "https://www.idf.nrw.de/rechtsvorschriften.php",
+
+ bhkg:
+ "https://recht.nrw.de/lrgv/gesetz/01072021-gesetz-ueber-den-brandschutz-die-hilfeleistung-und-den-katastrophenschutz-bhkg/",
+
+ dguv49:
+ "https://publikationen.dguv.de/regelwerk/dguv-vorschriften/1507/feuerwehren",
+
+ dguv105049:
+ "https://publikationen.dguv.de/regelwerk/dguv-regeln/3505/feuerwehren-regel-zur-konkretisierung-der-dguv-vorschrift-49",
+
+ dguvPortal:
+ "https://publikationen.dguv.de/regelwerk/publikationen-nach-fachbereich/feuerwehren-hilfeleistungen-brandschutz/"
+
+};
+
+
+/* =====================================================
+   FRAGEN ERZEUGEN
+   168 Inhalte × 4 = 672
+   ===================================================== */
+
+function shuffle(array){
+
+ const a=[...array];
+
+ for(let i=a.length-1;i>0;i--){
+
+   const j=
+     Math.floor(
+       Math.random()*(i+1)
+     );
+
+   [a[i],a[j]]=
+   [a[j],a[i]];
+
+ }
+
+ return a;
+}
+
+
+function topicById(id){
+
+ return topics.find(
+   t=>t.id===id
+ );
+
+}
+
 
 const questions=[];
 
+
 facts.forEach((f,index)=>{
 
-  const topic=f[0];
-  const key=f[1];
-  const correct=f[2];
+ const topic=f[0];
+ const key=f[1];
+ const right=f[2];
 
-  const pool=facts
-    .filter((x,i)=>x[0]===topic && i!==index)
-    .map(x=>x[2]);
+ const alternatives=
+   facts
+   .filter(
+     x=>
+       x[0]===topic &&
+       x[1]!==key
+   )
+   .map(
+     x=>x[2]
+   );
 
-  const wrongs=shuffle(pool).slice(0,3);
+ const wrongs=
+   shuffle(alternatives)
+   .slice(0,3);
 
-  const prompts=[
-    `Welche Aussage zu „${key}“ ist richtig?`,
-    `Was gilt zum Thema „${key}“?`,
-    `Welche Aussage über „${key}“ trifft zu?`,
-    `Prüfungsfrage: Was ist bei „${key}“ korrekt?`
-  ];
 
-  prompts.forEach((prompt,v)=>{
+ const prompts=[
 
-    questions.push({
-      id:`${topic}_${index}_${v}`,
-      topic,
-      key,
-      text:prompt,
-      right:correct,
-      answers:shuffle([correct,...wrongs])
-    });
+   `Welche Aussage passt zum Begriff „${key}“?`,
 
-  });
+   `Was solltest du zum Thema „${key}“ wissen?`,
+
+   `Welche Aussage beschreibt „${key}“ am besten?`,
+
+   `B1-Prüfungsfrage: Welche Aussage zu „${key}“ ist fachlich passend?`
+
+ ];
+
+
+ prompts.forEach(
+   (text,v)=>{
+
+     questions.push({
+
+       id:
+         `${topic}_${index}_${v}`,
+
+       topic,
+
+       key,
+
+       text,
+
+       right,
+
+       answers:
+         shuffle([
+           right,
+           ...wrongs
+         ])
+
+     });
+
+   }
+ );
 
 });
 
 
-/* =========================================================
+/* =====================================================
    SPEICHER
-   ========================================================= */
+   ===================================================== */
 
-let state;
+let state={};
+
 
 try{
-  state=JSON.parse(localStorage.getItem("b1nrw672"))||{};
-}catch{
-  state={}
-}
 
-state.answered=state.answered||{};
-state.wrong=state.wrong||{};
-state.correct=state.correct||0;
-state.totalAnswers=state.totalAnswers||0;
-state.flipLearned=state.flipLearned||{};
+ state=
+   JSON.parse(
+     localStorage.getItem(
+       "b1nrw672"
+     )
+   ) || {};
+
+}catch(e){}
+
+
+state.answered=
+ state.answered || {};
+
+state.wrong=
+ state.wrong || {};
+
+state.correct=
+ state.correct || 0;
+
+state.totalAnswers=
+ state.totalAnswers || 0;
+
+state.flipLearned=
+ state.flipLearned || {};
+
 
 function save(){
-  localStorage.setItem("b1nrw672",JSON.stringify(state));
-  updateDashboard();
+
+ localStorage.setItem(
+   "b1nrw672",
+   JSON.stringify(state)
+ );
+
+ updateDashboard();
+
 }
 
-function topicById(id){
-  return topics.find(t=>t.id===id)
+
+function qFor(id){
+
+ return questions.filter(
+   q=>q.topic===id
+ );
+
 }
 
-function questionsFor(id){
-  return questions.filter(q=>q.topic===id)
+
+/* =====================================================
+   APP START
+   ===================================================== */
+
+function setup(){
+
+ const opts=
+   topics
+   .map(
+     t=>
+     `<option value="${t.id}">
+       ${t.icon} ${t.name} – ${t.sub}
+     </option>`
+   )
+   .join("");
+
+
+ document
+ .getElementById("topicSelect")
+ .innerHTML=
+   opts;
+
+
+ document
+ .getElementById("sheetSelect")
+ .innerHTML=
+
+   `<option value="all">
+     🔥 Alle Themen
+   </option>`
+
+   +opts;
+
+
+ renderTopics();
+ renderRules();
+ updateDashboard();
+
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVIGATION
-   ========================================================= */
+   ===================================================== */
 
-function showPage(name,btn){
+function showPage(name,button){
 
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active")
-  });
+ document
+ .querySelectorAll(".page")
+ .forEach(
+   page=>
+     page.classList.remove(
+       "active"
+     )
+ );
 
-  document.getElementById(name+"Page").classList.add("active");
 
-  document.querySelectorAll(".navItem").forEach(b=>{
-    b.classList.remove("active")
-  });
+ document
+ .getElementById(
+   name+"Page"
+ )
+ .classList.add(
+   "active"
+ );
 
-  if(btn)btn.classList.add("active");
 
-  if(name==="stats") renderStats();
-  if(name==="flip") renderFlipcharts();
+ document
+ .querySelectorAll(".nav")
+ .forEach(
+   nav=>
+     nav.classList.remove(
+       "active"
+     )
+ );
 
-  window.scrollTo({top:0,behavior:"smooth"});
+
+ if(button){
+
+   button.classList.add(
+     "active"
+   );
+
+ }
+
+
+ if(name==="flip"){
+   renderSheets();
+ }
+
+
+ if(name==="rules"){
+   renderRules();
+ }
+
+
+ if(name==="stats"){
+   renderStats();
+ }
+
+
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
+
 }
 
 
-/* =========================================================
+/* =====================================================
    DASHBOARD
-   ========================================================= */
+   ===================================================== */
 
 function updateDashboard(){
 
-  const unique=Object.keys(state.answered).length;
-  const pct=Math.round(unique/questions.length*100);
+ const done=
+   Object.keys(
+     state.answered
+   ).length;
 
-  document.getElementById("statProgress").textContent=pct+"%";
 
-  document.getElementById("statAnswered").textContent=
-    unique+" / "+questions.length;
+ const percent=
+   Math.round(
+     done /
+     questions.length *
+     100
+   );
 
-  document.getElementById("statCorrect").textContent=
-    state.totalAnswers
-      ? Math.round(state.correct/state.totalAnswers*100)+"%"
-      : "–";
 
-  document.getElementById("statWrong").textContent=
-    Object.keys(state.wrong).length;
+ document
+ .getElementById("sProg")
+ .textContent=
+   percent+"%";
 
-  document.getElementById("mainProgressBar").style.width=pct+"%";
 
-  document.getElementById("wrongText").textContent=
-    Object.keys(state.wrong).length+
-    " aktuell gespeicherte Fehlerfragen.";
+ document
+ .getElementById("sAns")
+ .textContent=
+   done+
+   " / "+
+   questions.length;
 
-  const learned=Object.keys(state.flipLearned).length;
 
-  document.getElementById("flipProgressText").textContent=
-    learned+" / "+facts.length+" gelernt";
+ document
+ .getElementById("sHit")
+ .textContent=
 
-  renderTopics();
+   state.totalAnswers
+
+   ? Math.round(
+       state.correct /
+       state.totalAnswers *
+       100
+     )+"%"
+
+   : "–";
+
+
+ document
+ .getElementById("sWrong")
+ .textContent=
+   Object.keys(
+     state.wrong
+   ).length;
+
+
+ document
+ .getElementById("mainBar")
+ .style.width=
+   percent+"%";
+
+
+ document
+ .getElementById("sheetCount")
+ .textContent=
+
+   Object.keys(
+     state.flipLearned
+   ).length+
+
+   " / "+
+
+   facts.length+
+
+   " gelernt";
+
+
+ renderTopics();
+
 }
 
 
-/* =========================================================
-   THEMENKARTEN
-   ========================================================= */
+/* =====================================================
+   THEMEN
+   ===================================================== */
 
 function renderTopics(){
 
-  const grid=document.getElementById("topicGrid");
+ const grid=
+   document
+   .getElementById(
+     "topicGrid"
+   );
 
-  grid.innerHTML="";
 
-  topics.forEach(t=>{
+ grid.innerHTML="";
 
-    const qs=questionsFor(t.id);
 
-    const done=qs.filter(q=>state.answered[q.id]).length;
+ topics.forEach(t=>{
 
-    const pct=Math.round(done/qs.length*100);
+   const qs=
+     qFor(t.id);
 
-    const card=document.createElement("div");
 
-    card.className="topicCard";
+   const done=
+     qs.filter(
+       q=>
+         state.answered[
+           q.id
+         ]
+     ).length;
 
-    card.onclick=()=>{
-      document.getElementById("topicSelect").value=t.id;
 
-      showPage(
-        "learn",
-        document.querySelectorAll(".navItem")[1]
-      );
+   const percent=
+     Math.round(
+       done /
+       qs.length *
+       100
+     );
 
-      startTopic();
-    };
 
-    card.innerHTML=`
-      <div class="topicIcon">${t.icon}</div>
+   const card=
+     document.createElement(
+       "div"
+     );
 
-      <h3>${t.name}</h3>
 
-      <p>${t.sub}</p>
+   card.className=
+     "topic";
 
-      <div class="miniProgress">
-        <div>
-          <span style="width:${pct}%"></span>
-        </div>
-        <small>${pct}%</small>
-      </div>
-    `;
 
-    grid.appendChild(card);
-  });
+   card.onclick=()=>{
+
+     document
+     .getElementById(
+       "topicSelect"
+     )
+     .value=
+       t.id;
+
+
+     showPage(
+       "learn",
+       document
+       .querySelectorAll(
+         ".nav"
+       )[1]
+     );
+
+
+     startTopic();
+
+   };
+
+
+   card.innerHTML=`
+
+     <div class="ico">
+       ${t.icon}
+     </div>
+
+     <h3>
+       ${t.name}
+     </h3>
+
+     <p>
+       ${t.sub}
+     </p>
+
+     <div class="mini">
+       <span
+         style="
+           width:${percent}%
+         ">
+       </span>
+     </div>
+
+     <small class="muted">
+       ${percent}%
+     </small>
+   `;
+
+
+   grid.appendChild(
+     card
+   );
+
+ });
+
 }
 
 
-/* =========================================================
-   SELECTS
-   ========================================================= */
-
-function setupSelects(){
-
-  const options=topics.map(t=>
-    `<option value="${t.id}">
-      ${t.icon} ${t.name} – ${t.sub}
-    </option>`
-  ).join("");
-
-  document.getElementById("topicSelect").innerHTML=options;
-
-  document.getElementById("flipTopicSelect").innerHTML=
-    `<option value="all">🔥 Alle Themen</option>`+
-    options;
-}
-
-
-/* =========================================================
+/* =====================================================
    TRAINING
-   ========================================================= */
+   ===================================================== */
 
 let session=[];
+
 let pos=0;
+
 let score=0;
-let currentArea="learnArea";
+
+let currentArea=
+ "learnArea";
+
 
 function startTopic(){
 
-  const topic=document.getElementById("topicSelect").value;
+ session=
+   shuffle(
+     qFor(
+       document
+       .getElementById(
+         "topicSelect"
+       )
+       .value
+     )
+   );
 
-  session=shuffle(questionsFor(topic));
 
-  pos=0;
-  score=0;
-  currentArea="learnArea";
+ pos=0;
 
-  renderQuestion();
+ score=0;
+
+ currentArea=
+   "learnArea";
+
+
+ renderQuestion();
+
 }
+
 
 function startAll(){
 
-  session=shuffle(questions);
+ session=
+   shuffle(
+     questions
+   );
 
-  pos=0;
-  score=0;
-  currentArea="learnArea";
 
-  renderQuestion();
+ pos=0;
+
+ score=0;
+
+ currentArea=
+   "learnArea";
+
+
+ renderQuestion();
+
 }
+
 
 function startExam(){
 
-  session=shuffle(questions).slice(0,40);
+ session=
+   shuffle(
+     questions
+   )
+   .slice(
+     0,
+     40
+   );
 
-  pos=0;
-  score=0;
-  currentArea="examArea";
 
-  renderQuestion();
+ pos=0;
+
+ score=0;
+
+ currentArea=
+   "examArea";
+
+
+ renderQuestion();
+
 }
+
 
 function startWrong(){
 
-  const ids=Object.keys(state.wrong);
+ const ids=
+   Object.keys(
+     state.wrong
+   );
 
-  if(!ids.length){
 
-    document.getElementById("wrongArea").innerHTML=
-      `<div class="feedback good">
-        ✅ Aktuell sind keine Fehlerfragen gespeichert.
-      </div>`;
+ if(!ids.length){
 
-    return;
-  }
+   document
+   .getElementById(
+     "learnArea"
+   )
+   .innerHTML=
 
-  session=shuffle(
-    questions.filter(q=>state.wrong[q.id])
-  );
+   `<div class="feedback good">
+      ✅ Aktuell sind keine
+      Fehlerfragen gespeichert.
+    </div>`;
 
-  pos=0;
-  score=0;
-  currentArea="wrongArea";
+   return;
 
-  renderQuestion();
+ }
+
+
+ session=
+   shuffle(
+
+     questions.filter(
+       q=>
+         state.wrong[
+           q.id
+         ]
+     )
+
+   );
+
+
+ pos=0;
+
+ score=0;
+
+ currentArea=
+   "learnArea";
+
+
+ renderQuestion();
+
 }
 
 
-/* =========================================================
+/* =====================================================
    FRAGE ANZEIGEN
-   ========================================================= */
+   ===================================================== */
 
 function renderQuestion(){
 
-  const area=document.getElementById(currentArea);
+ const area=
+   document
+   .getElementById(
+     currentArea
+   );
 
-  if(pos>=session.length){
 
-    const pct=session.length
-      ? Math.round(score/session.length*100)
-      : 0;
+ if(
+   pos>=
+   session.length
+ ){
 
-    area.innerHTML=`
-      <div class="question">
+   const percent=
 
-        <div class="score">${pct}%</div>
+     session.length
 
-        <h2 style="text-align:center">
-          ${score} von ${session.length} richtig
-        </h2>
+     ? Math.round(
+         score /
+         session.length *
+         100
+       )
 
-        <div class="feedback good">
-          Dein Lernfortschritt wurde gespeichert.
-        </div>
+     : 0;
 
-      </div>
-    `;
 
-    updateDashboard();
-    return;
-  }
+   area.innerHTML=`
 
-  const q=session[pos];
-  const t=topicById(q.topic);
+     <div class="score">
+       ${percent}%
+     </div>
 
-  let html=`
-    <div class="question">
+     <h2
+       style="
+         text-align:center
+       ">
 
-      <div class="questionMeta">
-        ${t.icon} ${t.name}
-        · Frage ${pos+1} von ${session.length}
-        · ${score} richtig
-      </div>
+       ${score}
+       von
+       ${session.length}
+       richtig
 
-      <h2>${q.text}</h2>
-  `;
+     </h2>
 
-  q.answers.forEach((a,i)=>{
+     <div class="feedback good">
 
-    html+=`
-      <button
-        class="answer"
-        onclick="answerQuestion(${i},this)">
-        ${a}
-      </button>
-    `;
-  });
+       ✅ Ergebnis gespeichert.
 
-  html+=`
-      <div id="questionFeedback"></div>
-    </div>
-  `;
+     </div>
+   `;
 
-  area.innerHTML=html;
+   return;
+
+ }
+
+
+ const q=
+   session[pos];
+
+
+ const t=
+   topicById(
+     q.topic
+   );
+
+
+ area.innerHTML=`
+
+ <div class="question">
+
+   <div class="qmeta">
+
+     ${t.icon}
+     ${t.name}
+
+     · Frage
+     ${pos+1}
+     /
+     ${session.length}
+
+     ·
+     ${score}
+     richtig
+
+   </div>
+
+
+   <h2>
+     ${q.text}
+   </h2>
+
+
+   ${
+
+     q.answers
+     .map(
+       (answer,index)=>
+
+       `<button
+          class="answer"
+          onclick="
+            answerQuestion(
+              ${index},
+              this
+            )
+          ">
+
+          ${answer}
+
+        </button>`
+
+     )
+     .join("")
+
+   }
+
+
+   <div id="qfeedback">
+   </div>
+
+ </div>
+ `;
+
 }
 
 
-/* =========================================================
+/* =====================================================
    ANTWORT
-   ========================================================= */
+   ===================================================== */
 
-function answerQuestion(index,btn){
+function answerQuestion(
+ index,
+ button
+){
 
-  const q=session[pos];
+ const q=
+   session[pos];
 
-  const buttons=[
-    ...document.querySelectorAll(
-      "#"+currentArea+" .answer"
-    )
-  ];
 
-  buttons.forEach(b=>b.disabled=true);
+ const buttons=[
+   ...document
+   .querySelectorAll(
+     "#"+
+     currentArea+
+     " .answer"
+   )
+ ];
 
-  const selected=btn.textContent.trim();
 
-  const correct=
-    selected===q.right.trim();
+ const selected=
+   button
+   .textContent
+   .trim();
 
-  buttons.forEach(b=>{
 
-    if(b.textContent.trim()===q.right.trim()){
-      b.classList.add("correct")
-    }
+ const correct=
+   selected===
+   q.right.trim();
 
-  });
 
-  if(correct){
+ buttons.forEach(b=>{
 
-    score++;
-    state.correct++;
+   b.disabled=true;
 
-    delete state.wrong[q.id];
+   if(
+     b.textContent.trim()
+     ===
+     q.right.trim()
+   ){
 
-  }else{
+     b.classList.add(
+       "correct"
+     );
 
-    btn.classList.add("wrong");
+   }
 
-    state.wrong[q.id]=true;
-  }
+ });
 
-  state.totalAnswers++;
 
-  if(!state.answered[q.id]){
+ if(!correct){
 
-    state.answered[q.id]={
-      count:0,
-      lastCorrect:false
-    };
+   button
+   .classList
+   .add(
+     "wrong"
+   );
 
-  }
+ }
 
-  state.answered[q.id].count++;
 
-  state.answered[q.id].lastCorrect=correct;
+ state.totalAnswers++;
 
-  save();
 
-  document.getElementById("questionFeedback").innerHTML=`
+ if(correct){
 
-    <div class="feedback ${correct?"good":""}">
+   score++;
 
-      <strong>
-        ${correct ? "✅ Richtig" : "❌ Falsch"}
-      </strong>
+   state.correct++;
 
-      ${
-        !correct
-        ? `<p>
-            <strong>Richtige Antwort:</strong><br>
-            ${q.right}
-          </p>`
-        : ""
-      }
+   delete state.wrong[
+     q.id
+   ];
 
-    </div>
+ }else{
 
-    <button class="primary" onclick="nextQuestion()">
-      Weiter →
-    </button>
-  `;
-}
+   state.wrong[
+     q.id
+   ]=
+     true;
 
-function nextQuestion(){
-  pos++;
-  renderQuestion();
-}
+ }
 
 
-/* =========================================================
-   FLIPCHARTS
-   ========================================================= */
+ state.answered[
+   q.id
+ ]={
 
-function renderFlipcharts(){
+   lastCorrect:
+     correct
 
-  const selected=
-    document.getElementById("flipTopicSelect").value;
+ };
 
-  const list=
-    selected==="all"
-      ? facts
-      : facts.filter(f=>f[0]===selected);
 
-  const grid=document.getElementById("flipGrid");
+ save();
 
-  grid.innerHTML="";
 
-  list.forEach((f)=>{
+ document
+ .getElementById(
+   "qfeedback"
+ )
+ .innerHTML=`
+
+ <div
+   class="
+     feedback
+     ${correct
+       ?"good"
+       :""
+     }
+   ">
+
+   <b>
+
+     ${
+       correct
+       ?"✅ Richtig"
+       :"❌ Falsch"
+     }
+
+   </b>
+
+
+   ${
+     correct
+     ?""
+     :
+     `<p>
+        <b>
+          Passende Aussage:
+        </b>
+        <br>
+        ${q.right}
+      </p>`
+   }
+
+ </div>
+
+
+ <button
+   class="primary"
+   onclick="
+     pos++;
+     renderQuestion()
+   ">
+
+   Weiter →
+
+ </button>
+ `;
 
-    const globalIndex=facts.indexOf(f);
-
-    const id="flip_"+globalIndex;
-
-    const t=topicById(f[0]);
-
-    const learned=!!state.flipLearned[id];
-
-    const card=document.createElement("div");
-
-    card.className=
-      "flip "+(learned?"learned":"");
-
-    card.innerHTML=`
-
-      <div class="flipInner">
-
-        <div class="flipFace">
-
-          <div>
-
-            <div class="flipEmoji">
-              ${t.icon}
-            </div>
-
-            <small>
-              ${t.name}
-            </small>
-
-            <h3>
-              ${f[1]}
-            </h3>
-
-          </div>
-
-          <div class="flipHint">
-            Antippen zum Umdrehen ↻
-          </div>
-
-        </div>
-
-
-        <div class="flipFace flipBack">
-
-          <div>
-
-            <div class="flipEmoji">
-              🧠
-            </div>
-
-            <h3>
-              ${f[1]}
-            </h3>
-
-            <p>
-              ${f[2]}
-            </p>
-
-          </div>
-
-          <button
-            class="learnBtn ${learned?"primary":""}"
-            onclick="toggleLearned(event,'${id}')">
-
-            ${
-              learned
-                ? "✅ Gelernt"
-                : "Als gelernt markieren"
-            }
-
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-    card.onclick=()=>{
-      card.classList.toggle("open")
-    };
-
-    grid.appendChild(card);
-  });
-
-  updateDashboard();
-}
-
-function toggleLearned(event,id){
-
-  event.stopPropagation();
-
-  if(state.flipLearned[id]){
-    delete state.flipLearned[id];
-  }else{
-    state.flipLearned[id]=true;
-  }
-
-  save();
-  renderFlipcharts();
 }
 
 
-/* =========================================================
+/* =====================================================
+   LERNBLÄTTER
+   ===================================================== */
+
+function learningExtra(topic){
+
+ const extras={
+
+ grund:[
+   "Arbeite nur mit geeigneter, geprüfter Ausrüstung und beachte den vorgesehenen Verwendungszweck.",
+   "FwDV 1 ist B1-Kernstoff. Gerät, Zweck, Handhabung und Sicherheitsregeln sollten sicher beherrscht werden."
+ ],
+
+ fwdv3:[
+   "Merke dir Funktion und Aufgaben jeder Position innerhalb von Gruppe und Staffel.",
+   "FwDV 3 ist B1-Kernstoff: Einheiten, Truppaufgaben, Befehle, Bereitstellung und Rückmeldungen."
+ ],
+
+ atem:[
+   "Truppzusammenhalt, Luftmanagement, Überwachung und Rückweg sind gemeinsam zu betrachten.",
+   "Atemschutznotfall, Sicherheitstrupp und Einsatzgrundsätze sicher erklären können."
+ ],
+
+ abc:[
+   "GAMS ist die zentrale Erstorientierung bei unbekannten ABC-Gefahren.",
+   "Gefahr erkennen – Absperren – Menschenrettung – Spezialkräfte anfordern."
+ ],
+
+ funk:[
+   "Kurz, eindeutig und auftragsbezogen kommunizieren.",
+   "Bei unklaren Meldungen nachfragen statt vermuten."
+ ],
+
+ masch:[
+   "Wasserversorgung, Druck, Pumpenzustand und Gefahren durch Aggregate ständig überwachen.",
+   "Druckverluste und Betriebszustände begründen können."
+ ],
+
+ th:[
+   "Vor Werkzeugansatz: sichern, stabilisieren und Patient schützen.",
+   "Rettungsgerät, Ansatzpunkt und Patientenzustand zusammen denken."
+ ],
+
+ leiter:[
+   "Untergrund, Winkel, Sicherung, elektrische Gefahren und Belastung beachten.",
+   "Leiterart und sichere Verwendung praktisch erklären können."
+ ],
+
+ loesch:[
+   "Löschmittel immer nach Brennstoff, Brandklasse und Gefährdung auswählen.",
+   "Brandklassen und Löschwirkungen gehören zum Basiswissen."
+ ],
+
+ bhkg:[
+   "Unterscheide gesetzliche Zuständigkeit von taktischem Vorgehen.",
+   "Aufgabenträger, Einsatzleitung, Hilfeleistung sowie Rechte und Pflichten kennen."
+ ],
+
+ dguv:[
+   "Arbeitsschutz gilt in Ausbildung, Übung und Einsatz.",
+   "PSA, Gefährdungsbeurteilung, Hygiene, Eignung und Prüfungen sind zentrale Themen."
+ ],
+
+ rd:[
+   "Lebensbedrohliche Probleme werden zuerst erkannt und behandelt.",
+   "ABCDE strukturiert die Erstbeurteilung."
+ ],
+
+ fuehrung:[
+   "Führung ist ein fortlaufender Kreislauf; neue Lage bedeutet neue Beurteilung.",
+   "Führungsorganisation, Führungsvorgang und Führungsmittel unterscheiden."
+ ],
+
+ praxis:[
+   "Sicher, strukturiert und nachvollziehbar arbeiten.",
+   "Fehler erkennen, korrigieren und Maßnahmen begründen können."
+ ]
+
+ };
+
+
+ return extras[topic] || [
+
+   "Sicher und regelkonform arbeiten.",
+
+   "Grundsatz und praktische Bedeutung erklären können."
+
+ ];
+
+}
+
+
+function renderSheets(){
+
+ const selected=
+   document
+   .getElementById(
+     "sheetSelect"
+   )
+   .value;
+
+
+ const list=
+
+   selected==="all"
+
+   ? facts
+
+   : facts.filter(
+       f=>
+         f[0]===
+         selected
+     );
+
+
+ const grid=
+   document
+   .getElementById(
+     "sheetGrid"
+   );
+
+
+ grid.innerHTML="";
+
+
+ list.forEach(f=>{
+
+   const index=
+     facts.indexOf(f);
+
+
+   const id=
+     "flip_"+
+     index;
+
+
+   const topic=
+     topicById(
+       f[0]
+     );
+
+
+   const learned=
+     !!state
+     .flipLearned[
+       id
+     ];
+
+
+   const extra=
+     learningExtra(
+       f[0]
+     );
+
+
+   const sheet=
+     document
+     .createElement(
+       "article"
+     );
+
+
+   sheet.className=
+
+     "sheet "+
+     (
+       learned
+       ?"learned"
+       :""
+     );
+
+
+   sheet.innerHTML=`
+
+   <div class="sheetTop">
+
+     <div class="sheetNo">
+
+       LERNBLATT
+       ${index+1}
+
+     </div>
+
+
+     <div class="sheetIcon">
+
+       ${topic.icon}
+
+     </div>
+
+
+     <div class="sheetTag">
+
+       ${topic.name}
+       ·
+       ${topic.sub}
+
+     </div>
+
+   </div>
+
+
+   <div class="sheetBody">
+
+     <h3>
+       ${f[1]}
+     </h3>
+
+
+     <div class="core">
+
+       🔥
+       <b>
+         KERNSATZ
+       </b>
+
+       <br><br>
+
+       ${f[2]}
+
+     </div>
+
+
+     <div class="learnbox">
+
+       <b>
+         🧠 EINORDNEN
+       </b>
+
+       <p>
+         ${extra[0]}
+       </p>
+
+     </div>
+
+
+     <div class="learnbox">
+
+       <b>
+         🎓 PRÜFUNGSFOKUS
+       </b>
+
+       <p>
+         ${extra[1]}
+       </p>
+
+     </div>
+
+
+     <button
+       style="
+         width:100%;
+         margin-top:10px
+       "
+
+       class="
+         ${learned
+           ?""
+           :"primary"
+         }
+       "
+
+       onclick="
+         toggleSheet(
+           '${id}'
+         )
+       ">
+
+       ${
+         learned
+
+         ? "✅ Gelernt"
+
+         : "✓ Als gelernt markieren"
+       }
+
+     </button>
+
+   </div>
+   `;
+
+
+   grid.appendChild(
+     sheet
+   );
+
+ });
+
+}
+
+
+function toggleSheet(id){
+
+ if(
+   state.flipLearned[
+     id
+   ]
+ ){
+
+   delete state
+   .flipLearned[
+     id
+   ];
+
+ }else{
+
+   state.flipLearned[
+     id
+   ]=
+     true;
+
+ }
+
+
+ save();
+
+ renderSheets();
+
+}
+
+
+/* =====================================================
+   VORSCHRIFTEN
+   ===================================================== */
+
+let ruleFilter=
+ "Alle";
+
+
+function setRuleFilter(
+ filter,
+ button
+){
+
+ ruleFilter=
+   filter;
+
+
+ document
+ .querySelectorAll(
+   ".chip"
+ )
+ .forEach(
+   chip=>
+     chip.classList.remove(
+       "active"
+     )
+ );
+
+
+ button
+ .classList
+ .add(
+   "active"
+ );
+
+
+ renderRules();
+
+}
+
+
+function ruleLink(rule){
+
+ if(
+   rule.group===
+   "FwDV"
+ ){
+
+   return official.idf;
+
+ }
+
+
+ if(
+   rule.group===
+   "Gesetz"
+ ){
+
+   return official.bhkg;
+
+ }
+
+
+ if(
+   rule.n===
+   "49"
+ ){
+
+   return official.dguv49;
+
+ }
+
+
+ if(
+   rule.n===
+   "105-049"
+ ){
+
+   return official.dguv105049;
+
+ }
+
+
+ return official.dguvPortal;
+
+}
+
+
+function renderRules(){
+
+ const searchElement=
+   document
+   .getElementById(
+     "ruleSearch"
+   );
+
+
+ const search=
+
+   searchElement
+
+   ? searchElement
+     .value
+     .toLowerCase()
+     .trim()
+
+   : "";
+
+
+ const list=
+   rules.filter(rule=>{
+
+     const filterMatches=
+
+       ruleFilter==="Alle"
+
+       ||
+       rule.group===
+       ruleFilter;
+
+
+     const text=
+
+       (
+         rule.group+
+         " "+
+         rule.n+
+         " "+
+         rule.title+
+         " "+
+         rule.core
+       )
+       .toLowerCase();
+
+
+     const searchMatches=
+
+       !search
+
+       ||
+       text.includes(
+         search
+       );
+
+
+     return(
+       filterMatches &&
+       searchMatches
+     );
+
+   });
+
+
+ const area=
+   document
+   .getElementById(
+     "rules"
+   );
+
+
+ if(!list.length){
+
+   area.innerHTML=`
+
+     <div class="feedback">
+
+       Keine passende
+       Vorschrift gefunden.
+
+     </div>
+   `;
+
+   return;
+
+ }
+
+
+ area.innerHTML=
+   list
+   .map(rule=>{
+
+     let icon=
+       "🚒";
+
+
+     let css=
+       "fwdv";
+
+
+     if(
+       rule.group===
+       "Gesetz"
+     ){
+
+       icon="⚖️";
+       css="gesetz";
+
+     }
+
+
+     if(
+       rule.group===
+       "DGUV"
+     ){
+
+       icon="🦺";
+       css="dguv";
+
+     }
+
+
+     const title=
+
+       rule.group==="FwDV"
+
+       ? "FwDV "+rule.n
+
+       : rule.group==="DGUV"
+
+       ? "DGUV "+rule.n
+
+       : rule.n;
+
+
+     return`
+
+     <article
+       class="
+         rule
+         ${css}
+       ">
+
+       <h3>
+
+         ${icon}
+         ${title}
+
+       </h3>
+
+
+       <b>
+         ${rule.title}
+       </b>
+
+
+       <div class="edition">
+
+         ${rule.edition}
+
+       </div>
+
+
+       <p>
+
+         ${rule.core}
+
+       </p>
+
+
+       <div class="row">
+
+         <a
+           class="
+             btn
+             primary
+           "
+
+           href="
+             ${ruleLink(rule)}
+           "
+
+           target="_blank"
+
+           rel="noopener">
+
+           📖 Offiziell nachlesen
+
+         </a>
+
+
+         ${
+           rule.group==="FwDV"
+
+           ? `
+
+             <a
+               class="btn"
+
+               href="
+                 ${official.fwdv}
+               "
+
+               target="_blank"
+
+               rel="noopener">
+
+               NRW-Einführung
+
+             </a>
+
+           `
+
+           : ""
+         }
+
+       </div>
+
+     </article>
+     `;
+
+   })
+   .join("");
+
+}
+
+
+/* =====================================================
    STATISTIK
-   ========================================================= */
+   ===================================================== */
 
 function renderStats(){
 
-  let html="";
+ const done=
+   Object.keys(
+     state.answered
+   ).length;
 
-  const unique=Object.keys(state.answered).length;
 
-  const learned=
-    Object.keys(state.flipLearned).length;
+ const learned=
+   Object.keys(
+     state.flipLearned
+   ).length;
 
-  html+=`
 
-    <div class="feedback good">
+ const hit=
 
-      <strong>Fragenfortschritt:</strong><br>
-      ${unique} von ${questions.length}
-      (${Math.round(unique/questions.length*100)} %)
+   state.totalAnswers
 
-      <br><br>
+   ? Math.round(
+       state.correct /
+       state.totalAnswers *
+       100
+     )
 
-      <strong>Flipcharts gelernt:</strong><br>
-      ${learned} von ${facts.length}
-      (${Math.round(learned/facts.length*100)} %)
+   : 0;
 
-    </div>
 
-    <table>
+ document
+ .getElementById(
+   "statsArea"
+ )
+ .innerHTML=`
 
-      <tr>
-        <th>Thema</th>
-        <th>Fragen</th>
-        <th>Fehler</th>
-        <th>%</th>
-      </tr>
-  `;
+ <div class="stats">
 
-  topics.forEach(t=>{
+   <div class="stat">
 
-    const qs=questionsFor(t.id);
+     <b>
 
-    const done=
-      qs.filter(q=>state.answered[q.id]).length;
+       ${
+         Math.round(
+           done /
+           questions.length *
+           100
+         )
+       }%
 
-    const wrong=
-      qs.filter(q=>state.wrong[q.id]).length;
+     </b>
 
-    const pct=
-      Math.round(done/qs.length*100);
+     <small>
+       Fragen
+     </small>
 
-    html+=`
-      <tr>
-        <td>
-          ${t.icon} ${t.name}
-        </td>
+   </div>
 
-        <td>
-          ${done}/${qs.length}
-        </td>
 
-        <td>
-          ${wrong}
-        </td>
+   <div class="stat">
 
-        <td>
-          ${pct}%
-        </td>
-      </tr>
-    `;
-  });
+     <b>
 
-  html+=`
-    </table>
+       ${
+         Math.round(
+           learned /
+           facts.length *
+           100
+         )
+       }%
 
-    <p style="margin-top:20px;color:#aaa">
+     </b>
 
-      Antworten insgesamt:
-      <strong>${state.totalAnswers}</strong>
+     <small>
+       Lernblätter
+     </small>
 
-      <br>
+   </div>
 
-      Richtig:
-      <strong>${state.correct}</strong>
 
-      <br>
+   <div class="stat">
 
-      Trefferquote:
-      <strong>
-        ${
-          state.totalAnswers
-          ? Math.round(
-              state.correct/state.totalAnswers*100
-            )
-          : 0
-        } %
-      </strong>
+     <b>
+       ${hit}%
+     </b>
 
-    </p>
-  `;
+     <small>
+       Trefferquote
+     </small>
 
-  document.getElementById("statsArea").innerHTML=html;
+   </div>
+
+
+   <div class="stat">
+
+     <b>
+
+       ${
+         Object.keys(
+           state.wrong
+         ).length
+       }
+
+     </b>
+
+     <small>
+       Fehler
+     </small>
+
+   </div>
+
+ </div>
+
+
+ <table class="statsTable">
+
+ <tr>
+
+   <th>
+     Thema
+   </th>
+
+   <th>
+     bearbeitet
+   </th>
+
+   <th>
+     %
+   </th>
+
+ </tr>
+
+
+ ${
+   topics
+   .map(t=>{
+
+     const qs=
+       qFor(
+         t.id
+       );
+
+
+     const number=
+       qs.filter(
+         q=>
+           state.answered[
+             q.id
+           ]
+       ).length;
+
+
+     return`
+
+     <tr>
+
+       <td>
+
+         ${t.icon}
+         ${t.name}
+
+       </td>
+
+       <td>
+
+         ${number}
+         /
+         ${qs.length}
+
+       </td>
+
+       <td>
+
+         ${
+           Math.round(
+             number /
+             qs.length *
+             100
+           )
+         }%
+
+       </td>
+
+     </tr>
+     `;
+
+   })
+   .join("")
+ }
+
+ </table>
+ `;
+
 }
 
 
-/* =========================================================
+/* =====================================================
    RESET
-   ========================================================= */
+   ===================================================== */
 
 function resetAll(){
 
-  if(!confirm(
-    "Gesamten Lernfortschritt und alle Flipcharts zurücksetzen?"
-  )){
-    return;
-  }
+ if(
+   !confirm(
+     "Wirklich gesamten Lernfortschritt löschen?"
+   )
+ ){
 
-  localStorage.removeItem("b1nrw672");
+   return;
 
-  state={
-    answered:{},
-    wrong:{},
-    correct:0,
-    totalAnswers:0,
-    flipLearned:{}
-  };
+ }
 
-  save();
-  renderStats();
-  renderFlipcharts();
+
+ localStorage
+ .removeItem(
+   "b1nrw672"
+ );
+
+
+ state={
+
+   answered:{},
+
+   wrong:{},
+
+   correct:0,
+
+   totalAnswers:0,
+
+   flipLearned:{}
+
+ };
+
+
+ save();
+
+ renderStats();
+
 }
 
 
-/* =========================================================
+/* =====================================================
    START
-   ========================================================= */
+   ===================================================== */
 
-setupSelects();
-updateDashboard();
+setup();
 
 </script>
 
