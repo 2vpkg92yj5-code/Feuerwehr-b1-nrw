@@ -2,111 +2,196 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101816">
-<title>B1 Feuerwehr NRW – LernApp</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101815">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>B1 Feuerwehr NRW LernApp</title>
 
 <style>
+:root{
+--bg:#09100e;
+--panel:#121e1a;
+--panel2:#1a2a24;
+--line:#2b4038;
+--text:#fff;
+--muted:#aabbb4;
+--green:#32c878;
+--red:#dc5545;
+--orange:#ef762f;
+--yellow:#e9b94b;
+}
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#0b1210;
-  color:#fff;
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif
 }
 header{
-  position:sticky;
-  top:0;
-  background:#101816;
-  border-bottom:1px solid #263a34;
-  padding:15px;
-  z-index:10;
+position:sticky;
+top:0;
+z-index:30;
+background:rgba(13,21,18,.96);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line)
 }
-header b{font-size:19px}
-main{max-width:900px;margin:auto;padding:16px}
+.head{
+max-width:1050px;
+margin:auto;
+padding:13px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+.brand{font-size:18px;font-weight:900}
+main{
+max-width:1050px;
+margin:auto;
+padding:15px 15px 80px
+}
 .hero,.panel,.card{
-  background:#14201c;
-  border:1px solid #2b4039;
-  border-radius:18px;
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:18px
 }
-.hero{padding:22px;margin-bottom:15px}
-.hero h1{margin:0 0 8px;font-size:35px}
-.hero p{color:#b7c5c0}
+.hero{
+padding:20px;
+background:linear-gradient(135deg,#192c24,#101b17)
+}
+.hero h1{margin:0 0 7px;font-size:32px}
+.hero p{margin:0;color:var(--muted);line-height:1.45}
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:15px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-top:17px
 }
 .stat{
-  background:#1d2c27;
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
+background:var(--panel2);
+border-radius:13px;
+padding:12px 8px;
+text-align:center
 }
-.stat strong{display:block;font-size:22px}
-nav{
-  display:flex;
-  gap:7px;
-  overflow:auto;
-  margin:15px 0;
-}
-button{
-  border:0;
-  background:#253b33;
-  color:#fff;
-  padding:11px 14px;
-  border-radius:11px;
-  font-weight:700;
-}
-button.active{background:#e94f2d}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:10px;
-}
-.card{padding:16px}
-.card h3{margin:5px 0}
-.card p{color:#aebeb8;font-size:14px}
+.stat strong{display:block;font-size:21px}
+.stat small{color:var(--muted)}
 .progress{
-  height:8px;
-  background:#263832;
-  border-radius:8px;
-  overflow:hidden;
+height:9px;
+background:#263832;
+border-radius:99px;
+overflow:hidden
 }
 .progress span{
-  display:block;
-  height:100%;
-  background:#42cc84;
+display:block;
+height:100%;
+background:var(--green)
+}
+nav{
+position:sticky;
+top:57px;
+z-index:20;
+display:flex;
+gap:7px;
+overflow-x:auto;
+background:var(--bg);
+padding:11px 0
+}
+button{
+border:0;
+border-radius:11px;
+padding:11px 13px;
+background:#253a32;
+color:#fff;
+font-weight:800;
+font-size:14px
+}
+button.active,button.primary{background:var(--orange)}
+button.danger{background:#723329}
+button:disabled{opacity:.7}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:10px
+}
+.card{padding:15px}
+.card h3{margin:5px 0 5px}
+.card p{margin:5px 0;color:var(--muted);font-size:13px}
+.icon{font-size:29px}
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px
 }
 .panel{padding:18px}
-.hidden{display:none}
-.topic{
-  display:flex;
-  gap:10px;
-  border-bottom:1px solid #294039;
-  padding:12px 0;
-}
-.topic input{width:20px;height:20px}
+.hidden{display:none!important}
+.small{font-size:12px;color:var(--muted)}
 .answer{
-  width:100%;
-  text-align:left;
-  margin:5px 0;
+display:block;
+width:100%;
+text-align:left;
+margin:8px 0;
+padding:14px;
+background:#263a33
 }
-.correct{background:#177345!important}
-.wrong{background:#a2382c!important}
-.small{font-size:13px;color:#aebeb8}
-.warning{
-  border-left:4px solid #e94f2d;
-  background:#291b17;
-  padding:12px;
-  margin:12px 0;
-  border-radius:8px;
+.answer.correct{background:#166d40}
+.answer.wrong{background:#8b382e}
+.notice{
+padding:12px;
+border-left:4px solid var(--orange);
+background:#2a1e19;
+border-radius:8px;
+margin:12px 0
 }
-a{color:#74d5a7}
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr}
-  .hero h1{font-size:30px}
+.question{
+max-width:780px;
+margin:auto
+}
+.scorebig{
+font-size:54px;
+font-weight:900;
+text-align:center
+}
+select{
+width:100%;
+padding:13px;
+background:#20342c;
+border:1px solid var(--line);
+border-radius:11px;
+color:white;
+font-size:16px
+}
+.moduleStat{
+margin-top:10px;
+padding-top:10px;
+border-top:1px solid var(--line)
+}
+.badge{
+display:inline-block;
+padding:4px 8px;
+border-radius:99px;
+font-size:11px;
+background:#293c35;
+color:#c8d5d0
+}
+h2{margin-top:5px}
+table{width:100%;border-collapse:collapse}
+th,td{
+text-align:left;
+padding:9px 5px;
+border-bottom:1px solid var(--line);
+font-size:13px
+}
+th{color:#d7e1dd}
+footer{
+text-align:center;
+font-size:11px;
+color:#72857e;
+padding:24px 0
+}
+@media(max-width:650px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.hero h1{font-size:27px}
 }
 </style>
 </head>
@@ -114,569 +199,1711 @@ a{color:#74d5a7}
 <body>
 
 <header>
-  <b>🚒 B1 Feuerwehr NRW</b>
+<div class="head">
+<div class="brand">🚒 B1 Feuerwehr NRW</div>
+<button onclick="resetAll()">Reset</button>
+</div>
 </header>
 
 <main>
 
 <section class="hero">
-  <h1>Bereit für B1.</h1>
-  <p>
-    Lern-App für die feuerwehrtechnische Grundausbildung in NRW.
-    Mit FwDV, Atemschutz, ABC, TH, Funk, BHKG und DGUV.
-  </p>
+<h1>B1 Lerntrainer NRW</h1>
+<p>
+672 Fragen · 168 Lerninhalte · 14 Themenbereiche · Prüfung · Fehlertraining · Lernfortschritt
+</p>
 
-  <div class="stats">
-    <div class="stat">
-      <strong id="fortschritt">0%</strong>
-      Fortschritt
-    </div>
-    <div class="stat">
-      <strong>14</strong>
-      Module
-    </div>
-    <div class="stat">
-      <strong>20</strong>
-      Testfragen
-    </div>
-  </div>
+<div class="stats">
+<div class="stat">
+<strong id="sProgress">0%</strong>
+<small>Fortschritt</small>
+</div>
+<div class="stat">
+<strong id="sAnswered">0</strong>
+<small>beantwortet</small>
+</div>
+<div class="stat">
+<strong id="sCorrect">–</strong>
+<small>richtig</small>
+</div>
+<div class="stat">
+<strong id="sWrong">0</strong>
+<small>Fehlerfragen</small>
+</div>
+</div>
+
+<div style="margin-top:14px">
+<div class="row small">
+<span>Fragen mindestens einmal bearbeitet</span>
+<span id="progressText">0 / 672</span>
+</div>
+<div class="progress" style="margin-top:5px">
+<span id="mainProgress"></span>
+</div>
+</div>
 </section>
 
 <nav>
-  <button class="active" onclick="zeige('lernen',this)">📚 Lernen</button>
-  <button onclick="zeige('quiz',this)">📝 Prüfung</button>
-  <button onclick="zeige('recht',this)">⚖️ Vorschriften</button>
-  <button onclick="zeige('plan',this)">📅 Lernplan</button>
+<button class="active" onclick="page('home',this)">🏠 Übersicht</button>
+<button onclick="page('train',this)">📚 Lernen</button>
+<button onclick="page('exam',this)">📝 Prüfung</button>
+<button onclick="page('wrong',this)">🔁 Fehler</button>
+<button onclick="page('stats',this)">📊 Fortschritt</button>
 </nav>
 
-<section id="lernen">
-  <div class="grid" id="module"></div>
+<section id="home">
+<div class="grid" id="moduleGrid"></div>
 </section>
 
-<section id="detail" class="panel hidden"></section>
+<section id="train" class="panel hidden">
+<h2>📚 Themen-Training</h2>
+<p class="small">Wähle einen Bereich. Die Fragen werden zufällig gestellt.</p>
 
-<section id="quiz" class="panel hidden">
-  <h2>Prüfungstrainer</h2>
-  <div id="frage"></div>
+<select id="topicSelect"></select>
+
+<div style="margin-top:12px">
+<button class="primary" onclick="startTopic()">Training starten</button>
+<button onclick="startAll()">Alle Themen mischen</button>
+</div>
+
+<div id="trainArea"></div>
 </section>
 
-<section id="recht" class="panel hidden">
-  <h2>Recht & Vorschriften</h2>
+<section id="exam" class="panel hidden">
+<h2>📝 Prüfungssimulation</h2>
+<p>
+40 zufällig gewählte Fragen aus allen Themenbereichen.
+Keine Frage wird innerhalb derselben Prüfung doppelt gestellt.
+</p>
 
-  <div class="warning">
-    Diese App ist eine Lernhilfe. Maßgeblich sind immer die aktuellen
-    amtlichen Vorschriften sowie örtliche Dienst- und Ausbildungsanweisungen.
-  </div>
+<button class="primary" onclick="startExam()">40-Fragen-Prüfung starten</button>
 
-  <h3>BHKG NRW</h3>
-  <p>
-    Gesetz über den Brandschutz, die Hilfeleistung und den
-    Katastrophenschutz in Nordrhein-Westfalen.
-  </p>
-
-  <h3>Wichtige Feuerwehr-Dienstvorschriften</h3>
-  <p>
-    FwDV 1 – Grundtätigkeiten<br>
-    FwDV 3 – Einheiten im Lösch- und Hilfeleistungseinsatz<br>
-    FwDV 7 – Atemschutz<br>
-    FwDV 10 – Tragbare Leitern<br>
-    FwDV 100 – Führung und Leitung im Einsatz<br>
-    FwDV 500 – Einheiten im ABC-Einsatz<br>
-    FwDV 810 – Sprech- und Datenfunkverkehr
-  </p>
-
-  <h3>DGUV</h3>
-  <p>
-    DGUV Vorschrift 49 „Feuerwehren“<br>
-    DGUV Regel 105-049 „Feuerwehren“<br>
-    DGUV Regel 112-190 „Benutzung von Atemschutzgeräten“
-  </p>
+<div id="examArea"></div>
 </section>
 
-<section id="plan" class="panel hidden">
-  <h2>8-Wochen-Lernplan</h2>
-  <p>Woche 1: Grundlagen, Löschlehre, FwDV 3</p>
-  <p>Woche 2: Atemschutz und FwDV 7</p>
-  <p>Woche 3: Technische Hilfeleistung</p>
-  <p>Woche 4: ABC / FwDV 500</p>
-  <p>Woche 5: Maschinist und Wasserförderung</p>
-  <p>Woche 6: Funk, Führung und BHKG</p>
-  <p>Woche 7: DGUV, Rettungsdienst und Hygiene</p>
-  <p>Woche 8: Wiederholung und Prüfungstraining</p>
+<section id="wrong" class="panel hidden">
+<h2>🔁 Fehlertraining</h2>
+<p id="wrongInfo"></p>
+<button class="primary" onclick="startWrong()">Fehlerfragen trainieren</button>
+<div id="wrongArea"></div>
 </section>
+
+<section id="stats" class="panel hidden">
+<h2>📊 Dein Lernfortschritt</h2>
+<div id="statsArea"></div>
+</section>
+
+<footer>
+Lernhilfe für die feuerwehrtechnische Ausbildung. Maßgeblich sind aktuelle
+FwDV, DGUV-Regelwerke, BHKG NRW sowie örtliche Ausbildungs- und Dienstanweisungen.
+</footer>
 
 </main>
 
 <script>
 
-const moduleDaten = [
-["🔥","B1 Grundlagen",[
-"Aufgaben im Trupp",
-"Gefahren der Einsatzstelle",
-"Grundtätigkeiten",
-"Knoten und Stiche",
-"Gerätekunde"
-]],
+/* =========================================================
+   THEMEN
+   ========================================================= */
 
-["🚒","FwDV 3",[
-"Gliederung der Gruppe",
-"Aufgaben der Trupps",
-"Löschangriff",
-"Hilfeleistungseinsatz",
-"Befehlsgebung"
-]],
-
-["🫁","Atemschutz / FwDV 7",[
-"Voraussetzungen Atemschutzgeräteträger",
-"Einsatzkurzprüfung",
-"Atemschutzüberwachung",
-"Sicherheitstrupp",
-"Atemschutznotfall"
-]],
-
-["☣️","ABC / FwDV 500",[
-"GAMS-Regel",
-"Gefahrstoffkennzeichnung",
-"Gefahrenbereich",
-"Dekontamination",
-"CSA-Grundlagen"
-]],
-
-["📻","Sprechfunk",[
-"Digitalfunk BOS",
-"Funkrufnamen",
-"Sprechfunkdisziplin",
-"Statusmeldungen",
-"Notruf"
-]],
-
-["🚒","Maschinist",[
-"Feuerlöschkreiselpumpe",
-"Wasserentnahme",
-"Entlüftung",
-"Wasserförderung",
-"Stromerzeuger"
-]],
-
-["🛠️","Technische Hilfe",[
-"Absicherung",
-"Unterbauen",
-"Hydraulisches Rettungsgerät",
-"Glasmanagement",
-"Patientengerechte Rettung"
-]],
-
-["🪜","Leitern / FwDV 10",[
-"Steckleiter",
-"Schiebleiter",
-"Aufstellen",
-"Sichern",
-"Rettung über Leitern"
-]],
-
-["💧","Löschlehre",[
-"Verbrennungsdreieck",
-"Brandklassen",
-"Wasser",
-"Schaum",
-"Pulver und CO₂"
-]],
-
-["⚖️","BHKG NRW",[
-"Aufgaben Gemeinden",
-"Aufgaben Kreise",
-"Aufgaben Land NRW",
-"Einsatzleitung",
-"Katastrophenschutz"
-]],
-
-["🦺","DGUV",[
-"DGUV Vorschrift 49",
-"DGUV Regel 105-049",
-"PSA",
-"Unfallverhütung",
-"Einsatzstellenhygiene"
-]],
-
-["🩺","Rettungsdienst",[
-"ABCDE-Schema",
-"Reanimation",
-"Trauma",
-"Verbrennungen",
-"Zusammenarbeit mit Rettungsdienst"
-]],
-
-["🎖️","FwDV 100",[
-"Führungsvorgang",
-"Lagefeststellung",
-"Beurteilung",
-"Entschluss",
-"Befehlsgebung"
-]],
-
-["🎓","Prüfung",[
-"Theorie",
-"Praktische Prüfung",
-"Wachpraktikum",
-"Wiederholung",
-"Prüfungsvorbereitung"
-]]
+const topics = [
+{id:"grund",icon:"🔥",name:"Grundlagen / FwDV 1"},
+{id:"fwdv3",icon:"🚒",name:"FwDV 3 / Lösch- und Hilfeleistungseinsatz"},
+{id:"atem",icon:"🫁",name:"Atemschutz / FwDV 7"},
+{id:"abc",icon:"☣️",name:"ABC / FwDV 500"},
+{id:"funk",icon:"📻",name:"Sprechfunk / FwDV 810"},
+{id:"masch",icon:"⚙️",name:"Maschinist"},
+{id:"th",icon:"🛠️",name:"Technische Hilfeleistung"},
+{id:"leiter",icon:"🪜",name:"Leitern / FwDV 10"},
+{id:"loesch",icon:"💧",name:"Löschlehre"},
+{id:"bhkg",icon:"⚖️",name:"BHKG NRW"},
+{id:"dguv",icon:"🦺",name:"DGUV / Arbeitsschutz"},
+{id:"rd",icon:"🩺",name:"Rettungsdienst"},
+{id:"fuehrung",icon:"🎖️",name:"FwDV 100 / Führung"},
+{id:"praxis",icon:"🎓",name:"B1 Praxis / Prüfung"}
 ];
 
-const fragen = [
-{
-q:"Welche FwDV behandelt den Atemschutz?",
-a:["FwDV 3","FwDV 7","FwDV 10","FwDV 500"],
-c:1
-},
-{
-q:"Wofür steht das G in der GAMS-Regel?",
-a:["Gerät prüfen","Gefahr erkennen","Gruppe bilden","Gebäude räumen"],
-c:1
-},
-{
-q:"Welche FwDV behandelt tragbare Leitern?",
-a:["FwDV 7","FwDV 10","FwDV 100","FwDV 500"],
-c:1
-},
-{
-q:"Welche FwDV behandelt Einheiten im ABC-Einsatz?",
-a:["FwDV 3","FwDV 7","FwDV 500","FwDV 810"],
-c:2
-},
-{
-q:"Welche Vorschrift trägt den Titel 'Feuerwehren'?",
-a:["DGUV Vorschrift 49","StVO","FwDV 100","BGB"],
-c:0
-},
-{
-q:"Wozu dient ein Sicherheitstrupp?",
-a:[
-"Pumpe bedienen",
-"Atemschutzgeräteträger retten",
-"Verkehr regeln",
-"Funkstelle besetzen"
-],
-c:1
-},
-{
-q:"Was ist Grundlage jeder Einsatzentscheidung?",
-a:[
-"Lagefeststellung",
-"Materialausgabe",
-"Presseinformation",
-"Fahrzeugreinigung"
-],
-c:0
-},
-{
-q:"Welche Aufgabe gehört typischerweise zum Maschinisten?",
-a:[
-"Feuerlöschkreiselpumpe bedienen",
-"Nur Innenangriff",
-"Nur Patientenversorgung",
-"Einsatzleitung übernehmen"
-],
-c:0
-},
-{
-q:"Was gehört zur GAMS-Regel?",
-a:[
-"Menschenrettung durchführen",
-"Absperren",
-"Maschine einschalten",
-"Strahlrohr tauschen"
-],
-c:1
-},
-{
-q:"Welche FwDV behandelt Führung und Leitung im Einsatz?",
-a:["FwDV 3","FwDV 7","FwDV 100","FwDV 810"],
-c:2
-},
-{
-q:"Was ist bei kontaminierter Einsatzkleidung wichtig?",
-a:[
-"Kontamination verschleppen",
-"Getrennt und kontrolliert ablegen",
-"Im Mannschaftsraum lagern",
-"Zu Hause reinigen"
-],
-c:1
-},
-{
-q:"Wozu dient die Atemschutzüberwachung?",
-a:[
-"Eingesetzte Atemschutztrupps überwachen",
-"Fahrzeuge tanken",
-"Pumpendruck messen",
-"Funkgeräte laden"
-],
-c:0
-},
-{
-q:"Welche Rechtsgrundlage ist für Brandschutz in NRW besonders wichtig?",
-a:[
-"BHKG NRW",
-"Handelsgesetzbuch",
-"Grundbuchordnung",
-"Straßenverkehrsordnung"
-],
-c:0
-},
-{
-q:"Was beschreibt patientengerechte Rettung?",
-a:[
-"Technische Rettung am Zustand des Patienten ausrichten",
-"Immer schnellstmöglich schneiden",
-"Nur der Rettungsdienst arbeitet",
-"Immer Fahrzeugdach entfernen"
-],
-c:0
-},
-{
-q:"Welche Maßnahme gehört zur Einsatzstellenhygiene?",
-a:[
-"Kontaminierte PSA sauber trennen",
-"Ruß mit bloßen Händen entfernen",
-"Im Mannschaftsraum essen",
-"Kontaminierte Kleidung privat waschen"
-],
-c:0
-},
-{
-q:"Was muss vor dem Atemschutzeinsatz unter anderem geprüft werden?",
-a:[
-"Einsatzbereitschaft des Gerätes",
-"Fahrzeugradio",
-"Handyempfang",
-"Kennzeichen des Fahrzeugs"
-],
-c:0
-},
-{
-q:"Welche Löschwirkung besitzt Wasser hauptsächlich?",
-a:[
-"Kühlen",
-"Elektrisieren",
-"Beschleunigen",
-"Erwärmen"
-],
-c:0
-},
-{
-q:"Was ist beim Digitalfunk wichtig?",
-a:[
-"Kurze und eindeutige Kommunikation",
-"Alle sprechen gleichzeitig",
-"Keine Funkrufnamen verwenden",
-"Notrufe ignorieren"
-],
-c:0
-},
-{
-q:"Warum wird eine Saugleitung möglichst luftdicht aufgebaut?",
-a:[
-"Damit Wasser angesaugt werden kann",
-"Damit Funk funktioniert",
-"Zur Beleuchtung",
-"Zum Laden der Batterie"
-],
-c:0
-},
-{
-q:"Was ist das Ziel einer Gefährdungsbeurteilung?",
-a:[
-"Gefahren erkennen und Schutzmaßnahmen festlegen",
-"PSA abschaffen",
-"Nur Kosten erfassen",
-"Übungen vermeiden"
-],
-c:0
-}
+/*
+Jeder Datensatz:
+[Thema, Stichwort, richtige Aussage, falsche Aussage 1, falsche Aussage 2, falsche Aussage 3]
+
+168 unterschiedliche Lerninhalte × 4 Frageformen = 672 Fragen.
+*/
+
+const facts = [
+
+/* ==================== GRUNDLAGEN 12 ==================== */
+
+["grund","Feuerwehrleine",
+"Die Feuerwehrleine dient unter anderem zum Sichern, Retten und Hochziehen geeigneter Geräte.",
+"Sie wird ausschließlich zur Verkehrsabsicherung verwendet.",
+"Sie ersetzt grundsätzlich einen zugelassenen Absturzschutz.",
+"Sie darf ausschließlich als elektrische Erdungsleitung benutzt werden."],
+
+["grund","Persönliche Schutzausrüstung",
+"Die erforderliche persönliche Schutzausrüstung richtet sich nach Tätigkeit und Gefährdung.",
+"Im Einsatz ist persönliche Schutzausrüstung grundsätzlich freiwillig.",
+"Ein Feuerwehrhelm ist nur bei Übungen erforderlich.",
+"Handschuhe dürfen bei technischen Einsätzen nie getragen werden."],
+
+["grund","Gefahrenmatrix",
+"Gefahren an der Einsatzstelle müssen fortlaufend erkannt und beurteilt werden.",
+"Gefahren werden nur bei Einsatzbeginn einmal beurteilt.",
+"Eine Gefahrenbeurteilung ist ausschließlich Aufgabe der Polizei.",
+"Gefahren spielen nach Beginn der Menschenrettung keine Rolle mehr."],
+
+["grund","Knoten",
+"Knoten und Stiche müssen ihrem vorgesehenen Verwendungszweck entsprechend eingesetzt werden.",
+"Jeder Feuerwehrknoten darf ohne Unterschied für jede Belastung verwendet werden.",
+"Knoten sind nur im Wassereinsatz zulässig.",
+"Knoten müssen grundsätzlich mit Draht gesichert werden."],
+
+["grund","Geräteablage",
+"Geräte sollen übersichtlich und sicher bereitgestellt werden.",
+"Geräte werden möglichst auf Verkehrswegen verstreut abgelegt.",
+"Benutzte Geräte werden vor dem Einsatzende grundsätzlich versteckt.",
+"Geräte müssen immer direkt vor dem Fahrzeug liegen."],
+
+["grund","Einsatzbefehl",
+"Ein Einsatzauftrag soll klar, kurz und verständlich sein.",
+"Befehle sollen möglichst viele unwichtige Einzelheiten enthalten.",
+"Befehle dürfen grundsätzlich nur schriftlich gegeben werden.",
+"Ein Trupp muss einen unklaren Auftrag ohne Rückfrage ausführen."],
+
+["grund","Trupparbeit",
+"Ein Trupp arbeitet grundsätzlich gemeinsam und achtet auf gegenseitige Sicherheit.",
+"Truppmitglieder sollen sich möglichst weit voneinander entfernen.",
+"Nur der Truppführer trägt Verantwortung für Sicherheit.",
+"Ein Trupp darf sich ohne Auftrag beliebig aufteilen."],
+
+["grund","Absperrung",
+"Gefahrenbereiche müssen angemessen abgesperrt oder gesichert werden.",
+"Absperrmaßnahmen sind bei Feuerwehreinsätzen grundsätzlich verboten.",
+"Eine Absperrung ist nur nachts erforderlich.",
+"Absperrmaßnahmen dürfen ausschließlich durch Passanten erfolgen."],
+
+["grund","Beleuchtung",
+"Einsatzstellenbeleuchtung soll Gefahrenstellen und Arbeitsbereiche ausreichend ausleuchten.",
+"Beleuchtung wird grundsätzlich hinter Einsatzkräften auf Augenhöhe ausgerichtet.",
+"Arbeitsbereiche müssen möglichst dunkel bleiben.",
+"Beleuchtung ist nur für Presseaufnahmen zulässig."],
+
+["grund","Schläuche",
+"Schläuche sollen so verlegt werden, dass unnötige Stolper- und Verkehrsgefahren vermieden werden.",
+"Schläuche müssen grundsätzlich quer über Treppenstufen gespannt werden.",
+"Schläuche dürfen nie über Schlauchbrücken geführt werden.",
+"Schläuche sind ausschließlich für Schaummittel geeignet."],
+
+["grund","Einsatzhygiene",
+"Kontaminierte Einsatzkleidung soll sauber von unbelasteten Bereichen getrennt werden.",
+"Rußverschmutzte Handschuhe sollen zum Essen angelassen werden.",
+"Kontaminierte Kleidung wird grundsätzlich im Mannschaftsraum ausgeschüttelt.",
+"Händereinigung nach dem Einsatz ist unnötig."],
+
+["grund","Geräteprüfung",
+"Feuerwehrgeräte müssen einsatzbereit und entsprechend den Vorgaben geprüft sein.",
+"Beschädigte Geräte dürfen grundsätzlich weiterverwendet werden.",
+"Prüfungen sind nur nach sichtbarem Totalschaden notwendig.",
+"Prüfungen dürfen nur während eines laufenden Einsatzes stattfinden."],
+
+/* ==================== FWDV 3 12 ==================== */
+
+["fwdv3","Gruppe",
+"Die Gruppe ist eine taktische Einheit mit Gruppenführer, Maschinist, Melder sowie drei Trupps.",
+"Eine Gruppe besteht ausschließlich aus zwei Einsatzkräften.",
+"Eine Gruppe besitzt grundsätzlich keinen Maschinisten.",
+"Die Gruppe wird ausschließlich aus Führungskräften gebildet."],
+
+["fwdv3","Staffel",
+"Die Staffel ist kleiner als die Gruppe und besteht aus Staffelführer, Maschinist sowie zwei Trupps.",
+"Eine Staffel ist größer als ein Zug.",
+"Eine Staffel besteht grundsätzlich aus zwölf Trupps.",
+"Eine Staffel besitzt keinen Einheitsführer."],
+
+["fwdv3","Angriffstrupp",
+"Der Angriffstrupp übernimmt in der Regel zuerst die Menschenrettung beziehungsweise den ersten Angriff.",
+"Der Angriffstrupp bleibt grundsätzlich immer am Fahrzeug.",
+"Der Angriffstrupp bedient ausschließlich die Fahrzeugpumpe.",
+"Der Angriffstrupp darf keine Schlauchleitung vornehmen."],
+
+["fwdv3","Wassertrupp",
+"Der Wassertrupp stellt typischerweise die Wasserversorgung zwischen Löschfahrzeug und Wasserentnahmestelle her.",
+"Der Wassertrupp übernimmt grundsätzlich die Einsatzleitung.",
+"Der Wassertrupp darf keine wasserführenden Armaturen verwenden.",
+"Der Wassertrupp ist ausschließlich für Pressearbeit zuständig."],
+
+["fwdv3","Schlauchtrupp",
+"Der Schlauchtrupp unterstützt unter anderem beim Verlegen von Schlauchleitungen und bei weiteren Aufgaben.",
+"Der Schlauchtrupp bedient grundsätzlich allein die Pumpe.",
+"Der Schlauchtrupp darf keine Geräte bereitstellen.",
+"Der Schlauchtrupp verlässt grundsätzlich niemals das Fahrzeug."],
+
+["fwdv3","Maschinist FwDV 3",
+"Der Maschinist fährt das Fahrzeug und bedient unter anderem fest eingebaute Aggregate und Pumpen.",
+"Der Maschinist führt grundsätzlich immer den Angriffstrupp.",
+"Der Maschinist ist ausschließlich für Funkverkehr zuständig.",
+"Der Maschinist darf die Pumpe nicht bedienen."],
+
+["fwdv3","Melder",
+"Der Melder unterstützt insbesondere den Einheitsführer und kann Nachrichten übermitteln.",
+"Der Melder ist grundsätzlich Fahrzeugführer.",
+"Der Melder bedient immer das erste Strahlrohr.",
+"Der Melder übernimmt automatisch die Einsatzleitung."],
+
+["fwdv3","Menschenrettung",
+"Menschenrettung hat bei akuter Lebensgefahr grundsätzlich hohe Priorität.",
+"Menschenrettung darf erst nach Abschluss aller Löscharbeiten beginnen.",
+"Menschenrettung ist ausschließlich Aufgabe des Rettungsdienstes.",
+"Menschenrettung darf im Brandeinsatz nicht durchgeführt werden."],
+
+["fwdv3","Bereitstellung",
+"Bei einem Einsatz mit Bereitstellung werden bestimmte Maßnahmen vorbereitet, bis weitere Befehle folgen.",
+"Bereitstellung bedeutet grundsätzlich Einsatzende.",
+"Bei Bereitstellung müssen alle Einsatzkräfte das Fahrzeug verlassen und nach Hause gehen.",
+"Bereitstellung bedeutet, dass keinerlei Material vorbereitet werden darf."],
+
+["fwdv3","Wasserentnahmestelle",
+"Die Wahl der Wasserentnahmestelle richtet sich nach Einsatzlage und verfügbarer Löschwasserversorgung.",
+"Es darf ausschließlich aus offenen Gewässern Wasser entnommen werden.",
+"Hydranten dürfen von der Feuerwehr grundsätzlich nicht genutzt werden.",
+"Die Wasserentnahmestelle wird ausschließlich nach Fahrzeugfarbe gewählt."],
+
+["fwdv3","Verteiler",
+"Der Verteiler dient zur Aufteilung einer Schlauchleitung auf mehrere Abgänge.",
+"Der Verteiler erhöht automatisch den Pumpendruck ohne Wasserfluss.",
+"Der Verteiler dient ausschließlich als Funkgerätablage.",
+"Der Verteiler ersetzt die Feuerlöschkreiselpumpe."],
+
+["fwdv3","Rückmeldung",
+"Wesentliche Lageänderungen und erledigte Aufträge sollen dem Einheitsführer zurückgemeldet werden.",
+"Rückmeldungen sind im Einsatz grundsätzlich verboten.",
+"Nur der Maschinist darf Rückmeldungen geben.",
+"Erledigte Aufträge werden niemals gemeldet."],
+
+/* ==================== ATEMSCHUTZ 12 ==================== */
+
+["atem","Atemschutzüberwachung",
+"Die Atemschutzüberwachung erfasst und überwacht eingesetzte Atemschutztrupps.",
+"Sie dient ausschließlich der Fahrzeugbetankung.",
+"Sie ersetzt die Einsatzleitung.",
+"Sie wird nur bei Übungen durchgeführt."],
+
+["atem","Sicherheitstrupp",
+"Für Atemschutzeinsätze ist entsprechend den Vorgaben ein Sicherheitstrupp bereitzustellen.",
+"Ein Sicherheitstrupp ist nur für die Versorgung mit Getränken zuständig.",
+"Ein Sicherheitstrupp darf niemals Atemschutz tragen.",
+"Ein Sicherheitstrupp wird ausschließlich bei Vegetationsbränden eingesetzt."],
+
+["atem","Einsatzkurzprüfung",
+"Vor dem Atemschutzeinsatz wird die Einsatzbereitschaft des Atemschutzgeräts überprüft.",
+"Eine Einsatzkurzprüfung ist grundsätzlich nach dem Einsatz verboten.",
+"Sie prüft ausschließlich den Reifenluftdruck des Fahrzeugs.",
+"Sie wird nur vom Einsatzleiter ohne Gerät durchgeführt."],
+
+["atem","Truppweise Vorgehen",
+"Unter Atemschutz gehen Einsatzkräfte grundsätzlich truppweise vor.",
+"Atemschutzgeräteträger arbeiten grundsätzlich einzeln.",
+"Der Trupp darf sich ohne Grund dauerhaft trennen.",
+"Nur eine Person eines Atemschutztrupps trägt ein Atemschutzgerät."],
+
+["atem","Rückwegsicherung",
+"Der Atemschutztrupp muss seinen Rückweg und den Luftvorrat berücksichtigen.",
+"Der gesamte Luftvorrat darf grundsätzlich für den Hinweg verbraucht werden.",
+"Der Rückweg spielt bei Atemschutz keine Rolle.",
+"Der Restdruck wird grundsätzlich nicht beachtet."],
+
+["atem","Notfallmeldung",
+"Ein Atemschutznotfall muss unverzüglich eindeutig gemeldet werden.",
+"Ein Atemschutznotfall wird erst nach Einsatzende gemeldet.",
+"Notfallmeldungen sind im Funkverkehr grundsätzlich verboten.",
+"Bei einem Notfall muss zuerst das Fahrzeug gereinigt werden."],
+
+["atem","Atemanschluss",
+"Der Atemanschluss muss dicht sitzen und für den Geräteträger geeignet sein.",
+"Eine undichte Maske verbessert die Luftversorgung.",
+"Der Atemanschluss darf grundsätzlich nur locker aufliegen.",
+"Ein Dichtsitz ist nur bei Übungen erforderlich."],
+
+["atem","Voraussetzungen",
+"Atemschutzgeräteträger müssen die geforderten gesundheitlichen und fachlichen Voraussetzungen erfüllen.",
+"Jede Person darf ohne Ausbildung Atemschutz tragen.",
+"Gesundheitliche Voraussetzungen sind grundsätzlich bedeutungslos.",
+"Eine Atemschutzausbildung ist nur für Führungskräfte erforderlich."],
+
+["atem","Brandrauch",
+"Brandrauch kann hochgiftig sein und erfordert geeigneten Atemschutz.",
+"Brandrauch ist grundsätzlich ungefährlich.",
+"Brandrauch besteht ausschließlich aus Wasserdampf.",
+"Brandrauch darf zur Orientierung tief eingeatmet werden."],
+
+["atem","Kommunikation",
+"Atemschutztrupps müssen eine geeignete Verbindung beziehungsweise Kommunikation sicherstellen.",
+"Kommunikation ist unter Atemschutz grundsätzlich unerwünscht.",
+"Ein Atemschutztrupp darf Lageänderungen nicht melden.",
+"Kommunikation ist ausschließlich über private Mobiltelefone zulässig."],
+
+["atem","Wärmebelastung",
+"Atemschutz und Schutzkleidung können zu hoher körperlicher Wärmebelastung führen.",
+"Unter Atemschutz sinkt die körperliche Belastung grundsätzlich auf null.",
+"Wärmebelastung tritt ausschließlich im Winter auf.",
+"Schutzkleidung verhindert jede Erwärmung des Körpers."],
+
+["atem","Dekontamination Atemschutz",
+"Nach Kontamination sind Atemschutzgeräte und Ausrüstung entsprechend den Vorgaben aufzubereiten.",
+"Kontaminierte Atemschutzgeräte werden ohne Reinigung wieder eingesetzt.",
+"Kontamination ist bei Atemschutzgeräten grundsätzlich unmöglich.",
+"Geräte werden nach Kontamination ausschließlich mit Druckluft abgeblasen."],
+
+/* ==================== ABC 12 ==================== */
+
+["abc","GAMS Gefahr erkennen",
+"Der erste Schritt der GAMS-Regel lautet Gefahr erkennen.",
+"Der erste Schritt lautet Geräte reinigen.",
+"Der erste Schritt lautet Gebäude streichen.",
+"Der erste Schritt lautet Mannschaft austauschen."],
+
+["abc","GAMS Absperren",
+"Das A der GAMS-Regel steht für Absperren.",
+"Das A steht für Anlassen.",
+"Das A steht für Aufräumen.",
+"Das A steht für Abschalten des Funkgerätes."],
+
+["abc","GAMS Menschenrettung",
+"Das M der GAMS-Regel steht für Menschenrettung durchführen.",
+"Das M steht für Maschinist ablösen.",
+"Das M steht für Material zählen.",
+"Das M steht für Mannschaft verpflegen."],
+
+["abc","GAMS Spezialkräfte",
+"Das S der GAMS-Regel steht für Spezialkräfte anfordern.",
+"Das S steht für Schläuche trocknen.",
+"Das S steht für Sirene ausschalten.",
+"Das S steht für Strahlrohre verkaufen."],
+
+["abc","Gefahrstoffkennzeichnung",
+"Kennzeichnungen und Warntafeln können wichtige Hinweise auf Gefahrstoffe liefern.",
+"Gefahrstoffkennzeichnungen sind für Einsatzkräfte bedeutungslos.",
+"Warntafeln zeigen ausschließlich Fahrzeuggewicht an.",
+"Gefahrstoffkennzeichnung gibt es nur in Gebäuden."],
+
+["abc","Abstand",
+"Bei unbekannten Gefahrstoffen ist zunächst ein angemessener Sicherheitsabstand einzuhalten.",
+"Bei unbekannten Stoffen soll man sich möglichst schnell annähern.",
+"Sicherheitsabstände sind bei Gefahrstoffen grundsätzlich verboten.",
+"Abstand ist nur bei Wassergefahren erforderlich."],
+
+["abc","Windrichtung",
+"Bei Gefahrstofffreisetzungen ist die Windrichtung bei der Einsatzplanung zu berücksichtigen.",
+"Die Windrichtung ist bei Gefahrstoffen grundsätzlich unwichtig.",
+"Einsatzkräfte sollen sich grundsätzlich in die Schadstoffwolke stellen.",
+"Windrichtung wird ausschließlich bei Schneefall beachtet."],
+
+["abc","Dekontamination",
+"Dekontamination soll eine Verschleppung gefährlicher Stoffe verhindern oder vermindern.",
+"Dekontamination verteilt Gefahrstoffe gezielt weiter.",
+"Dekontamination ist nur für Fahrzeuge erlaubt.",
+"Dekontamination bedeutet ausschließlich Funkgeräte laden."],
+
+["abc","Kontaminationsverschleppung",
+"Kontaminierte und saubere Bereiche sollen konsequent getrennt werden.",
+"Kontaminierte Kleidung soll grundsätzlich im Aufenthaltsraum abgelegt werden.",
+"Eine Trennung von Bereichen erhöht die Kontamination.",
+"Kontaminierte Ausrüstung wird absichtlich mit sauberer Ausrüstung vermischt."],
+
+["abc","CSA",
+"Chemikalienschutzanzüge dienen dem Schutz vor bestimmten gefährlichen Stoffen und Kontamination.",
+"CSA bedeutet grundsätzlich ein Atemschutzgerät ohne Schutzanzug.",
+"Ein CSA schützt uneingeschränkt gegen jede denkbare Gefahr.",
+"CSA werden ausschließlich bei Verkehrsunfällen ohne Gefahrstoffe eingesetzt."],
+
+["abc","Stoffidentifikation",
+"Unbekannte Stoffe sollen nicht unnötig berührt, gerochen oder probiert werden.",
+"Unbekannte Stoffe werden zur Identifikation grundsätzlich probiert.",
+"Geruchstests ohne Atemschutz sind die sicherste Identifikation.",
+"Unbekannte Flüssigkeiten werden mit bloßer Hand geprüft."],
+
+["abc","ABC-Einsatz",
+"Bei ABC-Lagen sind Gefahr, Kontamination und geeignete Schutzmaßnahmen besonders zu berücksichtigen.",
+"ABC-Einsätze unterscheiden sich sicherheitstechnisch nicht von Routinearbeiten.",
+"Schutzmaßnahmen sind bei ABC-Lagen grundsätzlich unnötig.",
+"ABC-Gefahren betreffen ausschließlich radioaktive Stoffe."],
+
+/* ==================== FUNK 12 ==================== */
+
+["funk","Sprechdisziplin",
+"Funkmeldungen sollen kurz, eindeutig und verständlich sein.",
+"Funkmeldungen sollen möglichst lang und unstrukturiert sein.",
+"Mehrere Teilnehmer sollen möglichst gleichzeitig sprechen.",
+"Im Einsatzfunk dürfen nur private Gespräche geführt werden."],
+
+["funk","Funkrufname",
+"Funkrufnamen dienen der eindeutigen Zuordnung von Teilnehmern oder Einsatzmitteln.",
+"Funkrufnamen dürfen grundsätzlich täglich frei erfunden werden.",
+"Funkrufnamen ersetzen jede Einsatzdokumentation.",
+"Funkrufnamen dürfen ausschließlich aus Zahlen bestehen."],
+
+["funk","Notruf Funk",
+"Eine dringende Notfallmeldung muss eindeutig als solche erkennbar sein.",
+"Notfallmeldungen dürfen grundsätzlich nicht über Funk erfolgen.",
+"Bei Notfällen muss zunächst zehn Minuten gewartet werden.",
+"Notfallmeldungen werden ausschließlich schriftlich verschickt."],
+
+["funk","Digitalfunk BOS",
+"Der Digitalfunk BOS dient der Kommunikation von Behörden und Organisationen mit Sicherheitsaufgaben.",
+"Digitalfunk BOS ist ausschließlich ein privates Mobilfunknetz für Bürger.",
+"Digitalfunk BOS darf nur für Musikübertragung genutzt werden.",
+"Digitalfunk BOS ersetzt grundsätzlich jede persönliche Kommunikation."],
+
+["funk","Gruppenkommunikation",
+"Eine Sprechgruppe ermöglicht Kommunikation innerhalb einer zugeordneten Teilnehmergruppe.",
+"Eine Sprechgruppe besteht ausschließlich aus einem einzelnen Funkgerät.",
+"Sprechgruppen dürfen bei Einsätzen niemals gewechselt werden.",
+"Sprechgruppen sind ausschließlich Telefonnummern."],
+
+["funk","Funkgerät Bedienung",
+"Vor dem Einsatz sollte das Funkgerät funktionsbereit und richtig eingestellt sein.",
+"Funkgeräte sollen grundsätzlich mit leerem Akku in den Einsatz gehen.",
+"Die Lautstärke muss immer vollständig ausgeschaltet sein.",
+"Eine Funktionskontrolle ist grundsätzlich verboten."],
+
+["funk","Standortmeldung",
+"Standort- und Lagemeldungen sollen möglichst eindeutig sein.",
+"Standorte werden möglichst ungenau beschrieben.",
+"Standortmeldungen dürfen grundsätzlich keine Ortsangaben enthalten.",
+"Standortmeldungen sind ausschließlich nach Einsatzende erlaubt."],
+
+["funk","Verständigung",
+"Nicht verstandene Funkmeldungen sollten nachgefragt beziehungsweise wiederholt werden.",
+"Unverständliche Meldungen müssen grundsätzlich geraten werden.",
+"Rückfragen sind im Funkverkehr verboten.",
+"Unverständliche Meldungen gelten automatisch als erledigt."],
+
+["funk","Funkverkehr",
+"Der Funkverkehr ist auf das einsatznotwendige Maß zu beschränken.",
+"Im Einsatz sollen möglichst lange Privatgespräche geführt werden.",
+"Jede Einsatzkraft soll dauerhaft die Sprechtaste gedrückt halten.",
+"Der Funkkanal darf absichtlich blockiert werden."],
+
+["funk","Geräteverlust",
+"Der Verlust eines BOS-Funkgerätes ist nach den geltenden Vorgaben zu melden.",
+"Verlorene Funkgeräte werden grundsätzlich nicht gemeldet.",
+"Ein verlorenes Funkgerät darf durch ein privates Handy ersetzt und vergessen werden.",
+"Geräteverluste werden ausschließlich sozialen Medien gemeldet."],
+
+["funk","Sprechwunsch",
+"Vor dem Sprechen ist darauf zu achten, den laufenden Funkverkehr nicht unnötig zu unterbrechen.",
+"Man soll andere Teilnehmer grundsätzlich mitten im Wort unterbrechen.",
+"Die Sprechtaste wird vorsorglich während des gesamten Einsatzes gehalten.",
+"Funkverkehr darf nur im Fahrzeug stattfinden."],
+
+["funk","Datenschutz Funk",
+"Über Funk sollen nur die für den Einsatz erforderlichen Informationen übertragen werden.",
+"Persönliche Daten sollen grundsätzlich unbegrenzt und unnötig verbreitet werden.",
+"Funkverkehr ist immer öffentlich und daher ohne Regeln.",
+"Datenschutz spielt bei BOS-Kommunikation grundsätzlich keine Rolle."],
+
+/* ==================== MASCHINIST 12 ==================== */
+
+["masch","Feuerlöschkreiselpumpe",
+"Der Maschinist überwacht beim Pumpenbetrieb unter anderem Förderstrom und Pumpendruck.",
+"Der Pumpendruck wird grundsätzlich nie beobachtet.",
+"Die Pumpe wird ausschließlich vom Angriffstrupp bedient.",
+"Eine Feuerlöschkreiselpumpe kann kein Wasser fördern."],
+
+["masch","Wasserentnahme Hydrant",
+"Bei der Wasserentnahme aus Hydranten ist auf eine sichere und geeignete Wasserversorgung zu achten.",
+"Hydranten dürfen grundsätzlich nie von Feuerwehren genutzt werden.",
+"Hydranten liefern ausschließlich Schaummittel.",
+"Hydranten werden mit Atemschutzgeräten geöffnet."],
+
+["masch","Offenes Gewässer",
+"Bei Wasserentnahme aus offenem Gewässer kann eine Saugleitung erforderlich sein.",
+"Aus offenen Gewässern wird grundsätzlich nur mit Druckschläuchen angesaugt.",
+"Eine Saugleitung darf niemals dicht sein.",
+"Eine Wasserentnahme aus offenem Gewässer ist grundsätzlich verboten."],
+
+["masch","Entlüftung",
+"Beim Saugbetrieb muss die Saugleitung ausreichend luftdicht sein.",
+"Große Undichtigkeiten verbessern die Saugleistung.",
+"Entlüftung ist ausschließlich bei Hydrantenbetrieb erforderlich.",
+"Luftdichtigkeit spielt beim Saugen keine Rolle."],
+
+["masch","Kavitation",
+"Ungeeignete Betriebsbedingungen können Kavitation und Schäden an Pumpen begünstigen.",
+"Kavitation verbessert grundsätzlich die Pumpenleistung.",
+"Kavitation kann ausschließlich an Funkgeräten auftreten.",
+"Kavitation hat keinerlei Auswirkungen auf Pumpen."],
+
+["masch","Stromerzeuger",
+"Stromerzeuger müssen sicher aufgestellt und entsprechend den Vorgaben betrieben werden.",
+"Stromerzeuger werden grundsätzlich in geschlossenen Räumen ohne Abgasführung betrieben.",
+"Stromerzeuger dürfen nur im Wasser stehend betrieben werden.",
+"Abgase eines Stromerzeugers sind grundsätzlich ungefährlich."],
+
+["masch","Abgase",
+"Verbrennungsmotoren erzeugen gefährliche Abgase und benötigen ausreichende Belüftung beziehungsweise sichere Abgasführung.",
+"Motorabgase können bedenkenlos in geschlossenen Räumen gesammelt werden.",
+"Abgase bestehen ausschließlich aus Sauerstoff.",
+"Abgasgefahren existieren nur bei Elektrofahrzeugen."],
+
+["masch","Fahrzeugaufstellung",
+"Das Feuerwehrfahrzeug ist möglichst so aufzustellen, dass Einsatz und Sicherheit unterstützt werden.",
+"Das Fahrzeug soll grundsätzlich mitten in unmittelbaren Gefahrenbereichen stehen.",
+"Fahrzeugaufstellung hat keinerlei Einfluss auf den Einsatz.",
+"Das Fahrzeug muss grundsätzlich den Rettungsweg blockieren."],
+
+["masch","Pumpendruck",
+"Der erforderliche Ausgangsdruck richtet sich unter anderem nach Leitung, Höhenunterschied und Strahlrohr.",
+"Der Pumpendruck ist unabhängig von jeder Einsatzsituation immer gleich.",
+"Mehr Schlauchlänge senkt grundsätzlich alle Druckverluste.",
+"Höhenunterschiede beeinflussen den Druck nie."],
+
+["masch","Wasserförderung lange Wegstrecke",
+"Bei längeren Förderstrecken müssen Druckverluste und gegebenenfalls Verstärkerpumpen berücksichtigt werden.",
+"Lange Schlauchleitungen besitzen grundsätzlich keine Druckverluste.",
+"Verstärkerpumpen sind bei Wasserförderung verboten.",
+"Die Förderstrecke wird ausschließlich nach Fahrzeugfarbe berechnet."],
+
+["masch","Maschinistenaufgaben",
+"Der Maschinist sorgt im Rahmen seines Auftrags auch für die Betriebsbereitschaft des Fahrzeugs und der Aggregate.",
+"Der Maschinist darf keine Aggregate bedienen.",
+"Der Maschinist verlässt grundsätzlich sofort die Einsatzstelle.",
+"Der Maschinist übernimmt immer automatisch die medizinische Versorgung."],
+
+["masch","Ansaugvorgang",
+"Beim Ansaugen aus offenem Gewässer muss die Pumpe beziehungsweise Saugleitung entlüftet werden können.",
+"Zum Ansaugen wird absichtlich zusätzliche Luft in die Saugleitung eingebracht.",
+"Ansaugen funktioniert grundsätzlich nur mit offenem Verteiler ohne Wasser.",
+"Beim Ansaugen spielt die Saugleitung keine Rolle."],
+
+/* ==================== TECHNISCHE HILFE 12 ==================== */
+
+["th","Unfallstelle absichern",
+"Vor technischen Rettungsarbeiten ist die Einsatzstelle gegen weitere Gefahren abzusichern.",
+"Absicherung erfolgt grundsätzlich erst nach Abschluss der Rettung.",
+"Verkehrsgefahren werden bei TH-Einsätzen ignoriert.",
+"Absicherung ist ausschließlich Aufgabe von Passanten."],
+
+["th","Fahrzeug stabilisieren",
+"Ein verunfalltes Fahrzeug soll vor Rettungsarbeiten gegen unkontrollierte Bewegung gesichert werden.",
+"Fahrzeuge werden vor dem Schneiden absichtlich instabil gemacht.",
+"Unterbauen erhöht grundsätzlich die Gefahr.",
+"Ein Fahrzeug muss bei Rettungsarbeiten frei rollen können."],
+
+["th","Patientenschutz",
+"Bei technischen Rettungsmaßnahmen ist der Patient vor Werkzeugen, Splittern und weiteren Gefahren zu schützen.",
+"Patientenschutz ist bei technischer Rettung grundsätzlich unnötig.",
+"Glassplitter verbessern die Rettung.",
+"Werkzeuge dürfen ohne Abstimmung über dem Patienten abgelegt werden."],
+
+["th","Glasmanagement",
+"Glas soll kontrolliert und mit geeigneten Schutzmaßnahmen bearbeitet werden.",
+"Fahrzeugscheiben werden grundsätzlich ohne Patientenschutz zerstört.",
+"Glasmanagement ist bei Verkehrsunfällen verboten.",
+"Glassplitter werden absichtlich in den Patientenraum gedrückt."],
+
+["th","Hydraulischer Spreizer",
+"Ein hydraulischer Spreizer kann unter anderem zum Spreizen, Drücken und je nach Gerät zum Ziehen eingesetzt werden.",
+"Ein Spreizer dient ausschließlich als Feuerlöscher.",
+"Ein Spreizer darf nur zum Funken erzeugen benutzt werden.",
+"Ein hydraulischer Spreizer arbeitet grundsätzlich ohne Energieversorgung."],
+
+["th","Hydraulische Schere",
+"Eine hydraulische Schere dient zum Trennen geeigneter Fahrzeug- beziehungsweise Konstruktionsteile.",
+"Eine Rettungsschere wird ausschließlich zum Löschen verwendet.",
+"Hydraulische Scheren dürfen nur Holzleitern schneiden.",
+"Eine hydraulische Schere wird als Funkantenne verwendet."],
+
+["th","Rettungszylinder",
+"Rettungszylinder können kontrolliert zum Drücken und Schaffen von Rettungsraum eingesetzt werden.",
+"Rettungszylinder dienen ausschließlich zum Reifenfüllen.",
+"Rettungszylinder dürfen nie abgestützt werden.",
+"Rettungszylinder sind ausschließlich medizinische Sauerstoffflaschen."],
+
+["th","Airbag-Gefahr",
+"Nicht ausgelöste Airbags und pyrotechnische Rückhaltesysteme müssen bei Rettungsarbeiten berücksichtigt werden.",
+"Nicht ausgelöste Airbags sind grundsätzlich ohne Risiko.",
+"Airbags werden zur Rettung absichtlich mit Werkzeugen durchbohrt.",
+"Airbags existieren nur in Feuerwehrfahrzeugen."],
+
+["th","Alternative Antriebe",
+"Bei Elektro- und Hybridfahrzeugen sind fahrzeugspezifische Gefahren und Rettungsinformationen zu beachten.",
+"Alternative Antriebe unterscheiden sich bei Rettungsarbeiten grundsätzlich nie.",
+"Hochvoltsysteme dürfen beliebig mit bloßen Händen zerlegt werden.",
+"Fahrzeugkennzeichnungen sind bei alternativen Antrieben bedeutungslos."],
+
+["th","Patientengerechte Rettung",
+"Die technische Rettung wird möglichst am medizinischen Zustand und der Lage des Patienten ausgerichtet.",
+"Jeder Unfall verlangt grundsätzlich dieselbe Rettungsmethode.",
+"Die medizinische Lage darf technische Entscheidungen nie beeinflussen.",
+"Patientengerechte Rettung bedeutet immer sofortige Dachabnahme."],
+
+["th","Zusammenarbeit Rettungsdienst",
+"Feuerwehr und Rettungsdienst stimmen technische und medizinische Maßnahmen miteinander ab.",
+"Feuerwehr und Rettungsdienst dürfen während der Rettung nicht miteinander sprechen.",
+"Technische Rettung erfolgt grundsätzlich ohne Rücksicht auf medizinische Maßnahmen.",
+"Der Rettungsdienst darf sich nie an einer Unfallstelle aufhalten."],
+
+["th","Unterbauen",
+"Unterbaumaterial soll standsicher und lastgerecht eingesetzt werden.",
+"Unterbaumaterial wird grundsätzlich auf instabilen losen Gegenständen gestapelt.",
+"Unterbauen bedeutet, ein Fahrzeug absichtlich höher kippen zu lassen.",
+"Unterbaumaterial darf nur dekorativ eingesetzt werden."],
+
+/* ==================== LEITERN 12 ==================== */
+
+["leiter","Steckleiter",
+"Die Steckleiter ist eine tragbare Feuerwehrleiter aus mehreren Leiterteilen.",
+"Die Steckleiter ist grundsätzlich fest an jedem Gebäude montiert.",
+"Eine Steckleiter besteht ausschließlich aus einem einzigen 20-Meter-Teil.",
+"Steckleitern dürfen nur als Schlauch verwendet werden."],
+
+["leiter","Schiebleiter",
+"Die Schiebleiter ist eine tragbare Leiter mit gegeneinander verschiebbaren Leiterteilen.",
+"Eine Schiebleiter besitzt grundsätzlich keine Sprossen.",
+"Schiebleitern dürfen nur waagerecht eingesetzt werden.",
+"Eine Schiebleiter ist ein wasserführendes Gerät."],
+
+["leiter","Aufstellwinkel",
+"Eine Leiter muss mit einem geeigneten und sicheren Aufstellwinkel aufgestellt werden.",
+"Je flacher eine Leiter liegt, desto sicherer ist sie grundsätzlich.",
+"Der Aufstellwinkel spielt bei Leitern keine Rolle.",
+"Leitern müssen grundsätzlich senkrecht ohne Abstand zur Wand stehen."],
+
+["leiter","Leiterfuß",
+"Der Leiterfuß muss möglichst standsicher auf tragfähigem Untergrund stehen.",
+"Leiterfüße werden grundsätzlich auf lose Kugeln gestellt.",
+"Der Untergrund spielt für die Standsicherheit keine Rolle.",
+"Leitern dürfen ausschließlich auf Eis aufgestellt werden."],
+
+["leiter","Sicherung Leiter",
+"Eine Leiter muss entsprechend Lage und Vorschrift gegen Wegrutschen beziehungsweise Umstürzen gesichert werden.",
+"Leitern dürfen grundsätzlich nicht gesichert werden.",
+"Das Sichern einer Leiter erhöht immer die Gefahr.",
+"Leitersicherung ist nur bei Lagerung erforderlich."],
+
+["leiter","Besteigen",
+"Beim Besteigen einer Leiter ist auf sicheren Halt und geeignete Arbeitsweise zu achten.",
+"Leitern werden grundsätzlich freihändig springend bestiegen.",
+"Beim Besteigen soll möglichst keine Sprosse berührt werden.",
+"Leitern dürfen nur rückwärts mit geschlossenen Augen bestiegen werden."],
+
+["leiter","Anleiterbereitschaft",
+"Leitern können zur Sicherung eines Rückzugs- beziehungsweise Rettungsweges bereitgestellt werden.",
+"Leitern dürfen niemals als zweiter Rettungsweg vorgesehen werden.",
+"Anleiterbereitschaft bedeutet ausschließlich Lagerung im Gerätehaus.",
+"Eine bereitgestellte Leiter muss grundsätzlich sofort wieder abgebaut werden."],
+
+["leiter","Elektrische Gefahren",
+"Bei Leitern sind ausreichende Abstände zu elektrischen Anlagen zu beachten.",
+"Elektrische Leitungen dürfen grundsätzlich mit Leitern berührt werden.",
+"Stromgefahren existieren bei Leitern nicht.",
+"Metallleitern isolieren grundsätzlich gegen jede Spannung."],
+
+["leiter","Personenrettung",
+"Bei der Rettung über Leitern müssen Person, Leiter und Einsatzkräfte gesichert beziehungsweise kontrolliert werden.",
+"Zu rettende Personen sollen grundsätzlich ohne Betreuung springen.",
+"Personenrettung über Leitern ist immer verboten.",
+"Die Leiter darf während der Rettung absichtlich bewegt werden."],
+
+["leiter","Leiterprüfung",
+"Beschädigte Leitern dürfen nicht ohne entsprechende Beurteilung beziehungsweise Prüfung weiterverwendet werden.",
+"Risse und Verformungen an Leitern sind grundsätzlich bedeutungslos.",
+"Leitern müssen niemals geprüft werden.",
+"Eine beschädigte Leiter wird durch Klebeband automatisch wieder einsatzbereit."],
+
+["leiter","Aufstiegshilfe",
+"Tragbare Leitern können als Angriffs- und Rettungsweg eingesetzt werden, sofern dies sicher möglich ist.",
+"Feuerwehrleitern dürfen ausschließlich zum Sport genutzt werden.",
+"Leitern dürfen nie Gebäude berühren.",
+"Leitern ersetzen grundsätzlich jeden Atemschutz."],
+
+["leiter","Leitertransport",
+"Beim Transport tragbarer Leitern ist auf Hindernisse und andere Personen zu achten.",
+"Leitern werden grundsätzlich ohne Blick in Laufrichtung getragen.",
+"Hindernisse müssen beim Leitertransport ignoriert werden.",
+"Leitertransport ist nur mit einem Kran zulässig."],
+
+/* ==================== LÖSCHLEHRE 12 ==================== */
+
+["loesch","Verbrennung",
+"Für eine Verbrennung sind unter anderem brennbarer Stoff und Sauerstoff sowie geeignete Bedingungen erforderlich.",
+"Feuer benötigt grundsätzlich keinen brennbaren Stoff.",
+"Sauerstoff verhindert grundsätzlich jede Verbrennung.",
+"Verbrennung ist ausschließlich bei Temperaturen unter null möglich."],
+
+["loesch","Löschwirkung Wasser",
+"Die wichtigste Löschwirkung von Wasser ist die Kühlung.",
+"Wasser löscht hauptsächlich durch Erhöhung der Temperatur.",
+"Wasser verstärkt grundsätzlich jede Verbrennung.",
+"Wasser besitzt ausschließlich eine mechanische Schneidwirkung."],
+
+["loesch","Brandklasse A",
+"Brandklasse A umfasst Brände fester Stoffe, hauptsächlich organischer Natur, die normalerweise unter Glutbildung verbrennen.",
+"Brandklasse A bezeichnet ausschließlich Metallbrände.",
+"Brandklasse A bezeichnet ausschließlich Fettbrände.",
+"Brandklasse A bezeichnet ausschließlich Gasbrände."],
+
+["loesch","Brandklasse B",
+"Brandklasse B umfasst Brände flüssiger oder flüssig werdender Stoffe.",
+"Brandklasse B umfasst ausschließlich feste Metalle.",
+"Brandklasse B bezeichnet nur elektrische Geräte.",
+"Brandklasse B bedeutet ausschließlich Waldbrand."],
+
+["loesch","Brandklasse C",
+"Brandklasse C umfasst Brände von Gasen.",
+"Brandklasse C bezeichnet ausschließlich Speiseöle.",
+"Brandklasse C bezeichnet nur feste Stoffe.",
+"Brandklasse C bedeutet ausschließlich Metallbrand."],
+
+["loesch","Brandklasse D",
+"Brandklasse D umfasst Brände von Metallen.",
+"Brandklasse D umfasst ausschließlich Papier.",
+"Brandklasse D umfasst nur Gase.",
+"Brandklasse D bezeichnet ausschließlich Speisefette."],
+
+["loesch","Brandklasse F",
+"Brandklasse F umfasst Brände von Speiseölen und Speisefetten in Frittier- und Fettbackgeräten.",
+"Brandklasse F bezeichnet ausschließlich Holz.",
+"Brandklasse F bezeichnet ausschließlich Flüssiggas.",
+"Brandklasse F umfasst nur Metalle."],
+
+["loesch","Fettbrand",
+"Bei brennendem Speiseöl kann Wasser zu einer gefährlichen schlagartigen Brandausbreitung führen.",
+"Speiseölbrände werden grundsätzlich mit großen Mengen Wasser gelöscht.",
+"Wasser ist bei jedem Fettbrand ohne Einschränkung das bevorzugte Löschmittel.",
+"Ein Fettbrand kann durch Einblasen von Sauerstoff sicher gelöscht werden."],
+
+["loesch","Schaum",
+"Löschschaum kann unter anderem eine trennende beziehungsweise erstickende Wirkung entfalten.",
+"Schaum erhöht grundsätzlich die Sauerstoffzufuhr zum Brand.",
+"Schaum kann ausschließlich Metall schneiden.",
+"Löschschaum besteht grundsätzlich nur aus Druckluft ohne Flüssigkeit."],
+
+["loesch","Pulver",
+"Löschpulver kann eine schnelle Löschwirkung besitzen, verursacht jedoch erhebliche Verschmutzung.",
+"Pulverlöscher sind grundsätzlich völlig rückstandsfrei.",
+"Löschpulver ist ausschließlich Trinkwasser.",
+"Pulver kann nur außerhalb der Atmosphäre wirken."],
+
+["loesch","CO2",
+"Kohlendioxid löscht insbesondere durch Verdrängung beziehungsweise Verringerung des Sauerstoffanteils im unmittelbaren Brandbereich.",
+"CO2 erhöht den Sauerstoffanteil gezielt.",
+"CO2 ist ausschließlich ein Kühlwasser.",
+"CO2 kann in jeder Konzentration bedenkenlos eingeatmet werden."],
+
+["loesch","Wasserdampf",
+"Verdampfendes Wasser nimmt viel Wärme auf und vergrößert sein Volumen stark.",
+"Wasser verändert beim Verdampfen sein Volumen grundsätzlich nicht.",
+"Verdampfung erhöht grundsätzlich die Temperatur des Brandguts.",
+"Wasserdampf entsteht ausschließlich unter null Grad."],
+
+/* ==================== BHKG NRW 12 ==================== */
+
+["bhkg","BHKG Zweck",
+"Das BHKG NRW regelt insbesondere Brandschutz, Hilfeleistung und Katastrophenschutz in Nordrhein-Westfalen.",
+"Das BHKG NRW regelt ausschließlich Führerscheine.",
+"Das BHKG NRW ist ein Gesetz über Einkommensteuer.",
+"Das BHKG NRW gilt ausschließlich für Sportvereine."],
+
+["bhkg","Gemeinden",
+"Gemeinden haben im Brandschutz und in der Hilfeleistung gesetzlich bestimmte Aufgaben.",
+"Gemeinden haben grundsätzlich keinerlei Aufgaben im Brandschutz.",
+"Brandschutz ist ausschließlich Aufgabe privater Unternehmen.",
+"Gemeinden dürfen keine Feuerwehren unterhalten."],
+
+["bhkg","Kreise",
+"Auch Kreise haben nach dem BHKG eigene Aufgaben im Brand- und Katastrophenschutz.",
+"Kreise sind vom Katastrophenschutz grundsätzlich ausgeschlossen.",
+"Kreise dürfen keine überörtliche Unterstützung organisieren.",
+"Kreise sind ausschließlich für Straßenreinigung zuständig."],
+
+["bhkg","Land NRW",
+"Das Land Nordrhein-Westfalen nimmt ebenfalls Aufgaben nach dem BHKG wahr.",
+"Das Land NRW besitzt keinerlei Zuständigkeit im Katastrophenschutz.",
+"Das BHKG gilt ausschließlich außerhalb Nordrhein-Westfalens.",
+"Das Land darf Feuerwehren keine Unterstützung ermöglichen."],
+
+["bhkg","Öffentliche Feuerwehr",
+"Die öffentliche Feuerwehr erfüllt die ihr gesetzlich übertragenen Aufgaben der Gefahrenabwehr.",
+"Öffentliche Feuerwehren dürfen nur Vereinsveranstaltungen durchführen.",
+"Öffentliche Feuerwehren haben keinerlei Aufgaben bei Bränden.",
+"Öffentliche Feuerwehren dürfen keine technische Hilfe leisten."],
+
+["bhkg","Hilfeleistung",
+"Hilfeleistung umfasst unter anderem Gefahrenlagen, bei denen Menschen, Tiere, Sachwerte oder Umwelt geschützt werden müssen.",
+"Hilfeleistung bedeutet ausschließlich das Löschen von Papierkörben.",
+"Technische Hilfe ist keine Aufgabe einer Feuerwehr.",
+"Hilfeleistung ist ausschließlich auf medizinische Behandlung beschränkt."],
+
+["bhkg","Katastrophenschutz",
+"Katastrophenschutz dient der Abwehr beziehungsweise Bewältigung außergewöhnlicher Schadenslagen mit dafür vorgesehenen Strukturen.",
+"Katastrophenschutz bedeutet ausschließlich Brandschutzerziehung im Kindergarten.",
+"Katastrophenschutz ist nur eine Aufgabe privater Versicherungen.",
+"Katastrophenschutz darf nie mit Feuerwehren zusammenarbeiten."],
+
+["bhkg","Einsatzleitung",
+"Eine geordnete Einsatzleitung koordiniert Maßnahmen und eingesetzte Kräfte.",
+"Einsatzleitung bedeutet, dass jeder unabhängig ohne Abstimmung handelt.",
+"Eine Einsatzleitung ist bei größeren Lagen grundsätzlich verboten.",
+"Einsatzleitung wird ausschließlich durch Medienvertreter wahrgenommen."],
+
+["bhkg","Überörtliche Hilfe",
+"Bei Bedarf können Kräfte im Rahmen überörtlicher Hilfe zusammenwirken.",
+"Überörtliche Hilfe ist im Feuerwehrwesen grundsätzlich verboten.",
+"Feuerwehren dürfen Gemeindegrenzen niemals überschreiten.",
+"Überörtliche Hilfe bedeutet ausschließlich Materialverkauf."],
+
+["bhkg","Vorbeugender Brandschutz",
+"Vorbeugender Brandschutz soll dazu beitragen, Brandentstehung und Brandfolgen zu vermeiden beziehungsweise zu begrenzen.",
+"Vorbeugender Brandschutz beginnt ausschließlich nach einem Brand.",
+"Vorbeugender Brandschutz verbietet grundsätzlich Fluchtwege.",
+"Vorbeugender Brandschutz dient ausschließlich der Fahrzeugpflege."],
+
+["bhkg","Warnung Bevölkerung",
+"Bei Gefahrenlagen kann die Warnung und Information der Bevölkerung eine wichtige Maßnahme sein.",
+"Die Bevölkerung darf bei Gefahren grundsätzlich nicht informiert werden.",
+"Warnungen sind ausschließlich nach Ende einer Katastrophe zulässig.",
+"Warnmaßnahmen betreffen nur Feuerwehrangehörige."],
+
+["bhkg","Eigenverantwortung",
+"Gefahrenabwehr durch Feuerwehr und Behörden entbindet Personen nicht automatisch von jeder eigenen Vorsorge und Mitwirkung.",
+"Jede Eigenvorsorge der Bevölkerung ist grundsätzlich verboten.",
+"Nur Feuerwehren dürfen Rauchwarnmelder besitzen.",
+"Privatpersonen dürfen niemals Gefahren melden."],
+
+/* ==================== DGUV 12 ==================== */
+
+["dguv","DGUV Vorschrift 49",
+"Die DGUV Vorschrift 49 enthält Unfallverhütungsvorschriften für Feuerwehren.",
+"Die DGUV Vorschrift 49 ist eine Straßenverkehrsordnung.",
+"Die DGUV Vorschrift 49 regelt ausschließlich Steuern.",
+"Die DGUV Vorschrift 49 ist eine Funkfrequenzliste."],
+
+["dguv","DGUV Regel 105-049",
+"Die DGUV Regel 105-049 konkretisiert Anforderungen zum sicheren Feuerwehrdienst.",
+"Die DGUV Regel 105-049 ist ausschließlich eine Bauordnung.",
+"Die DGUV Regel 105-049 ersetzt jede Feuerwehrausbildung.",
+"Die DGUV Regel 105-049 regelt nur private Gartenarbeit."],
+
+["dguv","Atemschutz DGUV",
+"Für die Benutzung von Atemschutz sind geeignete Geräte, Unterweisung und die erforderlichen Voraussetzungen wichtig.",
+"Atemschutz kann grundsätzlich ohne Ausbildung verwendet werden.",
+"Eine Dichtheit des Atemanschlusses ist unnötig.",
+"Atemschutzgeräte müssen grundsätzlich nicht gewartet werden."],
+
+["dguv","Sicheres Arbeiten",
+"Feuerwehrangehörige sollen Gefahren erkennen und geeignete Schutzmaßnahmen anwenden.",
+"Unfallverhütung bedeutet, Risiken bewusst zu ignorieren.",
+"Schutzmaßnahmen sind nur bei Übungen erlaubt.",
+"Gefahren dürfen ausschließlich nach einem Unfall beurteilt werden."],
+
+["dguv","PSA",
+"Persönliche Schutzausrüstung muss für die jeweilige Gefährdung geeignet sein.",
+"Eine einzige PSA schützt immer gegen jede denkbare Gefahr.",
+"PSA ist bei Feuerwehreinsätzen grundsätzlich verboten.",
+"Beschädigte PSA muss grundsätzlich weitergetragen werden."],
+
+["dguv","Beschädigte PSA",
+"Beschädigte beziehungsweise zweifelhafte PSA muss beurteilt und gegebenenfalls ausgesondert werden.",
+"Beschädigte PSA wird ohne Prüfung unbegrenzt weiterverwendet.",
+"Risse erhöhen grundsätzlich die Schutzwirkung.",
+"Verschmutzung verbessert den Schutz eines Helms."],
+
+["dguv","Kontamination",
+"Kontamination soll möglichst früh erkannt und eine Verschleppung verhindert werden.",
+"Kontamination wird absichtlich in Aufenthaltsbereiche getragen.",
+"Kontaminierte und saubere Bereiche müssen grundsätzlich vermischt werden.",
+"Ruß auf der Haut besitzt grundsätzlich eine Schutzwirkung."],
+
+["dguv","Unfallmeldung",
+"Unfälle und relevante Beinaheereignisse sollen entsprechend den geltenden Verfahren gemeldet beziehungsweise ausgewertet werden.",
+"Unfälle werden grundsätzlich verschwiegen.",
+"Beinaheunfälle dürfen niemals ausgewertet werden.",
+"Unfallmeldungen sind nur in sozialen Netzwerken zulässig."],
+
+["dguv","Unterweisung",
+"Regelmäßige Unterweisung trägt dazu bei, sichere Arbeitsweisen zu vermitteln und zu erhalten.",
+"Unterweisungen sind grundsätzlich nur einmal im Leben zulässig.",
+"Unterweisungen dürfen keine Gefahren behandeln.",
+"Unterweisung ersetzt grundsätzlich jede praktische Ausbildung."],
+
+["dguv","Fitness und Belastung",
+"Feuerwehrdienst kann erhebliche körperliche und psychische Belastungen verursachen.",
+"Feuerwehrdienst ist grundsätzlich körperlich belastungsfrei.",
+"Atemschutz senkt jede Belastung automatisch.",
+"Hitze hat auf Feuerwehrangehörige grundsätzlich keine Wirkung."],
+
+["dguv","Hygiene",
+"Nach belastenden Einsätzen gehören geeignete Hygiene- und Reinigungsmaßnahmen zum Gesundheitsschutz.",
+"Händewaschen ist nach Einsätzen grundsätzlich verboten.",
+"Essen mit rußverschmutzten Handschuhen ist empfehlenswert.",
+"Kontaminierte Kleidung soll im Privatfahrzeug offen transportiert werden."],
+
+["dguv","Fahrzeugbewegung",
+"Beim Bewegen von Feuerwehrfahrzeugen sind Personen im Gefahrenbereich besonders zu beachten.",
+"Rückwärtsfahren darf grundsätzlich ohne Sicht und Sicherung erfolgen.",
+"Personen hinter Fahrzeugen müssen grundsätzlich ignoriert werden.",
+"Fahrzeugbewegungen sind auf Einsatzstellen immer ungefährlich."],
+
+/* ==================== RETTUNGSDIENST 12 ==================== */
+
+["rd","ABCDE",
+"Das ABCDE-Schema unterstützt eine strukturierte Untersuchung und Priorisierung lebensbedrohlicher Probleme.",
+"ABCDE ist ausschließlich eine Funkrufnamenregel.",
+"ABCDE wird nur zur Fahrzeugprüfung genutzt.",
+"ABCDE bedeutet, Verletzungen in zufälliger Reihenfolge zu behandeln."],
+
+["rd","Atemweg",
+"Ein bedrohter Atemweg hat bei der strukturierten Patientenbeurteilung hohe Priorität.",
+"Ein vollständig verlegter Atemweg kann grundsätzlich bis Einsatzende warten.",
+"Der Atemweg spielt bei Bewusstlosen keine Rolle.",
+"Atemwegsprobleme werden ausschließlich schriftlich behandelt."],
+
+["rd","Atmung",
+"Bei der Beurteilung der Atmung werden unter anderem Atemfrequenz, Atemarbeit und ausreichende Belüftung betrachtet.",
+"Die Atmung wird bei Notfallpatienten grundsätzlich nicht beurteilt.",
+"Atemfrequenz sagt grundsätzlich nie etwas aus.",
+"Bei Atemnot soll der Patient immer flach hingelegt werden, unabhängig von Ursache und Zustand."],
+
+["rd","Kreislauf",
+"Starke Blutungen müssen möglichst früh erkannt und kontrolliert werden.",
+"Starke Blutungen werden grundsätzlich erst nach mehreren Stunden versorgt.",
+"Blutverlust kann den Kreislauf niemals gefährden.",
+"Blutungen werden grundsätzlich durch Wärmebehandlung verstärkt."],
+
+["rd","Bewusstsein",
+"Der Bewusstseinszustand ist ein wichtiger Bestandteil der Patientenbeurteilung.",
+"Bewusstseinsveränderungen sind grundsätzlich bedeutungslos.",
+"Bewusstlose Patienten benötigen grundsätzlich keine Überwachung.",
+"Bewusstsein darf nur nach einem Transport beurteilt werden."],
+
+["rd","Wärmeerhalt",
+"Der Wärmeerhalt ist insbesondere bei verletzten oder ausgekühlten Patienten wichtig.",
+"Patienten sollen grundsätzlich zusätzlich ausgekühlt werden.",
+"Wärmeerhalt ist bei Traumapatienten verboten.",
+"Kälte verbessert grundsätzlich jeden Schockzustand."],
+
+["rd","Reanimation",
+"Bei fehlenden Lebenszeichen beziehungsweise Kreislaufstillstand sind unverzüglich geeignete Reanimationsmaßnahmen einzuleiten.",
+"Bei Kreislaufstillstand wird grundsätzlich zunächst eine Stunde abgewartet.",
+"Eine Reanimation darf ausschließlich in Krankenhäusern beginnen.",
+"Bei Kreislaufstillstand ist jede Herzdruckmassage verboten."],
+
+["rd","AED",
+"Ein AED kann bei geeigneten Herzrhythmen eine Defibrillation ermöglichen und gibt Anwenderhinweise.",
+"Ein AED ersetzt grundsätzlich jede Herzdruckmassage.",
+"Ein AED darf ausschließlich zur Blutdruckmessung verwendet werden.",
+"Ein AED ist ein Atemschutzgerät."],
+
+["rd","Trauma",
+"Bei Traumapatienten müssen Unfallmechanismus, Verletzungen und Lebensbedrohungen gemeinsam betrachtet werden.",
+"Der Unfallmechanismus besitzt grundsätzlich keine Bedeutung.",
+"Traumapatienten werden ohne Untersuchung immer sofort bewegt.",
+"Bei Trauma dürfen keine Blutungen behandelt werden."],
+
+["rd","Verbrennungen",
+"Bei Verbrennungen sind unter anderem Ausdehnung, Tiefe, Lokalisation und mögliche Begleitverletzungen bedeutsam.",
+"Verbrennungen werden grundsätzlich mit Eis direkt und dauerhaft behandelt.",
+"Ausdehnung und Lokalisation spielen bei Verbrennungen keine Rolle.",
+"Verbrennungen können niemals zu Unterkühlung führen."],
+
+["rd","Patientenübergabe",
+"Eine strukturierte Übergabe übermittelt wichtige Informationen an den weiterbehandelnden Rettungsdienst.",
+"Bei der Übergabe sollen möglichst keine Informationen genannt werden.",
+"Eine Patientenübergabe ist grundsätzlich unnötig.",
+"Nur der Fahrzeugtyp wird bei Übergaben mitgeteilt."],
+
+["rd","Eigenschutz",
+"Eigenschutz und sichere Einsatzstelle haben auch bei medizinischen Notfällen hohe Bedeutung.",
+"Bei Patientenversorgung müssen Gefahren grundsätzlich ignoriert werden.",
+"Eigenschutz ist nur Sache der Polizei.",
+"Medizinische Hilfe darf nur ohne PSA durchgeführt werden."],
+
+/* ==================== FÜHRUNG 12 ==================== */
+
+["fuehrung","Führungsvorgang",
+"Der Führungsvorgang umfasst Lagefeststellung, Planung beziehungsweise Beurteilung und Befehlsgebung mit fortlaufender Kontrolle.",
+"Der Führungsvorgang besteht ausschließlich aus Materialausgabe.",
+"Führung erfolgt grundsätzlich ohne Lageinformationen.",
+"Nach einer Entscheidung darf die Lage niemals erneut beurteilt werden."],
+
+["fuehrung","Lagefeststellung",
+"Die Lagefeststellung sammelt Informationen über Schadenlage und eigene Möglichkeiten.",
+"Lagefeststellung bedeutet ausschließlich Fahrzeugreinigung.",
+"Lagefeststellung ist erst nach Einsatzende erlaubt.",
+"Eigene Kräfte und Mittel spielen bei der Lagefeststellung keine Rolle."],
+
+["fuehrung","Beurteilung",
+"Bei der Beurteilung werden Gefahren, Möglichkeiten und Prioritäten gegeneinander abgewogen.",
+"Beurteilung bedeutet, alle Gefahren zu ignorieren.",
+"Beurteilung erfolgt ausschließlich nach Zufallsprinzip.",
+"Bei der Beurteilung dürfen eigene Kräfte nicht berücksichtigt werden."],
+
+["fuehrung","Entschluss",
+"Der Entschluss legt fest, wie das Einsatzziel mit den verfügbaren Mitteln erreicht werden soll.",
+"Der Entschluss bedeutet grundsätzlich Einsatzabbruch.",
+"Ein Entschluss darf niemals geändert werden.",
+"Der Entschluss besteht ausschließlich aus einer Fahrzeugnummer."],
+
+["fuehrung","Befehl",
+"Ein Befehl soll verständlich sein und die wesentlichen Informationen für die Auftragserfüllung enthalten.",
+"Befehle sollen bewusst mehrdeutig sein.",
+"Befehle dürfen grundsätzlich keine Aufgabe enthalten.",
+"Befehle werden ausschließlich nach Einsatzende ausgesprochen."],
+
+["fuehrung","Kontrolle",
+"Die Wirkung angeordneter Maßnahmen muss kontrolliert und bei Bedarf angepasst werden.",
+"Nach einem Befehl wird die Einsatzentwicklung grundsätzlich ignoriert.",
+"Kontrolle ist im Führungsvorgang verboten.",
+"Maßnahmen dürfen auch bei Wirkungslosigkeit niemals geändert werden."],
+
+["fuehrung","Einsatzabschnitt",
+"Bei größeren Lagen können Einsatzabschnitte zur Gliederung und Führung gebildet werden.",
+"Einsatzabschnitte sind ausschließlich Fahrzeugparkplätze.",
+"Einsatzabschnitte dürfen nur aus einer Person bestehen.",
+"Die Bildung von Einsatzabschnitten verhindert jede Kommunikation."],
+
+["fuehrung","Führungsspanne",
+"Eine angemessene Führungsspanne hilft, unterstellte Einheiten wirksam zu führen.",
+"Eine Führungskraft soll grundsätzlich unbegrenzt viele Einheiten gleichzeitig direkt führen.",
+"Führungsspanne beschreibt ausschließlich Schlauchlänge.",
+"Führungsspanne ist nur bei Übungen relevant."],
+
+["fuehrung","Rückmeldung Führung",
+"Rückmeldungen liefern der Führung aktuelle Informationen über Lage und Auftragserfüllung.",
+"Rückmeldungen verschlechtern grundsätzlich jede Führung.",
+"Rückmeldungen dürfen nur vom Einsatzleiter an sich selbst gegeben werden.",
+"Auftragserfüllung wird grundsätzlich nicht gemeldet."],
+
+["fuehrung","Prioritäten",
+"Akute Gefahren für Menschenleben haben regelmäßig besondere Bedeutung bei der Prioritätensetzung.",
+"Fahrzeugreinigung besitzt grundsätzlich Vorrang vor Menschenrettung.",
+"Prioritäten dürfen sich bei Lageänderung nie verändern.",
+"Prioritäten werden ausschließlich alphabetisch festgelegt."],
+
+["fuehrung","Führungsmittel",
+"Führungsmittel wie Karten, Übersichten und Dokumentation können die Einsatzführung unterstützen.",
+"Führungsmittel sind bei komplexen Einsätzen grundsätzlich verboten.",
+"Dokumentation verschlechtert grundsätzlich die Übersicht.",
+"Karten dürfen ausschließlich nach Einsatzende geöffnet werden."],
+
+["fuehrung","Lageänderung",
+"Bei wesentlichen Lageänderungen muss die Planung überprüft und gegebenenfalls angepasst werden.",
+"Eine einmal festgelegte Planung darf niemals verändert werden.",
+"Lageänderungen werden grundsätzlich ignoriert.",
+"Neue Gefahren dürfen keinen Einfluss auf Maßnahmen haben."],
+
+/* ==================== PRAXIS / PRÜFUNG 12 ==================== */
+
+["praxis","Antreten",
+"Bei praktischen Übungen sind klare Aufgabenverteilung, Aufmerksamkeit und sicheres Antreten wichtig.",
+"Beim Antreten sollen Einsatzkräfte absichtlich durcheinander sprechen.",
+"Aufgabenverteilung ist bei Übungen grundsätzlich unnötig.",
+"Beim Antreten wird grundsätzlich persönliche Schutzausrüstung abgelegt."],
+
+["praxis","Gerätekunde Prüfung",
+"In der Prüfung sollte nicht nur der Gerätename, sondern auch Zweck und sichere Anwendung erklärt werden können.",
+"Bei Gerätekunde reicht grundsätzlich die Farbe des Gerätes.",
+"Sichere Anwendung wird in Prüfungen grundsätzlich nicht bewertet.",
+"Gerätenamen dürfen beliebig erfunden werden."],
+
+["praxis","Befehlswiederholung",
+"Bei Unklarheiten sollte ein Auftrag nachgefragt beziehungsweise eindeutig geklärt werden.",
+"Unklare Befehle müssen grundsätzlich blind ausgeführt werden.",
+"Rückfragen führen automatisch zum Nichtbestehen.",
+"Ein Auftrag darf während einer Übung niemals verstanden werden."],
+
+["praxis","Eigensicherung",
+"Auch unter Prüfungsdruck haben Eigenschutz und sichere Arbeitsweise Vorrang.",
+"Für eine schnelle Prüfung dürfen Sicherheitsregeln grundsätzlich ignoriert werden.",
+"Sicherheitsfehler werden durch hohe Geschwindigkeit automatisch ausgeglichen.",
+"Eigenschutz ist nur im realen Einsatz erforderlich."],
+
+["praxis","Kommunikation Prüfung",
+"Klare Kommunikation mit Trupppartner und Führung unterstützt eine sichere praktische Prüfung.",
+"Kommunikation mit dem Trupppartner ist in Prüfungen grundsätzlich verboten.",
+"Prüfer erwarten grundsätzlich völliges Schweigen bei jeder Tätigkeit.",
+"Fehler dürfen nie gemeldet oder korrigiert werden."],
+
+["praxis","Fehler erkennen",
+"Wird ein sicherheitsrelevanter Fehler erkannt, sollte er möglichst sofort korrigiert beziehungsweise gemeldet werden.",
+"Ein erkannter Fehler muss grundsätzlich fortgeführt werden.",
+"Fehler dürfen nur nach Ende der gesamten Ausbildung erwähnt werden.",
+"Das Korrigieren eines Fehlers ist grundsätzlich gefährlicher als Fortsetzen."],
+
+["praxis","Übungsdienst",
+"Regelmäßiges praktisches Üben festigt Handgriffe, Abläufe und Zusammenarbeit.",
+"Praktische Fertigkeiten entstehen grundsätzlich ohne Übung.",
+"Übungsdienst verschlechtert automatisch die Handlungssicherheit.",
+"Nur theoretisches Lesen ersetzt jede praktische Ausbildung."],
+
+["praxis","Zeitdruck",
+"Unter Zeitdruck sollte strukturiert und sicher statt hektisch gearbeitet werden.",
+"Hektik verbessert grundsätzlich jede Rettungsmaßnahme.",
+"Bei Zeitdruck werden Sicherheitskontrollen grundsätzlich abgeschafft.",
+"Zeitdruck bedeutet, Befehle nicht mehr beachten zu müssen."],
+
+["praxis","Prüfungsfragen",
+"Bei Multiple-Choice-Fragen sollte die Fragestellung genau gelesen werden, bevor eine Antwort gewählt wird.",
+"Bei Prüfungsfragen sollte grundsätzlich nur das längste Wort angekreuzt werden.",
+"Fragen müssen nicht vollständig gelesen werden.",
+"Die erste Antwort ist grundsätzlich immer richtig."],
+
+["praxis","Lernstrategie",
+"Regelmäßige kurze Wiederholungen und Fehlertraining verbessern den nachhaltigen Lernerfolg.",
+"Ein einziges zehnstündiges Lernen ersetzt grundsätzlich jede Wiederholung.",
+"Fehlerfragen sollten niemals erneut angesehen werden.",
+"Lernfortschritt kann durch Wiederholung nicht verbessert werden."],
+
+["praxis","Wachpraktikum",
+"Ein Wachpraktikum dient dazu, Ausbildung in den praktischen Dienst und reale Abläufe zu übertragen.",
+"Ein Wachpraktikum besteht ausschließlich aus Urlaub.",
+"Wachpraktika haben keinerlei Bezug zum Feuerwehrdienst.",
+"Im Wachpraktikum dürfen grundsätzlich keine betrieblichen Abläufe kennengelernt werden."],
+
+["praxis","Teamarbeit",
+"Feuerwehreinsätze erfordern abgestimmte Zusammenarbeit und gegenseitige Unterstützung.",
+"Jede Einsatzkraft arbeitet grundsätzlich ohne Rücksicht auf andere.",
+"Teamarbeit ist ausschließlich Aufgabe der Führungskraft.",
+"Absprachen im Trupp verschlechtern grundsätzlich die Sicherheit."]
+
 ];
 
-let erledigt = JSON.parse(localStorage.getItem("b1_erledigt") || "{}");
-let aktuelleFrage = 0;
-let punkte = 0;
-let reihenfolge = [];
+/* =========================================================
+   FRAGEN AUS LERNINHALTEN ERZEUGEN
+   4 Varianten pro Lerninhalt
+   ========================================================= */
 
-function moduleRendern(){
-  let html="";
+const questions=[];
 
-  moduleDaten.forEach((m,i)=>{
-    let fertig=0;
+facts.forEach((f,index)=>{
 
-    m[2].forEach((x,j)=>{
-      if(erledigt[i+"-"+j]) fertig++;
-    });
+const topic=f[0];
+const key=f[1];
+const right=f[2];
+const wrong=[f[3],f[4],f[5]];
 
-    let prozent=Math.round(fertig/m[2].length*100);
+const variants=[
+`Welche Aussage zu „${key}“ ist richtig?`,
+`Was gilt im Zusammenhang mit „${key}“?`,
+`Welche der folgenden Aussagen über „${key}“ trifft zu?`,
+`Prüfungsfrage: Welche Aussage zum Thema „${key}“ ist korrekt?`
+];
 
-    html+=`
-    <div class="card" onclick="modulOeffnen(${i})">
-      <div style="font-size:30px">${m[0]}</div>
-      <h3>${m[1]}</h3>
-      <p>${fertig} von ${m[2].length} Lernzielen erledigt</p>
-      <div class="progress">
-        <span style="width:${prozent}%"></span>
-      </div>
-    </div>`;
-  });
+variants.forEach((text,v)=>{
+questions.push({
+id:`${topic}_${index}_${v}`,
+topic,
+text,
+answers:shuffle([right,...wrong]),
+right
+});
+});
 
-  document.getElementById("module").innerHTML=html;
-  fortschritt();
+});
+
+/* =========================================================
+   SPEICHER
+   ========================================================= */
+
+let state=JSON.parse(localStorage.getItem("b1nrw672")||"null");
+
+if(!state){
+state={
+answered:{},
+wrong:{},
+correct:0,
+totalAnswers:0
+};
 }
 
-function modulOeffnen(i){
-  const m=moduleDaten[i];
-
-  let html=`
-  <button onclick="zurueck()">← Zurück</button>
-  <h2>${m[0]} ${m[1]}</h2>
-  <p class="small">
-  Markiere ein Thema, wenn du es sicher erklären und praktisch anwenden kannst.
-  </p>`;
-
-  m[2].forEach((t,j)=>{
-    const key=i+"-"+j;
-
-    html+=`
-    <label class="topic">
-      <input
-        type="checkbox"
-        ${erledigt[key] ? "checked":""}
-        onchange="markieren('${key}',this.checked)">
-      <span>${t}</span>
-    </label>`;
-  });
-
-  document.getElementById("lernen").classList.add("hidden");
-  document.getElementById("detail").classList.remove("hidden");
-  document.getElementById("detail").innerHTML=html;
+function save(){
+localStorage.setItem("b1nrw672",JSON.stringify(state));
+updateHeader();
 }
 
-function markieren(key,value){
-  erledigt[key]=value;
-  localStorage.setItem("b1_erledigt",JSON.stringify(erledigt));
-  fortschritt();
+function shuffle(a){
+return [...a].sort(()=>Math.random()-.5);
 }
 
-function fortschritt(){
-  let gesamt=0;
-  let fertig=0;
-
-  moduleDaten.forEach((m,i)=>{
-    m[2].forEach((x,j)=>{
-      gesamt++;
-      if(erledigt[i+"-"+j]) fertig++;
-    });
-  });
-
-  document.getElementById("fortschritt").innerText=
-    Math.round(fertig/gesamt*100)+"%";
+function topicById(id){
+return topics.find(t=>t.id===id);
 }
 
-function zurueck(){
-  document.getElementById("detail").classList.add("hidden");
-  document.getElementById("lernen").classList.remove("hidden");
-  moduleRendern();
+function topicQuestions(id){
+return questions.filter(q=>q.topic===id);
 }
 
-function zeige(id,button){
-  ["lernen","detail","quiz","recht","plan"].forEach(x=>{
-    document.getElementById(x).classList.add("hidden");
-  });
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-  document.getElementById(id).classList.remove("hidden");
+function updateHeader(){
 
-  document.querySelectorAll("nav button").forEach(b=>{
-    b.classList.remove("active");
-  });
+const unique=Object.keys(state.answered).length;
+const p=Math.round(unique/questions.length*100);
 
-  button.classList.add("active");
+document.getElementById("sProgress").textContent=p+"%";
+document.getElementById("sAnswered").textContent=state.totalAnswers;
 
-  if(id==="quiz"){
-    quizStart();
-  }
+document.getElementById("sCorrect").textContent=
+state.totalAnswers ? Math.round(state.correct/state.totalAnswers*100)+"%" : "–";
+
+document.getElementById("sWrong").textContent=
+Object.keys(state.wrong).length;
+
+document.getElementById("progressText").textContent=
+unique+" / "+questions.length;
+
+document.getElementById("mainProgress").style.width=p+"%";
+
+document.getElementById("wrongInfo").textContent=
+Object.keys(state.wrong).length
++" aktuell gespeicherte Fehlerfragen.";
+
 }
 
-function quizStart(){
-  aktuelleFrage=0;
-  punkte=0;
+/* =========================================================
+   MODULE
+   ========================================================= */
 
-  reihenfolge=[...Array(fragen.length).keys()]
-    .sort(()=>Math.random()-0.5);
+function renderModules(){
 
-  frageZeigen();
+const grid=document.getElementById("moduleGrid");
+grid.innerHTML="";
+
+topics.forEach(t=>{
+
+const qs=topicQuestions(t.id);
+
+const done=qs.filter(q=>state.answered[q.id]).length;
+
+const rightCount=qs.filter(q=>
+state.answered[q.id] &&
+state.answered[q.id].lastCorrect
+).length;
+
+const pct=Math.round(done/qs.length*100);
+
+const div=document.createElement("div");
+div.className="card";
+
+div.innerHTML=`
+<div class="row">
+<div class="icon">${t.icon}</div>
+<span class="badge">${qs.length} Fragen</span>
+</div>
+<h3>${t.name}</h3>
+<p>${done} von ${qs.length} Fragen mindestens einmal bearbeitet</p>
+
+<div class="progress">
+<span style="width:${pct}%"></span>
+</div>
+
+<div class="moduleStat row small">
+<span>Fortschritt ${pct}%</span>
+<span>${rightCount} zuletzt richtig</span>
+</div>
+
+<div style="margin-top:10px">
+<button onclick="quickTopic('${t.id}')">Trainieren</button>
+</div>
+`;
+
+grid.appendChild(div);
+
+});
+
 }
 
-function frageZeigen(){
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-  if(aktuelleFrage>=fragen.length){
+function page(id,btn){
 
-    let prozent=Math.round(punkte/fragen.length*100);
+["home","train","exam","wrong","stats"].forEach(x=>{
+document.getElementById(x).classList.add("hidden");
+});
 
-    document.getElementById("frage").innerHTML=`
-      <h2>Ergebnis</h2>
-      <h1>${punkte} / ${fragen.length}</h1>
-      <p>${prozent}% richtig</p>
-      <button onclick="quizStart()">Neue Prüfung starten</button>
-    `;
+document.getElementById(id).classList.remove("hidden");
 
-    return;
-  }
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
 
-  const f=fragen[reihenfolge[aktuelleFrage]];
+if(btn)btn.classList.add("active");
 
-  let html=`
-  <div class="small">
-  Frage ${aktuelleFrage+1} von ${fragen.length}
-  · Punkte ${punkte}
-  </div>
+if(id==="stats") renderStats();
+if(id==="wrong") updateHeader();
 
-  <h2>${f.q}</h2>`;
-
-  f.a.forEach((antwort,i)=>{
-    html+=`
-    <button
-      class="answer"
-      onclick="antwort(${i},this)">
-      ${antwort}
-    </button>`;
-  });
-
-  html+=`<div id="feedback"></div>`;
-
-  document.getElementById("frage").innerHTML=html;
 }
 
-function antwort(i,button){
+/* =========================================================
+   TRAINER
+   ========================================================= */
 
-  const f=fragen[reihenfolge[aktuelleFrage]];
-  const buttons=document.querySelectorAll(".answer");
+let session=[];
+let pos=0;
+let score=0;
+let targetArea="trainArea";
 
-  buttons.forEach(b=>b.disabled=true);
+function setupSelect(){
 
-  buttons[f.c].classList.add("correct");
+const s=document.getElementById("topicSelect");
 
-  if(i===f.c){
-    punkte++;
-    document.getElementById("feedback").innerHTML=
-      "<p>✅ Richtig!</p>";
-  }else{
-    button.classList.add("wrong");
-    document.getElementById("feedback").innerHTML=
-      "<p>❌ Falsch. Die grüne Antwort ist richtig.</p>";
-  }
+s.innerHTML=topics.map(t=>
+`<option value="${t.id}">${t.icon} ${t.name}</option>`
+).join("");
 
-  document.getElementById("feedback").innerHTML+=`
-    <button onclick="aktuelleFrage++;frageZeigen()">
-    Weiter →
-    </button>`;
 }
 
-moduleRendern();
+function quickTopic(id){
+
+document.getElementById("topicSelect").value=id;
+
+page("train",document.querySelectorAll("nav button")[1]);
+
+startTopic();
+
+}
+
+function startTopic(){
+
+const id=document.getElementById("topicSelect").value;
+
+session=shuffle(topicQuestions(id));
+
+pos=0;
+score=0;
+targetArea="trainArea";
+
+renderQuestion();
+
+}
+
+function startAll(){
+
+session=shuffle(questions);
+
+pos=0;
+score=0;
+targetArea="trainArea";
+
+renderQuestion();
+
+}
+
+/* =========================================================
+   PRÜFUNG
+   ========================================================= */
+
+function startExam(){
+
+session=shuffle(questions).slice(0,40);
+
+pos=0;
+score=0;
+targetArea="examArea";
+
+renderQuestion();
+
+}
+
+/* =========================================================
+   FEHLERTRAINING
+   ========================================================= */
+
+function startWrong(){
+
+const ids=Object.keys(state.wrong);
+
+if(!ids.length){
+
+document.getElementById("wrongArea").innerHTML=
+`<div class="notice">Aktuell sind keine Fehlerfragen gespeichert. Sehr gut.</div>`;
+
+return;
+
+}
+
+session=shuffle(
+questions.filter(q=>state.wrong[q.id])
+);
+
+pos=0;
+score=0;
+targetArea="wrongArea";
+
+renderQuestion();
+
+}
+
+/* =========================================================
+   FRAGE ANZEIGEN
+   ========================================================= */
+
+function renderQuestion(){
+
+const area=document.getElementById(targetArea);
+
+if(pos>=session.length){
+
+const pct=session.length
+?Math.round(score/session.length*100)
+:0;
+
+area.innerHTML=`
+<div class="question">
+<div class="scorebig">${pct}%</div>
+<h2 style="text-align:center">${score} von ${session.length} richtig</h2>
+
+<div class="notice">
+Die bearbeiteten Fragen wurden in deinem Lernfortschritt gespeichert.
+</div>
+
+<button class="primary" onclick="restartCurrent()">Noch einmal</button>
+</div>
+`;
+
+renderModules();
+updateHeader();
+
+return;
+
+}
+
+const q=session[pos];
+
+const t=topicById(q.topic);
+
+let html=`
+<div class="question">
+
+<p class="small">
+${t.icon} ${t.name}
+<br>
+Frage ${pos+1} von ${session.length}
+· richtig ${score}
+</p>
+
+<h2>${q.text}</h2>
+`;
+
+q.answers.forEach((a,i)=>{
+html+=`
+<button class="answer" onclick="answerQuestion(${i},this)">
+${a}
+</button>
+`;
+});
+
+html+=`
+<div id="feedback"></div>
+</div>
+`;
+
+area.innerHTML=html;
+
+}
+
+/* =========================================================
+   ANTWORT
+   ========================================================= */
+
+function answerQuestion(index,button){
+
+const q=session[pos];
+
+const buttons=[
+...document.querySelectorAll("#"+targetArea+" .answer")
+];
+
+buttons.forEach(b=>b.disabled=true);
+
+let isCorrect=button.textContent.trim()===q.right.trim();
+
+buttons.forEach(b=>{
+if(b.textContent.trim()===q.right.trim()){
+b.classList.add("correct");
+}
+});
+
+if(isCorrect){
+
+score++;
+state.correct++;
+delete state.wrong[q.id];
+
+}else{
+
+button.classList.add("wrong");
+state.wrong[q.id]=true;
+
+}
+
+state.totalAnswers++;
+
+if(!state.answered[q.id]){
+state.answered[q.id]={count:0,lastCorrect:false};
+}
+
+state.answered[q.id].count++;
+state.answered[q.id].lastCorrect=isCorrect;
+
+save();
+
+document.getElementById("feedback").innerHTML=`
+
+<div class="notice ${isCorrect?"good":""}">
+
+<strong>${isCorrect ? "✅ Richtig" : "❌ Falsch"}</strong>
+
+${!isCorrect
+? `<p><strong>Richtige Antwort:</strong><br>${q.right}</p>`
+: ""}
+
+</div>
+
+<button class="primary" onclick="nextQuestion()">
+Weiter →
+</button>
+`;
+
+}
+
+/* =========================================================
+   WEITER
+   ========================================================= */
+
+function nextQuestion(){
+
+pos++;
+renderQuestion();
+
+}
+
+function restartCurrent(){
+
+session=shuffle(session);
+pos=0;
+score=0;
+renderQuestion();
+
+}
+
+/* =========================================================
+   STATISTIK
+   ========================================================= */
+
+function renderStats(){
+
+let html="";
+
+const unique=Object.keys(state.answered).length;
+
+html+=`
+<div class="notice good">
+<strong>Gesamtfortschritt:</strong>
+${unique} von ${questions.length} Fragen bearbeitet
+(${Math.round(unique/questions.length*100)} %)
+</div>
+
+<table>
+<tr>
+<th>Thema</th>
+<th>Bearbeitet</th>
+<th>Fehler</th>
+<th>Fortschritt</th>
+</tr>
+`;
+
+topics.forEach(t=>{
+
+const qs=topicQuestions(t.id);
+
+const done=qs.filter(q=>state.answered[q.id]).length;
+
+const wrong=qs.filter(q=>state.wrong[q.id]).length;
+
+const pct=Math.round(done/qs.length*100);
+
+html+=`
+<tr>
+<td>${t.icon} ${t.name}</td>
+<td>${done}/${qs.length}</td>
+<td>${wrong}</td>
+<td>${pct}%</td>
+</tr>
+`;
+
+});
+
+html+=`</table>`;
+
+html+=`
+<div style="margin-top:20px">
+<h3>Gesamtstatistik</h3>
+<p>
+Antworten insgesamt: <strong>${state.totalAnswers}</strong><br>
+Davon richtig: <strong>${state.correct}</strong><br>
+Erfolgsquote:
+<strong>
+${state.totalAnswers
+? Math.round(state.correct/state.totalAnswers*100)
+:0} %
+</strong><br>
+Aktuelle Fehlerfragen:
+<strong>${Object.keys(state.wrong).length}</strong>
+</p>
+</div>
+`;
+
+document.getElementById("statsArea").innerHTML=html;
+
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetAll(){
+
+if(!confirm(
+"Willst du wirklich deinen gesamten Lernfortschritt löschen?"
+)) return;
+
+localStorage.removeItem("b1nrw672");
+
+state={
+answered:{},
+wrong:{},
+correct:0,
+totalAnswers:0
+};
+
+renderModules();
+updateHeader();
+renderStats();
+
+alert("Lernfortschritt wurde gelöscht.");
+
+}
+
+/* =========================================================
+   START
+   ========================================================= */
+
+setupSelect();
+renderModules();
+updateHeader();
+
+console.log(
+"B1 Feuerwehr NRW:",
+facts.length,
+"Lerninhalte /",
+questions.length,
+"Fragen"
+);
 
 </script>
 
