@@ -496,10 +496,45 @@ object-position:center;
 
 .quick .metric:nth-child(4){
   border-color:rgba(255,70,45,.42);
-  box-shadow:0 0 22px rgba(255,50,20,.16);
+  box-shadow:0 0 22px rgba(255,50,20,..quick .metric::after{
+  position:absolute;
+  left:9px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:25px;
+  font-weight:900;
+  z-index:3;
+  text-shadow:0 0 14px currentColor;
 }
 
-@keyframes hudShimmer{
+.quick .metric:nth-child(1)::after{
+  content:"▥";
+  color:#168cff;
+}
+
+.quick .metric:nth-child(2)::after{
+  content:"?";
+  color:#ff3155;
+  font-size:31px;
+}
+
+.quick .metric:nth-child(3)::after{
+  content:"◎";
+  color:#21e879;
+  font-size:30px;
+}
+
+.quick .metric:nth-child(4)::after{
+  content:"×";
+  color:#ff4938;
+  font-size:34px;
+}
+
+.quick .metric b,
+.quick .metric span{
+  margin-left:24px;
+}
+  @keyframes hudShimmer{
   0%,55%{transform:translateX(-120%)}
   85%,100%{transform:translateX(120%)}
 }
