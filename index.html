@@ -192,7 +192,124 @@ radial-gradient(circle at 50% 20%,#f22e211c,transparent 35%),linear-gradient(155
 .ruleFilters{display:flex;gap:6px;overflow:auto;margin:10px 0}.chip{white-space:nowrap;border-radius:99px;padding:8px 10px}.chip.active{background:#9b130d}.rules{display:grid;grid-template-columns:1fr;gap:9px}.rule{padding:13px;background:#0f1415;border:1px solid #2d383b;border-radius:16px}.rule h3{font-size:17px;margin:0 0 3px}.rule .ed{font-size:9px;color:#829094}.rule p{font-size:12px;line-height:1.5;color:#bdc6c8}.rule.fwdv{border-left:3px solid #f03b30}.rule.gesetz{border-left:3px solid #ffbf31}.rule.dguv{border-left:3px solid #38a8ff}.notice{padding:11px;border:1px solid #244a63;background:#0b1a24;border-radius:12px;color:#bed1db;font-size:10px;line-height:1.5;margin:10px 0}.statsTable{width:100%;border-collapse:collapse}.statsTable td,.statsTable th{font-size:10px;padding:8px 3px;border-bottom:1px solid #253033;text-align:left}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:80;background:#070a0af2;border-top:1px solid #2d383b;backdrop-filter:blur(18px);padding-bottom:env(safe-area-inset-bottom)}.bottomin{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr);height:67px}.nav{border:0;border-radius:0;background:transparent!important;padding:7px 1px 4px;color:#788589;font-size:7px}.nav svg{display:block;margin:auto;width:21px;height:21px;stroke:currentColor;margin-bottom:3px}.nav.active{color:#ff4438;background:linear-gradient(#3b0a0818,#5c0a0744)!important}
 @media(min-width:720px){.heroGrid{grid-template-columns:1.1fr .9fr}.heroText{text-align:left;padding:45px}.crest{margin:28px auto}.grid{grid-template-columns:repeat(4,1fr)}.sheetGrid{grid-template-columns:repeat(2,1fr)}.rules{grid-template-columns:repeat(2,1fr)}}
  
-  
+/* ===== BLAULICHT + FEUER V2 ===== */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* kräftiges wechselndes Blaulicht */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-25%;
+  pointer-events:none;
+  z-index:0;
+
+  background:
+    radial-gradient(circle at 5% 35%,
+      rgba(0,120,255,.75) 0%,
+      rgba(0,100,255,.32) 15%,
+      transparent 38%),
+    radial-gradient(circle at 95% 28%,
+      rgba(0,150,255,.62) 0%,
+      rgba(0,90,255,.25) 16%,
+      transparent 40%);
+
+  filter:blur(18px);
+  mix-blend-mode:screen;
+  animation:blueFlash 1.15s infinite;
+}
+
+/* Feuer- und Glutschein */
+.hero::after{
+  content:"";
+  position:absolute;
+  left:-15%;
+  right:-15%;
+  bottom:-18%;
+  height:65%;
+  pointer-events:none;
+  z-index:0;
+
+  background:
+    radial-gradient(ellipse at 28% 100%,
+      rgba(255,45,0,.70) 0%,
+      rgba(255,90,0,.32) 22%,
+      transparent 53%),
+    radial-gradient(ellipse at 52% 100%,
+      rgba(255,180,30,.65) 0%,
+      rgba(255,65,0,.38) 24%,
+      transparent 55%),
+    radial-gradient(ellipse at 76% 100%,
+      rgba(255,35,0,.68) 0%,
+      rgba(255,100,0,.30) 22%,
+      transparent 52%);
+
+  filter:blur(18px);
+  mix-blend-mode:screen;
+  transform-origin:center bottom;
+  animation:fireFlickerV2 .72s infinite alternate;
+}
+
+.hero > *{
+  position:relative;
+  z-index:2;
+}
+
+@keyframes blueFlash{
+  0%,18%{
+    opacity:.25;
+    transform:translateX(-3%) scale(1);
+  }
+
+  20%,32%{
+    opacity:1;
+    transform:translateX(0) scale(1.03);
+  }
+
+  34%,58%{
+    opacity:.18;
+  }
+
+  60%,72%{
+    opacity:.90;
+    transform:translateX(3%) scale(1.02);
+  }
+
+  74%,100%{
+    opacity:.28;
+  }
+}
+
+@keyframes fireFlickerV2{
+  0%{
+    opacity:.42;
+    transform:scaleX(.96) scaleY(.88) translateY(8px);
+  }
+
+  25%{
+    opacity:.78;
+    transform:scaleX(1.04) scaleY(1.08) translateY(-3px);
+  }
+
+  55%{
+    opacity:.55;
+    transform:scaleX(.98) scaleY(.95) translateY(4px);
+  }
+
+  78%{
+    opacity:.92;
+    transform:scaleX(1.07) scaleY(1.12) translateY(-6px);
+  }
+
+  100%{
+    opacity:.67;
+    transform:scaleX(1.01) scaleY(1.04);
+  }
+}
 </style>
 </head>
 <body>
