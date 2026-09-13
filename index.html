@@ -846,6 +846,497 @@ return topics.find(t=>t.id===id)
 }
 
 const questions=[];
+  const kettensaegenFragen = [
+{
+ id:"ks001",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer .325″-Sägekette verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[1]
+},
+{
+ id:"ks002",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer 3/8″-Sägekette in der ersten Hälfte des Schneidezahns verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[3]
+},
+{
+ id:"ks003",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer 3/8″-Sägekette in der zweiten Hälfte des Schneidezahns verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[2]
+},
+{
+ id:"ks004",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Kontrollen gehören vor Arbeitsbeginn an der Motorsäge dazu? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kettenbremse auf Funktion prüfen",
+  "Kettenspannung kontrollieren",
+  "Schneidgarnitur kontrollieren",
+  "Sicherheitseinrichtungen absichtlich außer Funktion setzen"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks005",
+ topic:"kettensaege",
+ type:"single",
+ text:"Wie tief wird der Fallkerb ungefähr angelegt?",
+ answers:[
+  "Etwa 1/10 des Stammdurchmessers",
+  "Etwa 1/5 bis 1/3 des Stammdurchmessers",
+  "Etwa 1/2 des Stammdurchmessers",
+  "Bis zur Stammmitte"
+ ],
+ correct:[1]
+},
+{
+ id:"ks006",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Aufgabe hat der Fallkerb?",
+ answers:[
+  "Er bestimmt maßgeblich die vorgesehene Fällrichtung",
+  "Er erhöht die Motordrehzahl",
+  "Er ersetzt den Fällschnitt",
+  "Er verhindert grundsätzlich jedes Aufreißen des Stammes"
+ ],
+ correct:[0]
+},
+{
+ id:"ks007",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Bestandteile gehören zur geeigneten persönlichen Schutzausrüstung beim Arbeiten mit der Motorsäge? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kopfschutz mit Gesichts- und Gehörschutz entsprechend Gefährdung",
+  "Schnittschutzhose",
+  "Geeignetes Sicherheitsschuhwerk mit Schnittschutz",
+  "Kurze Hose bei hohen Temperaturen"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks008",
+ topic:"kettensaege",
+ type:"single",
+ text:"Was bezeichnet man bei der Motorsäge als Rückschlag (Kickback)?",
+ answers:[
+  "Das schlagartige Hoch- bzw. Zurückschlagen der Führungsschiene",
+  "Das Nachtanken der Motorsäge",
+  "Das Nachspannen der Kette",
+  "Das kontrollierte Absetzen der Motorsäge"
+ ],
+ correct:[0]
+},
+{
+ id:"ks009",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Situationen können die Gefahr eines Rückschlags erhöhen? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kontakt des oberen Bereichs der Schienenspitze mit Holz oder einem Gegenstand",
+  "Einklemmen beziehungsweise ungünstige Belastung der Sägekette",
+  "Unkontrollierte Arbeitsweise",
+  "Sicherer Stand und kontrollierte Sägenführung"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks010",
+ topic:"kettensaege",
+ type:"single",
+ text:"Was ist beim Schärfen der Schneidezähne besonders wichtig?",
+ answers:[
+  "Die für Kette und Herstellerangabe passenden Schärfparameter einhalten",
+  "Jeden Schneidezahn unterschiedlich lang feilen",
+  "Den Tiefenbegrenzer vollständig entfernen",
+  "Die Kette möglichst locker auf der Schiene lassen"
+ ],
+ correct:[0]
+},{
+ id:"ks001",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer .325″-Sägekette verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[1]
+},
+{
+ id:"ks002",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer 3/8″-Sägekette in der ersten Hälfte des Schneidezahns verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[3]
+},
+{
+ id:"ks003",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Rundfeile wird bei einer 3/8″-Sägekette in der zweiten Hälfte des Schneidezahns verwendet?",
+ answers:["4,0 mm","4,5 mm","4,8 mm","5,2 mm"],
+ correct:[2]
+},
+{
+ id:"ks004",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Kontrollen gehören vor Arbeitsbeginn an der Motorsäge dazu? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kettenbremse auf Funktion prüfen",
+  "Kettenspannung kontrollieren",
+  "Schneidgarnitur kontrollieren",
+  "Sicherheitseinrichtungen absichtlich außer Funktion setzen"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks005",
+ topic:"kettensaege",
+ type:"single",
+ text:"Wie tief wird der Fallkerb ungefähr angelegt?",
+ answers:[
+  "Etwa 1/10 des Stammdurchmessers",
+  "Etwa 1/5 bis 1/3 des Stammdurchmessers",
+  "Etwa 1/2 des Stammdurchmessers",
+  "Bis zur Stammmitte"
+ ],
+ correct:[1]
+},
+{
+ id:"ks006",
+ topic:"kettensaege",
+ type:"single",
+ text:"Welche Aufgabe hat der Fallkerb?",
+ answers:[
+  "Er bestimmt maßgeblich die vorgesehene Fällrichtung",
+  "Er erhöht die Motordrehzahl",
+  "Er ersetzt den Fällschnitt",
+  "Er verhindert grundsätzlich jedes Aufreißen des Stammes"
+ ],
+ correct:[0]
+},
+{
+ id:"ks007",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Bestandteile gehören zur geeigneten persönlichen Schutzausrüstung beim Arbeiten mit der Motorsäge? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kopfschutz mit Gesichts- und Gehörschutz entsprechend Gefährdung",
+  "Schnittschutzhose",
+  "Geeignetes Sicherheitsschuhwerk mit Schnittschutz",
+  "Kurze Hose bei hohen Temperaturen"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks008",
+ topic:"kettensaege",
+ type:"single",
+ text:"Was bezeichnet man bei der Motorsäge als Rückschlag (Kickback)?",
+ answers:[
+  "Das schlagartige Hoch- bzw. Zurückschlagen der Führungsschiene",
+  "Das Nachtanken der Motorsäge",
+  "Das Nachspannen der Kette",
+  "Das kontrollierte Absetzen der Motorsäge"
+ ],
+ correct:[0]
+},
+{
+ id:"ks009",
+ topic:"kettensaege",
+ type:"multiple",
+ text:"Welche Situationen können die Gefahr eines Rückschlags erhöhen? Mehrere Antworten sind richtig.",
+ answers:[
+  "Kontakt des oberen Bereichs der Schienenspitze mit Holz oder einem Gegenstand",
+  "Einklemmen beziehungsweise ungünstige Belastung der Sägekette",
+  "Unkontrollierte Arbeitsweise",
+  "Sicherer Stand und kontrollierte Sägenführung"
+ ],
+ correct:[0,1,2]
+},
+{
+ id:"ks010",
+ topic:"kettensaege",
+ type:"single",
+ text:"Was ist beim Schärfen der Schneidezähne besonders wichtig?",
+ answers:[
+  "Die für Kette und Herstellerangabe passenden Schärfparameter einhalten",
+  "Jeden Schneidezahn unterschiedlich lang feilen",
+  "Den Tiefenbegrenzer vollständig entfernen",
+  "Die Kette möglichst locker auf der Schiene lassen"
+  ],
+ correct:[0]
+},
+    {
+  id:"ks011",
+  topic:"kettensaege",
+  type:"single",
+  text:"Was ist vor dem Start der Motorsäge zu kontrollieren?",
+  answers:[
+    "Betriebssicherheit, Kettenspannung, Schmierung und vorhandene Sicherheitseinrichtungen",
+    "Nur der Kraftstoffstand",
+    "Nur die Länge der Führungsschiene",
+    "Nur die Farbe der Sägekette"
+  ],
+  correct:[0]
+},
+{
+  id:"ks012",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Welche persönliche Schutzausrüstung gehört typischerweise zur Arbeit mit der Motorsäge?",
+  answers:[
+    "Schutzhelm mit Gesichts- und Gehörschutz",
+    "Schnittschutzhose",
+    "Geeignetes Sicherheitsschuhwerk",
+    "Kurze Hose bei warmem Wetter"
+  ],
+  correct:[0,1,2]
+},
+{
+  id:"ks013",
+  topic:"kettensaege",
+  type:"single",
+  text:"Welche Aufgabe hat die Kettenbremse?",
+  answers:[
+    "Sie kann die laufende Sägekette in bestimmten Gefahrensituationen schnell abbremsen",
+    "Sie erhöht automatisch die Motordrehzahl",
+    "Sie spannt die Kette während des Sägens",
+    "Sie regelt die Kraftstoffzufuhr"
+  ],
+  correct:[0]
+},
+{
+  id:"ks014",
+  topic:"kettensaege",
+  type:"single",
+  text:"In welchem Bereich der Führungsschiene besteht eine besonders hohe Rückschlaggefahr?",
+  answers:[
+    "Im oberen Bereich der Schienenspitze",
+    "Nur direkt am Motorgehäuse",
+    "Ausschließlich an der Unterseite nahe dem Krallenanschlag",
+    "Nur in der Mitte der Führungsschiene"
+  ],
+  correct:[0]
+},
+{
+  id:"ks015",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Welche Maßnahmen helfen, einen Rückschlag der Motorsäge zu vermeiden?",
+  answers:[
+    "Schienenspitze bewusst beobachten",
+    "Motorsäge sicher mit beiden Händen führen",
+    "Nicht unkontrolliert mit dem oberen Bereich der Schienenspitze schneiden",
+    "Motorsäge grundsätzlich nur mit einer Hand führen"
+  ],
+  correct:[0,1,2]
+},
+{
+  id:"ks016",
+  topic:"kettensaege",
+  type:"single",
+  text:"Was ist bei einer zu locker gespannten Sägekette möglich?",
+  answers:[
+    "Die Kette kann von der Führungsschiene abspringen",
+    "Die Kette wird automatisch nachgeschärft",
+    "Die Motorleistung steigt",
+    "Die Kettenbremse wird überflüssig"
+  ],
+  correct:[0]
+},
+{
+  id:"ks017",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Was ist beim Betanken einer Motorsäge zu beachten?",
+  answers:[
+    "Motor abstellen",
+    "Zündquellen fernhalten",
+    "Verschütteten Kraftstoff beachten und beseitigen",
+    "Während des Betankens rauchen"
+  ],
+  correct:[0,1,2]
+},
+{
+  id:"ks018",
+  topic:"kettensaege",
+  type:"single",
+  text:"Warum muss die Kettenschmierung funktionieren?",
+  answers:[
+    "Sie vermindert Reibung und Verschleiß von Kette und Führungsschiene",
+    "Sie ersetzt die Kettenbremse",
+    "Sie erhöht die Schnitttiefe der Tiefenbegrenzer",
+    "Sie verhindert grundsätzlich jedes Verklemmen"
+  ],
+  correct:[0]
+},
+{
+  id:"ks019",
+  topic:"kettensaege",
+  type:"single",
+  text:"Wie sollte eine Motorsäge während der Sägearbeit grundsätzlich gehalten werden?",
+  answers:[
+    "Mit beiden Händen an den vorgesehenen Griffen",
+    "Nur mit der rechten Hand",
+    "Nur am hinteren Griff",
+    "Am Kettenbremshebel"
+  ],
+  correct:[0]
+},
+{
+  id:"ks020",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Welche Gefahren können beim Sägen von unter Spannung stehendem Holz auftreten?",
+  answers:[
+    "Plötzliches Aufreißen oder Zurückschnellen des Holzes",
+    "Einklemmen der Führungsschiene",
+    "Unkontrollierte Bewegung von Holzteilen",
+    "Das Holz verliert grundsätzlich sofort seine Spannung"
+  ],
+  correct:[0,1,2]
+},
+{
+  id:"ks021",
+  topic:"kettensaege",
+  type:"single",
+  text:"Was muss vor dem Durchtrennen von unter Spannung stehendem Holz beurteilt werden?",
+  answers:[
+    "Druck- und Zugseite sowie die mögliche Bewegung des Holzes",
+    "Nur die Holzfarbe",
+    "Nur die Länge der Motorsäge",
+    "Ausschließlich die Motordrehzahl"
+  ],
+  correct:[0]
+},
+{
+  id:"ks022",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Welche Gefahren sind bei Motorsägenarbeiten im Feuerwehreinsatz besonders zu berücksichtigen?",
+  answers:[
+    "Instabile oder herabfallende Bauteile",
+    "Verdeckte Fremdkörper im Schnittbereich",
+    "Spannungen im zu trennenden Material",
+    "Eine laufende Motorsäge beseitigt automatisch alle Gefahren"
+  ],
+  correct:[0,1,2]
+},
+{
+  id:"ks023",
+  topic:"kettensaege",
+  type:"single",
+  text:"Was ist beim Starten einer Motorsäge besonders wichtig?",
+  answers:[
+    "Die Motorsäge muss sicher gehalten beziehungsweise nach Herstellervorgabe gestartet werden",
+    "Die Kette muss dabei den Körper berühren",
+    "Die Motorsäge wird grundsätzlich frei in der Luft angeworfen",
+    "Die Kettenbremse darf niemals benutzt werden"
+  ],
+  correct:[0]
+},
+{
+  id:"ks024",
+  topic:"kettensaege",
+  type:"single",
+  text:"Welche Funktion hat der Kettenfänger?",
+  answers:[
+    "Er soll eine abgesprungene oder gerissene Kette im Bereich der Maschine auffangen beziehungsweise deren Bewegung begrenzen",
+    "Er schärft die Kette automatisch",
+    "Er füllt Kettenöl nach",
+    "Er ersetzt den Handschutz"
+  ],
+  correct:[0]
+},
+{
+  id:"ks025",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Wann darf eine beschädigte Motorsäge nicht weiterverwendet werden?",
+  answers:[
+    "Bei sicherheitsrelevanten Schäden",
+    "Bei einer nicht funktionsfähigen Kettenbremse",
+    "Bei Schäden an wesentlichen Schutzeinrichtungen",
+    "Wenn dadurch ein sicherer Betrieb nicht mehr gewährleistet ist"
+  ],
+  correct:[0,1,2,3]
+},
+{
+  id:"ks026",
+  topic:"kettensaege",
+  type:"single",
+  text:"Warum ist ein sicherer Stand bei Motorsägenarbeiten wichtig?",
+  answers:[
+    "Damit die Motorsäge kontrolliert geführt und auf Bewegungen des Materials reagiert werden kann",
+    "Damit grundsätzlich einhändig gesägt werden kann",
+    "Damit die Kettenbremse nicht benötigt wird",
+    "Damit die Motorsäge mit maximaler Drehzahl gestartet werden kann"
+  ],
+  correct:[0]
+},
+{
+  id:"ks027",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Was ist vor Beginn eines Sägeschnittes zu prüfen?",
+  answers:[
+    "Mögliche Bewegung des Materials",
+    "Gefahren im Arbeits- und Schnittbereich",
+    "Mögliche Fremdkörper im Schnittweg",
+    "Ob Personen durch das Material gefährdet werden können"
+  ],
+  correct:[0,1,2,3]
+},
+{
+  id:"ks028",
+  topic:"kettensaege",
+  type:"single",
+  text:"Was ist zu tun, wenn die Sägekette im Schnitt eingeklemmt wird?",
+  answers:[
+    "Säge sichern beziehungsweise abstellen und die Spannung kontrolliert beseitigen",
+    "Die Motorsäge mit Gewalt herausreißen",
+    "Mit laufender Kette an der Führungsschiene ziehen",
+    "Die Führungsschiene mit der Hand aus dem Schnitt schlagen"
+  ],
+  correct:[0]
+},
+{
+  id:"ks029",
+  topic:"kettensaege",
+  type:"multi",
+  text:"Welche Punkte gehören zur Kontrolle einer Sägekette?",
+  answers:[
+    "Kettenspannung",
+    "Beschädigungen",
+    "Schärfzustand",
+    "Ausreichende Schmierung"
+  ],
+  correct:[0,1,2,3]
+},
+{
+  id:"ks030",
+  topic:"kettensaege",
+  type:"single",
+  text:"Wer sollte eine Motorsäge im Feuerwehreinsatz bedienen?",
+  answers:[
+    "Eine entsprechend ausgebildete beziehungsweise unterwiesene und für die Tätigkeit geeignete Einsatzkraft",
+    "Jede Einsatzkraft unabhängig von Ausbildung und Einweisung",
+    "Nur der Fahrzeugführer",
+    "Grundsätzlich ausschließlich der Einsatzleiter"
+  ],
+  correct:[0]
+},
+];
 facts.forEach((f,i)=>{
 const pool=facts.filter(x=>x.topic===f.topic&&x.key!==f.key).map(x=>x.core);
 const wrong=shuffle(pool).slice(0,3);
